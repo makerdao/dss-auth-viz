@@ -33,27 +33,27 @@ const sort = events => {
 // ------------------------------------------------------------
 
 const rely = async graph => {
-  return await note.fromGraph(graph, signatures.rely);
+  return await note(graph, signatures.rely);
 };
 
 const deny = async graph => {
-  return await note.fromGraph(graph, signatures.deny);
+  return await note(graph, signatures.deny);
 };
 
 const logSetOwner = async graph => {
-  return await dsAuth.fromGraph(graph, 'LogSetOwner');
+  return await dsAuth(graph, 'LogSetOwner');
 };
 
 const logSetAuthority = async graph => {
-  return await dsAuth.fromGraph(graph, 'LogSetAuthority');
+  return await dsAuth(graph, 'LogSetAuthority');
 };
 
 const logPermit = async graph => {
-  return await dsGuard.fromGraph(graph, 'LogPermit');
+  return await dsGuard(graph, 'LogPermit');
 };
 
 const logForbid = async graph => {
-  return await dsGuard.fromGraph(graph, 'LogForbid');
+  return await dsGuard(graph, 'LogForbid');
 };
 
 // ------------------------------------------------------------

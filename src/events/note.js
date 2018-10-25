@@ -58,7 +58,7 @@ const ignore = [
 
 // ------------------------------------------------------------
 
-module.exports.fromGraph = async (graph, sig) => {
+module.exports = async (graph, sig) => {
   validateLists(graph, ignore, include);
   const events = await Promise.all(
     graph.nodes().map(async label => {
@@ -67,12 +67,12 @@ module.exports.fromGraph = async (graph, sig) => {
 
       switch (label) {
         case 'vat':
-          const vatNotes = await fromContract(contract, sig, 'Note');
+          const vatNotes = await read(contract, sig, 'Note');
           message(vatNotes.length, type(sig), label);
           return vatNotes;
 
         default:
-          const dsNotes = await fromContract(contract, sig, 'LogNote');
+          const dsNotes = await read(contract, sig, 'LogNote');
           message(dsNotes.length, type(sig), label);
           return dsNotes;
       }
@@ -84,7 +84,7 @@ module.exports.fromGraph = async (graph, sig) => {
 
 // ------------------------------------------------------------
 
-const fromContract = async (contract, sig, eventName) => {
+async function read(contract, sig, eventName) {
   const raw = await getRawLogs(contract, { sig }, eventName);
 
   return raw.map(log => {
@@ -97,7 +97,7 @@ const fromContract = async (contract, sig, eventName) => {
       type: type(sig)
     };
   });
-};
+}
 
 // ------------------------------------------------------------
 

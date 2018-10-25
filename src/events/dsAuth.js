@@ -57,7 +57,7 @@ const ignore = [
 
 // ------------------------------------------------------------
 
-module.exports.fromGraph = async (graph, eventName) => {
+module.exports = async (graph, eventName) => {
   validateLists(graph, ignore, include);
 
   const out = await Promise.all(
@@ -65,7 +65,7 @@ module.exports.fromGraph = async (graph, eventName) => {
       if (ignore.includes(label)) return [];
 
       const contract = graph.node(label).contract;
-      const events = await fromContract(contract, eventName);
+      const events = await read(contract, eventName);
       message(events.length, eventName, label);
 
       return events;
@@ -77,7 +77,7 @@ module.exports.fromGraph = async (graph, eventName) => {
 
 // ------------------------------------------------------------
 
-fromContract = async (contract, eventName) => {
+async function read(contract, eventName) {
   const raw = await getRawLogs(contract, {}, eventName);
 
   return raw.map(log => {
@@ -98,6 +98,6 @@ fromContract = async (contract, eventName) => {
 
     return out;
   });
-};
+}
 
 // ------------------------------------------------------------
