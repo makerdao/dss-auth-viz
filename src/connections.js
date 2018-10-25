@@ -41,6 +41,11 @@ module.exports.connections = async (events, graph) => {
         graph.setEdge(src, authority, 'LogSetAuthority');
         break;
       }
+
+      case 'LogPermit':
+      case 'LogForbid': {
+        console.log(event);
+      }
     }
   });
 

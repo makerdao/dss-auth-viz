@@ -1,5 +1,6 @@
 const note = require('./note');
 const dsAuth = require('./dsAuth');
+const dsGuard = require('./dsGuard');
 const { signatures } = require('./shared');
 
 // ------------------------------------------------------------
@@ -12,6 +13,8 @@ module.exports.events = async graph => {
   events = events.concat(await deny(graph));
   events = events.concat(await logSetOwner(graph));
   events = events.concat(await logSetAuthority(graph));
+  events = events.concat(await logPermit(graph));
+  events = events.concat(await logForbid(graph));
 
   return sort(events);
 };
@@ -43,6 +46,14 @@ const logSetOwner = async graph => {
 
 const logSetAuthority = async graph => {
   return await dsAuth.fromGraph(graph, 'LogSetAuthority');
+};
+
+const logPermit = async graph => {
+  return await dsGuard.fromGraph(graph, 'LogPermit');
+};
+
+const logForbid = async graph => {
+  return await dsGuard.fromGraph(graph, 'LogForbid');
 };
 
 // ------------------------------------------------------------
