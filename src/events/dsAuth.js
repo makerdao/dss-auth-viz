@@ -19,6 +19,7 @@ const ignore = [
   'proxyFab',
   'null',
   'root',
+  'dsRoles',
   'vat',
   'pit',
   'drip',

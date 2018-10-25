@@ -32,6 +32,11 @@ const setNodes = async (graph, addresses, abis) => {
     contract: new web3.eth.Contract([], addresses.ETH_FROM)
   });
 
+  graph.setNode('dsRoles', {
+    label: 'DSRoles',
+    contract: new web3.eth.Contract(abis.DSRoles, addresses.MCD_ADM)
+  });
+
   // Deployer
   graph.setNode('deploy', {
     label: 'DssDeploy',

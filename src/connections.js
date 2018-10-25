@@ -28,6 +28,19 @@ module.exports.connections = async (events, graph) => {
         graph.setEdge(src, owner, 'LogSetOwner');
         break;
       }
+
+      case 'LogSetAuthority': {
+        console.log(event.authority);
+        const authority = label(event.authority, graph);
+        graph.outEdges(src).map(edge => {
+          const label = graph.edge(edge);
+          if (label === 'LogSetAuthority') {
+            graph.removeEdge(edge);
+          }
+        });
+        graph.setEdge(src, authority, 'LogSetAuthority');
+        break;
+      }
     }
   });
 

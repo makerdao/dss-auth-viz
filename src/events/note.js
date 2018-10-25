@@ -20,6 +20,7 @@ const ignore = [
   'proxyFab',
   'null',
   'root',
+  'dsRoles',
   'deploy',
   'daiMove',
   'moveDgx',
