@@ -19,8 +19,13 @@ module.exports.connections = async (events, graph) => {
 
       case 'LogSetOwner': {
         const owner = label(event.owner, graph);
-        graph.setEdge(src, owner, 'rely');
-        console.log(graph.outEdges(src));
+        graph.outEdges(src).map(edge => {
+          const label = graph.edge(edge);
+          if (label === 'LogSetOwner') {
+            graph.removeEdge(edge);
+          }
+        });
+        graph.setEdge(src, owner, 'LogSetOwner');
         break;
       }
     }
