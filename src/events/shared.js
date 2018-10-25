@@ -24,3 +24,25 @@ module.exports.getRawLogs = async (contract, filter, eventName) => {
 };
 
 // ------------------------------------------------------------
+
+// ensures that every node is explicity declared as ignore or include
+module.exports.validateLists = async (graph, ignore, include) => {
+  const diff = (a, b) => {
+    const long = a.length > b.length ? a : b;
+    const short = a.length > b.length ? b : a;
+    return long.filter(elem => {
+      return short.indexOf(elem) < 0;
+    });
+  };
+
+  const joined = ignore.concat(include);
+  const missing = diff(joined, graph.nodes());
+
+  if (missing.length !== 0) {
+    throw new Error(
+      `the following nodes have not been included in an include or ignore list: ${missing}`
+    );
+  }
+};
+
+// ------------------------------------------------------------

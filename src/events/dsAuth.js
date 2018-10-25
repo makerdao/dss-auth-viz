@@ -1,6 +1,18 @@
-const { message, getRawLogs } = require('./shared');
+const { message, getRawLogs, validateLists } = require('./shared');
 
 // ------------------------------------------------------------
+
+const include = [
+  'daiGuard',
+  'deploy',
+  'gov',
+  'mom',
+  'dai',
+  'pipDgx',
+  'pipEth',
+  'Rep',
+  'pipRep'
+];
 
 const ignore = [
   'vatFab',
@@ -42,9 +54,12 @@ const ignore = [
   'flipRep',
   'spotRep'
 ];
+
 // ------------------------------------------------------------
 
 module.exports.fromGraph = async (graph, eventName) => {
+  validateLists(graph, ignore, include);
+
   const out = await Promise.all(
     graph.nodes().map(async label => {
       if (ignore.includes(label)) return [];

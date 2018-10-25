@@ -1,7 +1,31 @@
-const { getRawLogs } = require('./shared');
+const { getRawLogs, validateLists } = require('./shared');
 const { signatures, message } = require('./shared');
 
 // ------------------------------------------------------------
+
+const include = [
+  'vat',
+  'pit',
+  'drip',
+  'cat',
+  'vow',
+  'flap',
+  'flop',
+  'gov',
+  'mom',
+  'dai',
+  'daiJoin',
+  'pipDgx',
+  'joinDgx',
+  'flipDgx',
+  'pipEth',
+  'joinEth',
+  'flipEth',
+  'Rep',
+  'pipRep',
+  'joinRep',
+  'flipRep'
+];
 
 const ignore = [
   'vatFab',
@@ -35,6 +59,7 @@ const ignore = [
 // ------------------------------------------------------------
 
 module.exports.fromGraph = async (graph, sig) => {
+  validateLists(graph, ignore, include);
   const events = await Promise.all(
     graph.nodes().map(async label => {
       if (ignore.includes(label)) return [];
