@@ -1,4 +1,10 @@
-const { message, getRawLogs, validateLists } = require('./shared');
+const {
+  message,
+  getRawLogs,
+  validateLists,
+  bytesToAddress,
+  bytesToSig
+} = require('./shared');
 
 // ------------------------------------------------------------
 
@@ -83,9 +89,9 @@ async function read(contract, eventName) {
       type: eventName,
       blockNumber: log.blockNumber,
       logIndex: log.logIndex,
-      src: log.returnValues.src,
-      dst: log.returnValues.dst,
-      sig: log.returnValues.sig
+      src: bytesToAddress(log.returnValues.src),
+      dst: bytesToAddress(log.returnValues.dst),
+      sig: bytesToSig(log.returnValues.sig)
     };
 
     return out;

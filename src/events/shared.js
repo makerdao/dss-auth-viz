@@ -46,3 +46,13 @@ module.exports.validateLists = async (graph, ignore, include) => {
 };
 
 // ------------------------------------------------------------
+
+module.exports.bytesToAddress = str => {
+  return '0x' + str.substr(str.length - 40);
+};
+
+module.exports.bytesToSig = str => {
+  return '0x' + str.substr(str.length - 8);
+};
+
+// ------------------------------------------------------------

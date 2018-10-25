@@ -30,7 +30,6 @@ module.exports.connections = async (events, graph) => {
       }
 
       case 'LogSetAuthority': {
-        console.log(event.authority);
         const authority = label(event.authority, graph);
         graph.outEdges(src).map(edge => {
           const label = graph.edge(edge);
@@ -44,6 +43,7 @@ module.exports.connections = async (events, graph) => {
 
       case 'LogPermit':
       case 'LogForbid': {
+        console.log(decodeSig(graph, event.sig));
         console.log(event);
       }
     }
@@ -72,6 +72,15 @@ const label = (address, graph) => {
   }
 
   return labels[0];
+};
+
+// ------------------------------------------------------------
+
+const decodeSig = (graph, sig) => {
+  graph.nodes().map(label => {
+    const node = graph.node(label);
+    console.log(node.contract);
+  });
 };
 
 // ------------------------------------------------------------

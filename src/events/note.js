@@ -1,5 +1,10 @@
-const { getRawLogs, validateLists } = require('./shared');
-const { signatures, message } = require('./shared');
+const {
+  signatures,
+  message,
+  getRawLogs,
+  validateLists,
+  bytesToAddress
+} = require('./shared');
 
 // ------------------------------------------------------------
 
@@ -60,6 +65,7 @@ const ignore = [
 
 module.exports = async (graph, sig) => {
   validateLists(graph, ignore, include);
+
   const events = await Promise.all(
     graph.nodes().map(async label => {
       if (ignore.includes(label)) return [];
@@ -88,12 +94,11 @@ async function read(contract, sig, eventName) {
   const raw = await getRawLogs(contract, { sig }, eventName);
 
   return raw.map(log => {
-    const guy = log.returnValues.foo;
     return {
       blockNumber: log.blockNumber,
       logIndex: log.logIndex,
       src: log.address,
-      guy: '0x' + guy.substr(guy.length - 40),
+      guy: bytesToAddress(log.returnValues.foo),
       type: type(sig)
     };
   });
