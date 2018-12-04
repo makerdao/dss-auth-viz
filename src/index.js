@@ -21,7 +21,7 @@ const main = async () => {
 
   console.log(dot.write(graph));
 
-  if (process.env.PAINT) paint(graph);
+  if (process.env.PAINT) await paint(graph);
 };
 
 // ------------------------------------------------------------
