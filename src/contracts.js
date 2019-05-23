@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('mz/fs');
-const { web3 } = require('./helper');
+const { web3, capsFLetter } = require('./helper');
 
 // -----------------------------------------------------------------------------
 
@@ -10,7 +10,7 @@ module.exports.contracts = async (graph, testchainOutputDir) => {
   return await setNodes(
     graph,
     await addresses(testchainOutputDir),
-    await abis(testchainOutputDir)
+    await abis(`${testchainOutputDir}/abi`)
   );
 };
 
@@ -37,126 +37,34 @@ const setNodes = async (graph, addresses, abis) => {
     label: 'DssDeploy',
     contract: new web3.eth.Contract(abis.DssDeploy, addresses.MCD_DEPLOY)
   });
-  graph.setNode('vatFab', {
-    label: 'VatFab',
-    contract: new web3.eth.Contract(
-      abis.VatFab,
-      await graph
-        .node('deploy')
-        .contract.methods.vatFab()
-        .call()
-    )
-  });
-  graph.setNode('jugFab', {
-    label: 'JugFab',
-    contract: new web3.eth.Contract(
-      abis.JugFab,
-      await graph
-        .node('deploy')
-        .contract.methods.jugFab()
-        .call()
-    )
-  });
-  graph.setNode('vowFab', {
-    label: 'VowFab',
-    contract: new web3.eth.Contract(
-      abis.VowFab,
-      await graph
-        .node('deploy')
-        .contract.methods.vowFab()
-        .call()
-    )
-  });
-  graph.setNode('catFab', {
-    label: 'CatFab',
-    contract: new web3.eth.Contract(
-      abis.CatFab,
-      await graph
-        .node('deploy')
-        .contract.methods.catFab()
-        .call()
-    )
-  });
-  graph.setNode('daiFab', {
-    label: 'DaiFab',
-    contract: new web3.eth.Contract(
-      abis.DaiFab,
-      await graph
-        .node('deploy')
-        .contract.methods.daiFab()
-        .call()
-    )
-  });
-  graph.setNode('daiJoinFab', {
-    label: 'DaiJoinFab',
-    contract: new web3.eth.Contract(
-      abis.DaiJoinFab,
-      await graph
-        .node('deploy')
-        .contract.methods.daiJoinFab()
-        .call()
-    )
-  });
-  graph.setNode('flapFab', {
-    label: 'FlapFab',
-    contract: new web3.eth.Contract(
-      abis.FlapFab,
-      await graph
-        .node('deploy')
-        .contract.methods.flapFab()
-        .call()
-    )
-  });
-  graph.setNode('flopFab', {
-    label: 'FlopFab',
-    contract: new web3.eth.Contract(
-      abis.FlopFab,
-      await graph
-        .node('deploy')
-        .contract.methods.flopFab()
-        .call()
-    )
-  });
-  graph.setNode('flipFab', {
-    label: 'FlipFab',
-    contract: new web3.eth.Contract(
-      abis.FlipFab,
-      await graph
-        .node('deploy')
-        .contract.methods.flipFab()
-        .call()
-    )
-  });
-  graph.setNode('spotFab', {
-    label: 'SpotFab',
-    contract: new web3.eth.Contract(
-      abis.SpotFab,
-      await graph
-        .node('deploy')
-        .contract.methods.spotFab()
-        .call()
-    )
-  });
-  graph.setNode('potFab', {
-    label: 'potFab',
-    contract: new web3.eth.Contract(
-      abis.PotFab,
-      await graph
-        .node('deploy')
-        .contract.methods.potFab()
-        .call()
-    )
-  });
-  graph.setNode('pauseFab', {
-    label: 'pauseFab',
-    contract: new web3.eth.Contract(
-      abis.PauseFab,
-      await graph
-        .node('deploy')
-        .contract.methods.pauseFab()
-        .call()
-    )
-  });
+  // Dss-Deploy Fabs
+  const fabs = [
+    'vatFab',
+    'jugFab',
+    'vowFab',
+    'catFab',
+    'daiFab',
+    'daiJoinFab',
+    'flapFab',
+    'flopFab',
+    'flipFab',
+    'spotFab',
+    'potFab',
+    'pauseFab',
+  ]
+  for(const fab of fabs) {
+    console.log('name', fab);
+    graph.setNode(fab, {
+      label: capsFLetter(fab),
+      contract: new web3.eth.Contract(
+        abis[fab],
+        await graph
+          .node('deploy')
+          .contract.methods[`${fab}`]()
+          .call()
+      )
+    });
+  }
 
   // Core
   graph.setNode('vat', {
@@ -166,6 +74,11 @@ const setNodes = async (graph, addresses, abis) => {
   graph.setNode('jug', {
     label: 'Jug',
     contract: new web3.eth.Contract(abis.Jug, addresses.MCD_JUG)
+  });
+  // UI
+  graph.setNode('pit', {
+    label: 'Pit',
+    contract: new web3.eth.Contract(abis.Pit, addresses.MCD_PIT)
   });
   graph.setNode('pot', {
     label: 'Pot',
