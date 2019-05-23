@@ -34,15 +34,15 @@ const rely = async graph => {
 };
 
 const deny = async graph => {
-  return await note.fromGraph(graph, signatures.deny);
+  // return await note.fromGraph(graph, signatures.deny);
 };
 
 const logSetOwner = async graph => {
-  return await dsAuth.fromGraph(graph, 'LogSetOwner');
+  // return await dsAuth.fromGraph(graph, 'LogSetOwner');
 };
 
 const logSetAuthority = async graph => {
-  return await dsAuth.fromGraph(graph, 'LogSetAuthority');
+  // return await dsAuth.fromGraph(graph, 'LogSetAuthority');
 };
 
 // ------------------------------------------------------------
