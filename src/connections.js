@@ -30,14 +30,14 @@ module.exports.connections = async (events, graph) => {
         break;
       }
 
-      case 'LogSetAuthority': {
-        // console.log('event connex', event);
-        console.log('authority', event);
-        const authority = label(event.authority, graph);
-        graph.setEdge(src, authority, 'authority');
-        console.log(graph.outEdges(src));
-        break;
-      }
+      // case 'LogSetAuthority': {
+      //   // console.log('event connex', event);
+      //   console.log('authority', event);
+      //   const authority = label(event.authority, graph);
+      //   graph.setEdge(src, authority, 'authority');
+      //   console.log(graph.outEdges(src));
+      //   break;
+      // }
     }
   });
 

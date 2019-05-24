@@ -161,6 +161,102 @@ const setNodes = async (graph, addresses, abis) => {
       label: 'Flipper (COL1-A)',
       abi: abis.Flipper,
       address: addresses.MCD_FLIP_COL1_A
+    },
+    {
+      node: 'multicall',
+      label: 'Multicall',
+      abi: abis.Multicall,
+      address: addresses.MULTICALL,
+    },
+    {
+      node: 'faucet',
+      label: 'Faucet',
+      abi: abis.TokenFaucet,
+      address: addresses.FAUCET,
+    },
+    {
+      node: 'gov-guard',
+      label: 'Gov Guard',
+      abi: abis.DSGuard,
+      address: addresses.MCD_GOV_GUARD,
+    },
+    {
+      node: 'iou',
+      label: 'IOU',
+      abi: abis.DSToken,
+      address: addresses.MCD_IOU,
+    },
+    {
+      node: 'dschief',
+      label: 'DSChief',
+      abi: abis.DSChief,
+      address: addresses.MCD_ADM,
+    },
+    {
+      node: 'vote-proxy-factory',
+      label: 'Vote Proxy Factory',
+      abi: abis.VoteProxyFactory,
+      address: addresses.VOTE_PROXY_FACTORY,
+    },
+    {
+      node: 'pause-plan',
+      label: 'Pause Plan',
+      abi: abis.Plan,
+      address: addresses.MCD_PAUSE_PLAN,
+    },
+    {
+      node: 'proxy-actions',
+      label: 'Proxy Actions',
+      abi: abis.DssProxyActions,
+      address: addresses.PROXY_ACTIONS,
+    },
+    {
+      node: 'cdp-manager',
+      label: 'CDP Manager',
+      abi: abis.DssCdpManager,
+      address: addresses.CDP_MANAGER,
+    },
+    {
+      node: 'get-cdps',
+      label: 'Get CDPs',
+      abi: abis.GetCdps,
+      address: addresses.GET_CDPS,
+    },
+    {
+      node: 'proxy-factory',
+      label: 'Proxy Factory',
+      abi: abis.DSProxyFactory,
+      address: addresses.PROXY_FACTORY,
+    },
+    {
+      node: 'proxy-registry',
+      label: 'Proxy Registry',
+      abi: abis.ProxyRegistry,
+      address: addresses.PROXY_REGISTRY,
+    },
+    {
+      node: 'eth',
+      label: 'ETH',
+      abi: abis.DSToken,
+      address: addresses.ETH,
+    },
+    {
+      node: 'col1',
+      label: 'COL1',
+      abi: abis.DSToken,
+      address: addresses.COL1,
+    },
+    {
+      node: 'proxy-pause-actions',
+      label: 'Proxy Pause Actions',
+      abi: abis.TestchainPauseProxyActions,
+      address: addresses.PROXY_PAUSE_ACTIONS,
+    },
+    {
+      node: 'proxy-deployer',
+      label: 'Proxy Deployer',
+      abi: abis.DSProxy,
+      address: addresses.PROXY_DEPLOYER,
     }
   ];
   // Null
@@ -295,7 +391,7 @@ const setNodes = async (graph, addresses, abis) => {
     addresses = removeAddress(addresses, node.address);
   }
 
-  if (addresses != {}) {
+  if (Object.keys(addresses).length != 0) {
     console.log('==== WARNING ====')
     console.log('The following addresses exist in dss-deploy\'s');
     console.log('addresses.json, but are not added to the nodes here.');
@@ -505,8 +601,11 @@ const setNodes = async (graph, addresses, abis) => {
 // -----------------------------------------------------------------------------
 
 const addresses = async dir => {
-  const json = await fs.readFile(path.join(dir, 'out', 'addresses.json'));
-  return JSON.parse(json);
+  const unusedAddresses = [
+  ];
+  const json = await fs.readFile(path.join(dir, 'addresses.json'));
+  const addresses = JSON.parse(json);
+  return addresses;
 };
 
 // -----------------------------------------------------------------------------
