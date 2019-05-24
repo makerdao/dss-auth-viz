@@ -29,7 +29,7 @@ const setNodes = async (graph, addresses, abis) => {
   // Root
   graph.setNode('root', {
     label: 'root',
-    contract: new web3.eth.Contract([], addresses.ETH_FROM)
+    contract: new web3.eth.Contract([], process.env.DEPLOYER)
   });
 
   // Deployer
@@ -47,23 +47,13 @@ const setNodes = async (graph, addresses, abis) => {
         .call()
     )
   });
-  graph.setNode('pitFab', {
-    label: 'PitFab',
+  graph.setNode('jugFab', {
+    label: 'JugFab',
     contract: new web3.eth.Contract(
-      abis.PitFab,
+      abis.JugFab,
       await graph
         .node('deploy')
-        .contract.methods.pitFab()
-        .call()
-    )
-  });
-  graph.setNode('dripFab', {
-    label: 'DripFab',
-    contract: new web3.eth.Contract(
-      abis.DripFab,
-      await graph
-        .node('deploy')
-        .contract.methods.dripFab()
+        .contract.methods.jugFab()
         .call()
     )
   });
@@ -87,23 +77,13 @@ const setNodes = async (graph, addresses, abis) => {
         .call()
     )
   });
-  graph.setNode('tokenFab', {
-    label: 'TokenFab',
+  graph.setNode('daiFab', {
+    label: 'DaiFab',
     contract: new web3.eth.Contract(
-      abis.TokenFab,
+      abis.DaiFab,
       await graph
         .node('deploy')
-        .contract.methods.tokenFab()
-        .call()
-    )
-  });
-  graph.setNode('guardFab', {
-    label: 'GuardFab',
-    contract: new web3.eth.Contract(
-      abis.GuardFab,
-      await graph
-        .node('deploy')
-        .contract.methods.guardFab()
+        .contract.methods.daiFab()
         .call()
     )
   });
@@ -114,16 +94,6 @@ const setNodes = async (graph, addresses, abis) => {
       await graph
         .node('deploy')
         .contract.methods.daiJoinFab()
-        .call()
-    )
-  });
-  graph.setNode('daiMoveFab', {
-    label: 'DaiMoveFab',
-    contract: new web3.eth.Contract(
-      abis.DaiMoveFab,
-      await graph
-        .node('deploy')
-        .contract.methods.daiMoveFab()
         .call()
     )
   });
@@ -167,13 +137,23 @@ const setNodes = async (graph, addresses, abis) => {
         .call()
     )
   });
-  graph.setNode('proxyFab', {
-    label: 'ProxyFab',
+  graph.setNode('potFab', {
+    label: 'potFab',
     contract: new web3.eth.Contract(
-      abis.ProxyFab,
+      abis.PotFab,
       await graph
         .node('deploy')
-        .contract.methods.proxyFab()
+        .contract.methods.potFab()
+        .call()
+    )
+  });
+  graph.setNode('pauseFab', {
+    label: 'pauseFab',
+    contract: new web3.eth.Contract(
+      abis.PauseFab,
+      await graph
+        .node('deploy')
+        .contract.methods.pauseFab()
         .call()
     )
   });
@@ -183,20 +163,14 @@ const setNodes = async (graph, addresses, abis) => {
     label: 'Vat',
     contract: new web3.eth.Contract(abis.Vat, addresses.MCD_VAT)
   });
-
-  // UI
-  graph.setNode('pit', {
-    label: 'Pit',
-    contract: new web3.eth.Contract(abis.Pit, addresses.MCD_PIT)
+  graph.setNode('jug', {
+    label: 'Jug',
+    contract: new web3.eth.Contract(abis.Jug, addresses.MCD_JUG)
   });
-
-  // Stability Fee Collection
-  graph.setNode('drip', {
-    label: 'Drip',
-    contract: new web3.eth.Contract(abis.Drip, addresses.MCD_DRIP)
+  graph.setNode('pot', {
+    label: 'Pot',
+    contract: new web3.eth.Contract(abis.Pot, addresses.MCD_POT)
   });
-
-  // auctions
   graph.setNode('cat', {
     label: 'Cat',
     contract: new web3.eth.Contract(abis.Cat, addresses.MCD_CAT)
@@ -213,15 +187,31 @@ const setNodes = async (graph, addresses, abis) => {
     label: 'Flopper',
     contract: new web3.eth.Contract(abis.Flopper, addresses.MCD_FLOP)
   });
+  graph.setNode('spot', {
+    label: 'Spotter',
+    contract: new web3.eth.Contract(abis.Spotter, addresses.MCD_SPOT)
+  });
 
   // governance
   graph.setNode('gov', {
     label: 'MKR',
     contract: new web3.eth.Contract(abis.DSToken, addresses.MCD_GOV)
   });
-  graph.setNode('mom', {
-    label: 'Mom',
-    contract: new web3.eth.Contract(abis.DSProxy, addresses.MCD_MOM)
+  graph.setNode('govGuard', {
+    label: 'GovGuard',
+    contract: new web3.eth.Contract(abis.DSGuard, addresses.MCD_GOV_GUARD)
+  });
+  graph.setNode('govIou', {
+    label: 'IOU',
+    contract: new web3.eth.Contract(abis.DSToken, addresses.MCD_IOU)
+  });
+  graph.setNode('chief', {
+    label: 'DSChief',
+    contract: new web3.eth.Contract(abis.DSChief, addresses.MCD_ADM)
+  });
+  graph.setNode('pause', {
+    label: 'DSPause',
+    contract: new web3.eth.Contract(abis.DSPause, addresses.MCD_PAUSE)
   });
 
   // DAI
@@ -229,87 +219,53 @@ const setNodes = async (graph, addresses, abis) => {
     label: 'DAI',
     contract: new web3.eth.Contract(abis.DSToken, addresses.MCD_DAI)
   });
-  graph.setNode('daiGuard', {
-    label: 'DSGuard',
-    contract: new web3.eth.Contract(abis.DSGuard, addresses.MCD_DAI_GUARD)
-  });
   graph.setNode('daiJoin', {
     label: 'DaiJoin',
     contract: new web3.eth.Contract(abis.DaiJoin, addresses.MCD_JOIN_DAI)
   });
-  graph.setNode('daiMove', {
-    label: 'DaiMove',
-    contract: new web3.eth.Contract(abis.DaiMove, addresses.MCD_MOVE_DAI)
-  });
-
-  // DGX
-  graph.setNode('pipDgx', {
-    label: 'Pip (DGX)',
-    contract: new web3.eth.Contract(abis.DSValue, addresses.PIP_DGX)
-  });
-  graph.setNode('joinDgx', {
-    label: 'GemJoin (DGX)',
-    contract: new web3.eth.Contract(abis.GemJoin, addresses.MCD_JOIN_DGX)
-  });
-  graph.setNode('moveDgx', {
-    label: 'GemMove (DGX)',
-    contract: new web3.eth.Contract(abis.GemMove, addresses.MCD_MOVE_DGX)
-  });
-  graph.setNode('flipDgx', {
-    label: 'Flipper (DGX)',
-    contract: new web3.eth.Contract(abis.Flipper, addresses.MCD_FLIP_DGX)
-  });
-  graph.setNode('spotDgx', {
-    label: 'Spotter (DGX)',
-    contract: new web3.eth.Contract(abis.Spotter, addresses.MCD_SPOT_DGX)
-  });
 
   // ETH
-  graph.setNode('pipEth', {
+  graph.setNode('ETH', {
+    label: 'ETH',
+    contract: new web3.eth.Contract(abis.WETH9_, addresses.ETH)
+  });
+  graph.setNode('pipETH', {
     label: 'Pip (ETH)',
     contract: new web3.eth.Contract(abis.DSValue, addresses.PIP_ETH)
   });
-  graph.setNode('joinEth', {
-    label: 'ETHJoin',
-    contract: new web3.eth.Contract(abis.ETHJoin, addresses.MCD_JOIN_ETH)
+  graph.setNode('joinETH-A', {
+    label: 'JoinETH-A',
+    contract: new web3.eth.Contract(abis.GemJoin, addresses.MCD_JOIN_ETH_A)
   });
-  graph.setNode('moveEth', {
-    label: 'GemMove (ETH)',
-    contract: new web3.eth.Contract(abis.GemMove, addresses.MCD_MOVE_ETH)
+  graph.setNode('flipETH-A', {
+    label: 'Flipper (ETH-A)',
+    contract: new web3.eth.Contract(abis.Flipper, addresses.MCD_FLIP_ETH_A)
   });
-  graph.setNode('flipEth', {
-    label: 'Flipper (ETH)',
-    contract: new web3.eth.Contract(abis.Flipper, addresses.MCD_FLIP_ETH)
+  graph.setNode('joinETH-B', {
+    label: 'JoinETH-B',
+    contract: new web3.eth.Contract(abis.GemJoin, addresses.MCD_JOIN_ETH_B)
   });
-  graph.setNode('spotEth', {
-    label: 'Spotter (ETH)',
-    contract: new web3.eth.Contract(abis.Spotter, addresses.MCD_SPOT_ETH)
+  graph.setNode('flipETH-B', {
+    label: 'Flipper (ETH-B)',
+    contract: new web3.eth.Contract(abis.Flipper, addresses.MCD_FLIP_ETH_B)
   });
 
-  // REP
-  graph.setNode('Rep', {
-    label: 'REP',
-    contract: new web3.eth.Contract(abis.DSToken, addresses.REP)
+  // COL1
+  graph.setNode('COL1', {
+    label: 'COL1',
+    contract: new web3.eth.Contract(abis.Token1, addresses.COL1)
   });
-  graph.setNode('pipRep', {
-    label: 'Pip (REP)',
-    contract: new web3.eth.Contract(abis.DSValue, addresses.PIP_REP)
+  graph.setNode('pipCOL1', {
+    label: 'Pip (COL1)',
+    contract: new web3.eth.Contract(abis.DSValue, addresses.PIP_COL1)
   });
-  graph.setNode('joinRep', {
-    label: 'GemJoin (REP)',
-    contract: new web3.eth.Contract(abis.GemJoin, addresses.MCD_JOIN_REP)
+  graph.setNode('joinCOL1-A', {
+    label: 'JoinCOL1-A',
+    contract: new web3.eth.Contract(abis.GemJoin, addresses.MCD_JOIN_COL1_A)
   });
-  graph.setNode('moveRep', {
-    label: 'GemMove (REP)',
-    contract: new web3.eth.Contract(abis.GemMove, addresses.MCD_MOVE_REP)
-  });
-  graph.setNode('flipRep', {
-    label: 'Flipper (REP)',
-    contract: new web3.eth.Contract(abis.Flipper, addresses.MCD_FLIP_REP)
-  });
-  graph.setNode('spotRep', {
-    label: 'Spotter (REP)',
-    contract: new web3.eth.Contract(abis.Spotter, addresses.MCD_SPOT_REP)
+  graph.setNode('flipCOL1-A', {
+    label: 'Flipper (COL1-A)',
+    contract: new web3.eth.Contract(abis.Flipper, addresses.MCD_FLIP_COL1_A)
   });
 
   return graph;
@@ -318,13 +274,19 @@ const setNodes = async (graph, addresses, abis) => {
 // -----------------------------------------------------------------------------
 
 const addresses = async dir => {
-  const json = await fs.readFile(path.join(dir, 'addresses.json'));
+  const json = await fs.readFile(path.join(dir, 'out', 'addresses.json'));
   return JSON.parse(json);
 };
 
 // -----------------------------------------------------------------------------
 
 const abis = async dir => {
+  const out = path.join(dir, 'out', 'abi');
+  const deployOut = path.join(dir, 'contracts', 'dss-deploy', 'out');
+  return Object.assign(getAbis(out), getAbis(deployOut));
+}
+
+const getAbis = async dir => {
   const files = (await fs.readdir(dir)).filter(path => path.endsWith('.abi'));
 
   const contracts = await Promise.all(
