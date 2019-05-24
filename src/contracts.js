@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('mz/fs');
-const { web3, capsFLetter } = require('./helper');
+const { web3, capsFLetter, removeAddress } = require('./helper');
 
 // -----------------------------------------------------------------------------
 
@@ -16,45 +16,153 @@ module.exports.contracts = async (graph, testchainOutputDir) => {
 
 // -----------------------------------------------------------------------------
 
-const allNodes = [
-  'null',
-  'root',
-  'vatFab',
-  'jugFab',
-  'vowFab',
-  'catFab',
-  'daiFab',
-  'daiJoinFab',
-  'flapFab',
-  'flopFab',
-  'flipFab',
-  'spotFab',
-  'potFab',
-  'pauseFab',
-  'vat',
-  'jug',
-  'daiJoin',
-  'pot',
-  'flap',
-  'flop',
-  'vow',
-  'cat',
-  'spotEth',
-  'joinEth_A',
-  'joinEth_B',
-  'flipEth_A',
-  'flipEth_B',
-  'joinCol1_A',
-  'flipCol1_A',
-  'deploy',
-  'dai',
-  'gov',
-  'dspause',
-  'pipEth',
-  'pipCol1'
-];
-
 const setNodes = async (graph, addresses, abis) => {
+  const allNodes = [
+    {
+      node: 'null',
+      label: 'NULL',
+      abi: [],
+      address: '0x0000000000000000000000000000000000000000'
+    },
+    {
+      node: 'root',
+      label: 'root',
+      abi: [],
+      address: addresses.ETH_FROM
+    },
+    {
+      node: 'deploy',
+      label: 'DssDeploy',
+      abi: abis.DssDeploy,
+      address: addresses.MCD_DEPLOY
+    },
+    {
+      node: 'vat',
+      label: 'Vat',
+      abi: abis.Vat,
+      address: addresses.MCD_VAT
+    },
+    {
+      node: 'dai',
+      label: 'DAI',
+      abi: abis.DSToken,
+      address: addresses.MCD_DAI
+    },
+    {
+      node: 'daiJoin',
+      label: 'daiJoin',
+      abi: abis.DaiJoin,
+      address: addresses.MCD_JOIN_DAI
+    },
+    {
+      node: 'jug',
+      label: 'Jug',
+      abi: abis.Jug,
+      address: addresses.MCD_JUG
+    },
+    {
+      node: 'pot',
+      label: 'Pot',
+      abi: abis.Pot,
+      address: addresses.MCD_POT
+    },
+    {
+      node: 'flap',
+      label: 'Flapper',
+      abi: abis.Flapper,
+      address: addresses.MCD_FLAP
+    },
+    {
+      node: 'flop',
+      label: 'flop',
+      abi: abis.Flopper,
+      address: addresses.MCD_FLOP
+    },
+    {
+      node: 'vow',
+      label: 'Vow',
+      abi: abis.Vow,
+      address: addresses.MCD_VOW
+    },
+    {
+      node: 'cat',
+      label: 'Cat',
+      abi: abis.Cat,
+      address: addresses.MCD_CAT
+    },
+    {
+      node: 'spotEth',
+      label: 'Spotter',
+      abi: abis.Spotter,
+      address: addresses.MCD_SPOT
+    },
+    {
+      node: 'gov',
+      label: 'MKR',
+      abi: abis.DSToken,
+      address: addresses.MCD_GOV
+    },
+    {
+      node: 'dspause',
+      label: 'DSPause',
+      abi: abis.DSPause,
+      address: addresses.MCD_PAUSE
+    },
+    {
+      node: 'pipEth',
+      label: 'Pip (ETH)',
+      abi: abis.DSValue,
+      address: addresses.PIP_ETH
+    },
+    {
+      node: 'joinEth_A',
+      label: 'ETHJoin_A',
+      abi: abis.ETHJoin,
+      address: addresses.MCD_JOIN_ETH_A
+    },
+    {
+      node: 'joinEth_B',
+      label: 'ETHJoin_B',
+      abi: abis.ETHJoin,
+      address: addresses.MCD_JOIN_ETH_B
+    },
+    {
+      node: 'flipEth_A',
+      label: 'Flipper (ETH-A)',
+      abi: abis.Flipper,
+      address: addresses.MCD_FLIP_ETH_A
+    },
+    {
+      node: 'flipEth_B',
+      label: 'Flipper (ETH-B)',
+      abi: abis.Flipper,
+      address: addresses.MCD_FLIP_ETH_B
+    },
+    {
+      node: 'pipCol1',
+      label: 'Pip (Col1)',
+      abi: abis.DSValue,
+      address: addresses.PIP_COL1
+    },
+    {
+      node: 'joinCol1_A',
+      label: 'JoinCol1_A',
+      abi: abis.GemJoin,
+      address: addresses.MCD_JOIN_COL1_A
+    },
+    {
+      node: 'flipCol1_A',
+      label: 'Flipper (COL1-A)',
+      abi: abis.Flipper,
+      address: addresses.MCD_FLIP_COL1_A
+    },
+    {
+      node: 'flipCol1_A',
+      label: 'Flipper (COL1-A)',
+      abi: abis.Flipper,
+      address: addresses.MCD_FLIP_COL1_A
+    }
+  ];
   // Null
   graph.setNode('null', {
     label: 'NULL',
@@ -90,184 +198,235 @@ const setNodes = async (graph, addresses, abis) => {
     'potFab',
     'pauseFab',
   ]
+  // {
+  //   node: 'vatFab',
+  //   label: 'NULL',
+  //   abi: [],
+  //   address: '0x0000000000000000000000000000000000000000'
+  // },
+  // {
+  //   node: 'jugFab',
+  //   label: 'NULL',
+  //   abi: [],
+  //   address: '0x0000000000000000000000000000000000000000'
+  // },
+  // {
+  //   node: 'vowFab',
+  //   label: 'NULL',
+  //   abi: [],
+  //   address: '0x0000000000000000000000000000000000000000'
+  // },
+  // {
+  //   node: 'catFab',
+  //   label: 'NULL',
+  //   abi: [],
+  //   address: '0x0000000000000000000000000000000000000000'
+  // },
+  // {
+  //   node: 'daiFab',
+  //   label: 'NULL',
+  //   abi: [],
+  //   address: '0x0000000000000000000000000000000000000000'
+  // },
+  // {
+  //   node: 'daiJoinFab',
+  //   label: 'NULL',
+  //   abi: [],
+  //   address: '0x0000000000000000000000000000000000000000'
+  // },
+  // {
+  //   node: 'flapFab',
+  //   label: 'NULL',
+  //   abi: [],
+  //   address: '0x0000000000000000000000000000000000000000'
+  // },
+  // {
+  //   node: 'flopFab',
+  //   label: 'NULL',
+  //   abi: [],
+  //   address: '0x0000000000000000000000000000000000000000'
+  // },
+  // {
+  //   node: 'flipFab',
+  //   label: 'NULL',
+  //   abi: [],
+  //   address: '0x0000000000000000000000000000000000000000'
+  // },
+  // {
+  //   node: 'spotFab',
+  //   label: 'NULL',
+  //   abi: [],
+  //   address: '0x0000000000000000000000000000000000000000'
+  // },
+  // {
+  //   node: 'potFab',
+  //   label: 'NULL',
+  //   abi: [],
+  //   address: '0x0000000000000000000000000000000000000000'
+  // },
+  // {
+  //   node: 'pauseFab',
+  //   label: 'NULL',
+  //   abi: [],
+  //   address: '0x0000000000000000000000000000000000000000'
+  // },
   for(const fab of fabs) {
     console.log('adding Node for', fab);
+    const address = await graph
+      .node('deploy')
+      .contract.methods[`${fab}`]()
+      .call();
     graph.setNode(fab, {
       label: capsFLetter(fab),
       contract: new web3.eth.Contract(
         abis[fab],
-        await graph
-          .node('deploy')
-          .contract.methods[`${fab}`]()
-          .call()
+        address
       )
     });
+    addresses = removeAddress(addresses, address);
   }
 
-  // deployVat()
-  console.log('adding Node for vat');
-  graph.setNode('vat', {
-    label: 'Vat',
-    contract: new web3.eth.Contract(abis.Vat, addresses.MCD_VAT)
-  });
-  // UI
-  graph.setNode('pit', {
-    label: 'Pit',
-    contract: new web3.eth.Contract(abis.Pit, addresses.MCD_PIT)
-  });
-  // console.log(graph);
+  for(const node of allNodes) {
+    console.log(`adding Node for ${node.node}`);
+    graph.setNode(node.node, {
+      label: node.label,
+      contract: new web3.eth.Contract(node.abi, node.address)
+    });
+    addresses = removeAddress(addresses, node.address);
+  }
 
-  // deployDai
-  console.log('adding Node for dai');
-  graph.setNode('dai', {
-    label: 'DAI',
-    contract: new web3.eth.Contract(abis.DSToken, addresses.MCD_DAI)
-  });
-  console.log('adding Node for daiJoin');
-  graph.setNode('daiJoin', {
-    label: 'DaiJoin',
-    contract: new web3.eth.Contract(abis.DaiJoin, addresses.MCD_JOIN_DAI)
-  });
+  if (addresses != {}) {
+    console.log('==== WARNING ====')
+    console.log('The following addresses exist in dss-deploy\'s');
+    console.log('addresses.json, but are not added to the nodes here.');
+    console.log(addresses);
+  }
 
-  // deployTaxationAndAuctions
-  console.log('adding Node for jug');
-  graph.setNode('jug', {
-    label: 'Jug',
-    contract: new web3.eth.Contract(abis.Jug, addresses.MCD_JUG)
-  });
-  console.log('adding Node for pot');
-  graph.setNode('pot', {
-    label: 'Pot',
-    contract: new web3.eth.Contract(abis.Pot, addresses.MCD_POT)
-  });
-  console.log('adding Node for flap');
-  graph.setNode('flap', {
-    label: 'Flapper',
-    contract: new web3.eth.Contract(abis.Flapper, addresses.MCD_FLAP)
-  });
+  // // deployVat()
+  // console.log('adding Node for vat');
+  // graph.setNode('vat', {
+  //   label: 'Vat',
+  //   contract: new web3.eth.Contract(abis.Vat, addresses.MCD_VAT)
+  // });
+  // // console.log(graph);
 
-  console.log('adding Node for flop');
-  graph.setNode('flop', {
-    label: 'Flopper',
-    contract: new web3.eth.Contract(abis.Flopper, addresses.MCD_FLOP)
-  });
-  graph.setNode('spot', {
-    label: 'Spotter',
-    contract: new web3.eth.Contract(abis.Spotter, addresses.MCD_SPOT)
-  });
+  // // deployDai
+  // console.log('adding Node for dai');
+  // graph.setNode('dai', {
+  //   label: 'DAI',
+  //   contract: new web3.eth.Contract(abis.DSToken, addresses.MCD_DAI)
+  // });
+  // console.log('adding Node for daiJoin');
+  // graph.setNode('daiJoin', {
+  //   label: 'DaiJoin',
+  //   contract: new web3.eth.Contract(abis.DaiJoin, addresses.MCD_JOIN_DAI)
+  // });
 
-  // governance
-  graph.setNode('gov', {
-    label: 'MKR',
-    contract: new web3.eth.Contract(abis.DSToken, addresses.MCD_GOV)
-  });
-  graph.setNode('govGuard', {
-    label: 'GovGuard',
-    contract: new web3.eth.Contract(abis.DSGuard, addresses.MCD_GOV_GUARD)
-  });
-  graph.setNode('govIou', {
-    label: 'IOU',
-    contract: new web3.eth.Contract(abis.DSToken, addresses.MCD_IOU)
-  });
-  graph.setNode('chief', {
-    label: 'DSChief',
-    contract: new web3.eth.Contract(abis.DSChief, addresses.MCD_ADM)
-  });
-  graph.setNode('pause', {
-    label: 'DSPause',
-    contract: new web3.eth.Contract(abis.DSPause, addresses.MCD_PAUSE)
-  });
+  // // deployTaxationAndAuctions
+  // console.log('adding Node for jug');
+  // graph.setNode('jug', {
+  //   label: 'Jug',
+  //   contract: new web3.eth.Contract(abis.Jug, addresses.MCD_JUG)
+  // });
+  // console.log('adding Node for pot');
+  // graph.setNode('pot', {
+  //   label: 'Pot',
+  //   contract: new web3.eth.Contract(abis.Pot, addresses.MCD_POT)
+  // });
+  // console.log('adding Node for flap');
+  // graph.setNode('flap', {
+  //   label: 'Flapper',
+  //   contract: new web3.eth.Contract(abis.Flapper, addresses.MCD_FLAP)
+  // });
 
-  // DAI
-  graph.setNode('dai', {
-    label: 'DAI',
-    contract: new web3.eth.Contract(abis.DSToken, addresses.MCD_DAI)
-  });
-  graph.setNode('daiJoin', {
-    label: 'DaiJoin',
-    contract: new web3.eth.Contract(abis.DaiJoin, addresses.MCD_JOIN_DAI)
-  });
+  // console.log('adding Node for flop');
+  // graph.setNode('flop', {
+  //   label: 'Flopper',
+  //   contract: new web3.eth.Contract(abis.Flopper, addresses.MCD_FLOP)
+  // });
 
-  // ETH
-  graph.setNode('ETH', {
-    label: 'ETH',
-    contract: new web3.eth.Contract(abis.WETH9_, addresses.ETH)
-  });
-  graph.setNode('pipETH', {
-    label: 'Pip (ETH)',
-    contract: new web3.eth.Contract(abis.DSValue, addresses.PIP_ETH)
-  });
-  graph.setNode('joinETH-A', {
-    label: 'JoinETH-A',
-    contract: new web3.eth.Contract(abis.GemJoin, addresses.MCD_JOIN_ETH_A)
-  });
-  graph.setNode('flipETH-A', {
-    label: 'Flipper (ETH-A)',
-    contract: new web3.eth.Contract(abis.Flipper, addresses.MCD_FLIP_ETH_A)
-  });
-  graph.setNode('joinETH-B', {
-    label: 'JoinETH-B',
-    contract: new web3.eth.Contract(abis.GemJoin, addresses.MCD_JOIN_ETH_B)
-  });
-  graph.setNode('flipETH-B', {
-    label: 'Flipper (ETH-B)',
-    contract: new web3.eth.Contract(abis.Flipper, addresses.MCD_FLIP_ETH_B)
-  });
-  console.log('adding Node for vow');
-  graph.setNode('vow', {
-    label: 'Vow',
-    contract: new web3.eth.Contract(abis.Vow, addresses.MCD_VOW)
-  });
+  // console.log('adding Node for vow');
+  // graph.setNode('vow', {
+  //   label: 'Vow',
+  //   contract: new web3.eth.Contract(abis.Vow, addresses.MCD_VOW)
+  // });
 
-  // deployLiquidator
-  console.log('adding Node for cat');
-  graph.setNode('cat', {
-    label: 'Cat',
-    contract: new web3.eth.Contract(abis.Cat, addresses.MCD_CAT)
-  });
+  // // deployLiquidator
+  // console.log('adding Node for cat');
+  // graph.setNode('cat', {
+  //   label: 'Cat',
+  //   contract: new web3.eth.Contract(abis.Cat, addresses.MCD_CAT)
+  // });
 
-  // [TODO] Confirm that this should not be per collateral type
-  console.log('adding Node for spot');
-  graph.setNode('spotEth', {
-    label: 'Spotter',
-    contract: new web3.eth.Contract(abis.Spotter, addresses.MCD_SPOT)
-  });
+  // // [TODO] Confirm that this should not be per collateral type
+  // console.log('adding Node for spot');
+  // graph.setNode('spotEth', {
+  //   label: 'Spotter',
+  //   contract: new web3.eth.Contract(abis.Spotter, addresses.MCD_SPOT)
+  // });
 
-  // deployCollateral
-  // ETH-A and ETH-B
-  console.log('adding Node for pipEth');
-  graph.setNode('pipEth', {
-    label: 'Pip (ETH)',
-    contract: new web3.eth.Contract(abis.DSValue, addresses.PIP_ETH)
-  });
+  // // governance
+  // console.log('adding Node for gov');
+  // graph.setNode('gov', {
+  //   label: 'MKR',
+  //   contract: new web3.eth.Contract(abis.DSToken, addresses.MCD_GOV)
+  // });
 
-  // COL1
-  graph.setNode('COL1', {
-    label: 'COL1',
-    contract: new web3.eth.Contract(abis.Token1, addresses.COL1)
-  });
-  graph.setNode('pipCOL1', {
-    label: 'Pip (COL1)',
-    contract: new web3.eth.Contract(abis.DSValue, addresses.PIP_COL1)
-  });
-  console.log('adding Node for joinCol1_A');
-  graph.setNode('joinCOL1-A', {
-    label: 'JoinCOL1-A',
-    contract: new web3.eth.Contract(abis.GemJoin, addresses.MCD_JOIN_COL1_A)
-  });
-  // COL1-A
-  console.log('adding Node for pipCol1');
-  graph.setNode('pipCol1', {
-    label: 'Pip (Col1)',
-    contract: new web3.eth.Contract(abis.DSValue, addresses.PIP_COL1)
-  });
-  console.log('adding Node for flipCol1_A');
-  graph.setNode('flipCOL1-A', {
-    label: 'Flipper (COL1-A)',
-    contract: new web3.eth.Contract(abis.Flipper, addresses.MCD_FLIP_COL1_A)
-  });
+  // console.log('adding Node for dspause');
+  // graph.setNode('dspause', {
+  //   label: 'DSPause',
+  //   contract: new web3.eth.Contract(abis.DSPause, addresses.MCD_PAUSE)
+  // });
+  // // console.log('adding Node for mom');
+  // // graph.setNode('mom', {
+  // //   label: 'Mom',
+  // //   contract: new web3.eth.Contract(abis.DSProxy, addresses.MCD_MOM)
+  // // });
 
+  // // deployCollateral
+  // // ETH-A and ETH-B
+  // console.log('adding Node for pipEth');
+  // graph.setNode('pipEth', {
+  //   label: 'Pip (ETH)',
+  //   contract: new web3.eth.Contract(abis.DSValue, addresses.PIP_ETH)
+  // });
+  // console.log('adding Node for joinEth_A');
+  // graph.setNode('joinEth_A', {
+  //   label: 'ETHJoin_A',
+  //   contract: new web3.eth.Contract(abis.ETHJoin, addresses.MCD_JOIN_ETH_A)
+  // });
+  // console.log('adding Node for joinEth_B');
+  // graph.setNode('joinEth_B', {
+  //   label: 'ETHJoin_B',
+  //   contract: new web3.eth.Contract(abis.ETHJoin, addresses.MCD_JOIN_ETH_B)
+  // });
+  // console.log('adding Node for flipEth_A');
+  // graph.setNode('flipEth_A', {
+  //   label: 'Flipper (ETH-A)',
+  //   contract: new web3.eth.Contract(abis.Flipper, addresses.MCD_FLIP_ETH_A)
+  // });
+  // console.log('adding Node for flipEth_B');
+  // graph.setNode('flipEth_B', {
+  //   label: 'Flipper (ETH-B)',
+  //   contract: new web3.eth.Contract(abis.Flipper, addresses.MCD_FLIP_ETH_B)
+  // });
 
+  // // COL1-A
+  // console.log('adding Node for pipCol1');
+  // graph.setNode('pipCol1', {
+  //   label: 'Pip (Col1)',
+  //   contract: new web3.eth.Contract(abis.DSValue, addresses.PIP_COL1)
+  // });
+  // console.log('adding Node for joinCol1_A');
+  // graph.setNode('joinCol1_A', {
+  //   label: 'JoinCOL1-A',
+  //   contract: new web3.eth.Contract(abis.GemJoin, addresses.MCD_JOIN_COL1_A)
+  // });
+  // console.log('adding Node for flipCol1_A');
+  // graph.setNode('flipCol1_A', {
+  //   label: 'Flipper (COL1-A)',
+  //   contract: new web3.eth.Contract(abis.Flipper, addresses.MCD_FLIP_COL1_A)
+  // });
 
   /** Unused Nodes
     // [TODO] confirm that this is no longer used

@@ -8,5 +8,15 @@ const capsFLetter = string => {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+const removeAddress = (addresses, address) => {
+  for( const addr in addresses) {
+    if (addresses.hasOwnProperty(addr) && addresses[addr] == address) {
+      delete addresses[addr];
+    }
+  }
+  return addresses;
+}
+
 module.exports.web3 = new Web3(new Web3.providers.HttpProvider(url));
 module.exports.capsFLetter = capsFLetter;
+module.exports.removeAddress = removeAddress;
