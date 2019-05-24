@@ -32,7 +32,6 @@ module.exports.fromGraph = async (graph, sig) => {
   const events = await Promise.all(
     graph.nodes().map(async label => {
       if (ignore.includes(label)) return [];
-      console.log('checking events for', label);
       const contract = graph.node(label).contract;
       const dsNotes = await fromContract(contract, sig, 'LogNote');
       message(dsNotes.length, type(sig), label);

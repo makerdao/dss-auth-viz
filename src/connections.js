@@ -4,7 +4,6 @@
 module.exports.connections = async (events, graph) => {
   events.map(event => {
     if (!event) { return graph; }
-    console.log('event connex', event);
     const src = label(event.src, graph);
     const dst = label(event.dst, graph);
 
@@ -40,9 +39,9 @@ module.exports.connections = async (events, graph) => {
 
 // reverse lookup a label from an address
 const label = (address, graph) => {
-  console.log('address', address);
+  // console.log('address', address);
   const labels = graph.nodes().filter(label => {
-    console.log('label', label, 'node', graph.node(label).contract.options);
+    // console.log('label', label, 'node', graph.node(label).contract.options);
     return (
       graph.node(label).contract.options.address.toLowerCase() ===
       address.toLowerCase()

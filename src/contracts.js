@@ -16,6 +16,44 @@ module.exports.contracts = async (graph, testchainOutputDir) => {
 
 // -----------------------------------------------------------------------------
 
+const allNodes = [
+  'null',
+  'root',
+  'vatFab',
+  'jugFab',
+  'vowFab',
+  'catFab',
+  'daiFab',
+  'daiJoinFab',
+  'flapFab',
+  'flopFab',
+  'flipFab',
+  'spotFab',
+  'potFab',
+  'pauseFab',
+  'vat',
+  'jug',
+  'daiJoin',
+  'pot',
+  'flap',
+  'flop',
+  'vow',
+  'cat',
+  'spotEth',
+  'joinEth_A',
+  'joinEth_B',
+  'flipEth_A',
+  'flipEth_B',
+  'joinCol1_A',
+  'flipCol1_A',
+  'deploy',
+  'dai',
+  'gov',
+  'dspause',
+  'pipEth',
+  'pipCol1'
+];
+
 const setNodes = async (graph, addresses, abis) => {
   // Null
   graph.setNode('null', {
@@ -53,7 +91,7 @@ const setNodes = async (graph, addresses, abis) => {
     'pauseFab',
   ]
   for(const fab of fabs) {
-    console.log('adding Node for ', fab);
+    console.log('adding Node for', fab);
     graph.setNode(fab, {
       label: capsFLetter(fab),
       contract: new web3.eth.Contract(
@@ -218,7 +256,7 @@ const setNodes = async (graph, addresses, abis) => {
     contract: new web3.eth.Contract(abis.GemJoin, addresses.MCD_JOIN_COL1_A)
   });
   // COL1-A
-  console.log('adding Node for Col1-A');
+  console.log('adding Node for pipCol1');
   graph.setNode('pipCol1', {
     label: 'Pip (Col1)',
     contract: new web3.eth.Contract(abis.DSValue, addresses.PIP_COL1)

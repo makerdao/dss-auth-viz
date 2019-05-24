@@ -37,15 +37,25 @@ const ignore = [
   'flipCOL1-A',
   'daiJoin',
 ];
+
+const dsAuth = [
+  'deploy',
+  'dai',
+  'gov',
+  'dspause',
+  'pipEth',
+  'pipCol1'
+];
+
 // ------------------------------------------------------------
 
 module.exports.fromGraph = async (graph, eventName) => {
   const out = await Promise.all(
     graph.nodes().map(async label => {
-      if (ignore.includes(label)) return [];
+      if (includes.includes(label)) return [];
 
       const contract = graph.node(label).contract;
-      const events = await fromContract(contract, eventName);
+      const events = await fromContract(contract, eventName).catch(console.log);
       message(events.length, eventName, label);
 
       return events;
