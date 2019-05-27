@@ -22,7 +22,8 @@ const ignore = [
   'pause',
   'ETH',
   'COL1',
-  'govGuard'
+  'govGuard',
+  'spot'
 ];
 
 // ------------------------------------------------------------
@@ -44,16 +45,16 @@ module.exports.fromGraph = async (graph, sig) => {
 // ------------------------------------------------------------
 
 const fromContract = async (contract, sig, eventName) => {
-  const raw = await getRawLogs(contract, { sig }, eventName);
+  const raw = await getRawLogs(contract, { sig: sig }, eventName);
 
   return raw.map(log => {
-    const usr = log.returnValues.user || log.raw.topics[1];
+    const usr = log.returnValues.arg1 || log.returnValues.foo
     return {
+      type: type(sig),
       blockNumber: log.blockNumber,
       logIndex: log.logIndex,
       src: log.address,
-      guy: '0x' + usr.substr(usr.length - 40),
-      type: type(sig)
+      dst: '0x' + usr.substr(usr.length - 40),
     };
   })
 };

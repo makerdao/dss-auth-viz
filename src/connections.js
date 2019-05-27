@@ -4,23 +4,28 @@
 module.exports.connections = async (events, graph) => {
   events.map(event => {
     const src = label(event.src, graph);
+    const dst = label(event.dst, graph);
+
+    console.log(event.blockNumber, src, event.src, event.type, dst);
+
     switch (event.type) {
       case 'rely': {
-        const guy = label(event.guy, graph);
-        graph.setEdge(src, guy, 'rely');
+        graph.setEdge(src, dst, {label: 'rely'});
         break;
       }
 
       case 'deny': {
-        const guy = label(event.guy, graph);
-        graph.removeEdge(src, guy, 'deny');
+        graph.removeEdge(src, dst);
         break;
       }
 
       case 'LogSetOwner': {
-        const owner = label(event.owner, graph);
-        graph.setEdge(src, owner, 'rely');
-        console.log(graph.outEdges(src));
+        graph.setEdge(src, dst, {label: 'owner'});
+        break;
+      }
+
+      case 'LogSetAuthority': {
+        graph.setEdge(src, dst, {label: 'authority'});
         break;
       }
     }

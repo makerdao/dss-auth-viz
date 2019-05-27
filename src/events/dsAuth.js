@@ -69,11 +69,11 @@ fromContract = async (contract, eventName) => {
     };
 
     if (eventName === 'LogSetAuthority') {
-      out.authority = log.returnValues.authority;
+      out.dst = log.returnValues.authority;
     }
 
     if (eventName === 'LogSetOwner') {
-      out.owner = log.returnValues.owner;
+      out.dst = log.returnValues.owner;
     }
 
     return out;
