@@ -14,7 +14,7 @@ const removeAddress = (addresses, address) => {
       delete addresses[addr];
     }
   }
-  return addresses;
+  // return addresses;
 }
 
 module.exports.web3 = new Web3(new Web3.providers.HttpProvider(url));

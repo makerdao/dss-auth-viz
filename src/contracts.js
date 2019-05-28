@@ -11,44 +11,46 @@ module.exports.contracts = async (graph, testchainOutputDir) => {
   return await setNodes(
     graph,
     await addresses(testchainOutputDir),
-    await abis(`${testchainOutputDir}/abi`)
+    await abis(`${testchainOutputDir}`)
   );
 };
 
 // -----------------------------------------------------------------------------
 
 const setNodes = async (graph, addresses, abis) => {
+  if (!addresses.ETH_FROM && !process.env.DEPLOYER) {
+    throw new Error('addresses.json ETH_FROM or DEPLOYER address must be defined');
+  }
   const trackAddresses = Object.assign({}, addresses);
   const mainNodes = getMainNodes(addresses, abis);
   const fabs = getFabNodes();
 
-  for(const node of allNodes) {
+  for(const node of mainNodes) {
     console.log(`adding Node for ${node.node}`);
-    if (!node.hasOwnProperty(events)) { console.log('WARNING: no events for contract'); }
     graph.setNode(node.node, {
       label: node.label,
       contract: new web3.eth.Contract(node.abi, node.address),
       events: node.abi.filter(obj => obj.type === 'event').map(obj => obj.name),
     });
-    trackAddresses = removeAddress(trackAddresses, node.address);
+    removeAddress(trackAddresses, node.address);
   }
   // Dss-Deploy Fabs
   for(const fab of fabs) {
     console.log('adding Node for', fab.label);
-    if (!node.hasOwnProperty(events)) { console.log('WARNING: no events for contract'); }
     const address = await graph
       .node('deploy')
       .contract.methods[`${fab.label}`]()
       .call();
+    const abi = abis[capsFLetter(fab.label)];
     graph.setNode(fab.label, {
       label: capsFLetter(fab.label),
       contract: new web3.eth.Contract(
-        abis[fab.label],
+        abi,
         address
       ),
-      events: fab.events,
+      events: abi.filter(obj => obj.type === 'event').map(obj => obj.name),
     });
-    trackAddresses = removeAddress(trackAddresses, address);
+    removeAddress(trackAddresses, address);
   }
 
   if (Object.keys(trackAddresses).length != 0) {
@@ -66,7 +68,7 @@ const setNodes = async (graph, addresses, abis) => {
 const addresses = async dir => {
   const unusedAddresses = [
   ];
-  const json = await fs.readFile(path.join(dir, 'addresses.json'));
+  const json = await fs.readFile(path.join(dir, 'out', 'addresses.json'));
   const addresses = JSON.parse(json);
   return addresses;
 };

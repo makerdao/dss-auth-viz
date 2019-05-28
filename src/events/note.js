@@ -3,8 +3,8 @@ const { signatures, message } = require('./shared');
 
 module.exports.fromGraph = async (graph, sig) => {
   const events = await Promise.all(
-    graph.nodes().map(async (label, events) => {
-      if (!events.includes('LogNote')) return [];
+    graph.nodes().map(async (label, eventAbis) => {
+      if (!eventAbis.includes('LogNote')) return [];
 
       const contract = graph.node(label).contract;
       const dsNotes = await fromContract(contract, sig, 'LogNote');

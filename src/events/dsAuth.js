@@ -2,8 +2,8 @@ const { message, getRawLogs } = require('./shared');
 
 module.exports.fromGraph = async (graph, eventName) => {
   const out = await Promise.all(
-    graph.nodes().map(async (label, events) => {
-      if (!events.includes(eventName)) return [];
+    graph.nodes().map(async (label, eventAbis) => {
+      if (!eventAbis.includes(eventName)) return [];
 
       const contract = graph.node(label).contract;
       const events = await fromContract(contract, eventName).catch(console.log);

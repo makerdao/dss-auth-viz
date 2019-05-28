@@ -1,4 +1,4 @@
-module.exports.getMainNodes = (addresses, abis) = [
+module.exports.getMainNodes = (addresses, abis) => [
   {
     node: 'null',
     label: 'NULL',
@@ -197,12 +197,6 @@ module.exports.getMainNodes = (addresses, abis) = [
     label: 'Vote Proxy Factory',
     abi: abis.VoteProxyFactory,
     address: addresses.VOTE_PROXY_FACTORY,
-  },
-  {
-    node: 'pause-plan',
-    label: 'Pause Plan',
-    abi: abis.Plan,
-    address: addresses.MCD_PAUSE_PLAN,
   },
   {
     node: 'proxy-actions',
