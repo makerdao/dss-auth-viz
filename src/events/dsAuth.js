@@ -1,58 +1,9 @@
 const { message, getRawLogs } = require('./shared');
 
-// ------------------------------------------------------------
-
-const ignore = [
-  'null',
-  'root',
-  'deploy',
-  'vatFab',
-  'jugFab',
-  'vowFab',
-  'catFab',
-  'daiFab',
-  'daiJoinFab',
-  'flapFab',
-  'flopFab',
-  'flipFab',
-  'spotFab',
-  'potFab',
-  'pauseFab',
-  'vat',
-  'jug',
-  'pot',
-  'cat',
-  'vow',
-  'flap',
-  'flop',
-  'spot',
-  'pause',
-  'ETH',
-  'joinETH-A',
-  'flipETH-A',
-  'joinETH-B',
-  'flipETH-B',
-  'COL1',
-  'joinCOL1-A',
-  'flipCOL1-A',
-  'daiJoin',
-];
-
-const dsAuth = [
-  'deploy',
-  'dai',
-  'gov',
-  'dspause',
-  'pipEth',
-  'pipCol1'
-];
-
-// ------------------------------------------------------------
-
 module.exports.fromGraph = async (graph, eventName) => {
   const out = await Promise.all(
-    graph.nodes().map(async label => {
-      if (includes.includes(label)) return [];
+    graph.nodes().map(async (label, events) => {
+      if (!events.includes(eventName)) return [];
 
       const contract = graph.node(label).contract;
       const events = await fromContract(contract, eventName).catch(console.log);

@@ -1,92 +1,10 @@
 const { getRawLogs } = require('./shared');
 const { signatures, message } = require('./shared');
 
-// ------------------------------------------------------------
-
-const ignore = [
-  'null',
-  'root',
-  'deploy',
-  'vatFab',
-  'jugFab',
-  'vowFab',
-  'catFab',
-  'daiFab',
-  'daiJoinFab',
-  'flapFab',
-  'flopFab',
-  'flipFab',
-  'spotFab',
-  'potFab',
-  'pauseFab',
-  'pause',
-  'ETH',
-  'COL1',
-  'govGuard',
-  'spot'
-];
-const note = [
-  'vat',
-  'dai',
-  'daiJoin',
-  'jug',
-  'pot', // dsr
-  'flap',
-  'flop',
-  'vow',
-  'cat',
-  'spotEth',
-  'gov',
-  'dspause',
-  'pipEth',
-  'joinEth_A',
-  'joinEth_B',
-  'flipEth_A',
-  'flipEth_B',
-  'pipCol1',
-  'joinCol1_A',
-  'flipCol1_A',
-  'flipCol1_A',
-  // 'faucet',
-  // 'gov-guard',
-  'iou',
-  'dschief',
-  'vote-proxy-factory',
-  'pause-plan',
-  'proxy-actions',
-  'cdp-manager',
-  'get-cdps',
-  // 'proxy-factory',
-  'proxy-registry',
-  'eth',
-  'col1',
-  'proxy-pause-actions',
-  'proxy-deployer',
-  'vatFab',
-  'jugFab',
-  'vowFab',
-  'catFab',
-  'daiFab',
-  'daiJoinFab',
-  'flapFab',
-  'flopFab',
-  'flipFab',
-  'spotFab',
-  'potFab',
-  'pauseFab',
-  'pause',
-  'ETH',
-  'COL1',
-  'govGuard',
-  'spot'
-];
-
-// ------------------------------------------------------------
-
 module.exports.fromGraph = async (graph, sig) => {
   const events = await Promise.all(
-    graph.nodes().map(async label => {
-      if (!note.includes(label)) return [];
+    graph.nodes().map(async (label, events) => {
+      if (!events.includes('LogNote')) return [];
 
       const contract = graph.node(label).contract;
       const dsNotes = await fromContract(contract, sig, 'LogNote');
