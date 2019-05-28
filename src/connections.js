@@ -4,10 +4,12 @@
 module.exports.connections = async (events, graph) => {
   events.map(event => {
     if (!event) { return graph; }
+    console.log(`event at blockNumber: ${event.blockNumber}, ${event.src}, ${event.type}, ${event.dst}`);
     const src = label(event.src, graph);
     const dst = label(event.dst, graph);
 
-    console.log(event.blockNumber, src, event.src, event.type, dst);
+    if (!src || !dst) { return graph; }
+    console.log(`connecting node: ${src} to ${dst}`);
 
     switch (event.type) {
       case 'rely': {
@@ -29,15 +31,6 @@ module.exports.connections = async (events, graph) => {
         graph.setEdge(src, dst, {label: 'authority'});
         break;
       }
-
-      // case 'LogSetAuthority': {
-      //   // console.log('event connex', event);
-      //   console.log('authority', event);
-      //   const authority = label(event.authority, graph);
-      //   graph.setEdge(src, authority, 'authority');
-      //   console.log(graph.outEdges(src));
-      //   break;
-      // }
     }
   });
 
@@ -48,9 +41,7 @@ module.exports.connections = async (events, graph) => {
 
 // reverse lookup a label from an address
 const label = (address, graph) => {
-  // console.log('address', address);
   const labels = graph.nodes().filter(label => {
-    // console.log('label', label, 'node', graph.node(label).contract.options);
     return (
       graph.node(label).contract.options.address.toLowerCase() ===
       address.toLowerCase()
@@ -58,7 +49,9 @@ const label = (address, graph) => {
   });
 
   if (labels.length === 0) {
-    throw new Error(`no nodes found with address ${address}`);
+    // throw new Error(`no nodes found with address ${address}`);
+    console.log(`----- no nodes found with address ${address} ----- `);
+    return false;
   }
 
   if (labels.length > 1) {

@@ -3,11 +3,12 @@ const { signatures, message } = require('./shared');
 
 module.exports.fromGraph = async (graph, sig) => {
   const events = await Promise.all(
-    graph.nodes().map(async (label, eventAbis) => {
-      if (!eventAbis.includes('LogNote')) return [];
+    graph.nodes().map(async label => {
+      const node = graph.node(label);
+      console.log(`checking ${label} with ${node.eventAbis} for LogNote`);
+      if (!node.eventAbis.includes('LogNote')) return [];
 
-      const contract = graph.node(label).contract;
-      const dsNotes = await fromContract(contract, sig, 'LogNote');
+      const dsNotes = await fromContract(node.contract, sig, 'LogNote');
       message(dsNotes.length, type(sig), label);
       return dsNotes;
     })

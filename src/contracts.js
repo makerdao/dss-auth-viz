@@ -23,32 +23,32 @@ const setNodes = async (graph, addresses, abis) => {
   }
   const trackAddresses = Object.assign({}, addresses);
   const mainNodes = getMainNodes(addresses, abis);
-  const fabs = getFabNodes();
+  const fabs = getFabNodes;
 
   for(const node of mainNodes) {
     console.log(`adding Node for ${node.node}`);
     graph.setNode(node.node, {
       label: node.label,
       contract: new web3.eth.Contract(node.abi, node.address),
-      events: node.abi.filter(obj => obj.type === 'event').map(obj => obj.name),
+      eventAbis: node.abi.filter(obj => obj.type === 'event').map(obj => obj.name),
     });
     removeAddress(trackAddresses, node.address);
   }
   // Dss-Deploy Fabs
   for(const fab of fabs) {
-    console.log('adding Node for', fab.label);
+    console.log('adding Node for', fab);
     const address = await graph
       .node('deploy')
-      .contract.methods[`${fab.label}`]()
+      .contract.methods[`${fab}`]()
       .call();
-    const abi = abis[capsFLetter(fab.label)];
-    graph.setNode(fab.label, {
-      label: capsFLetter(fab.label),
+    const abi = abis[capsFLetter(fab)];
+    graph.setNode(fab, {
+      label: capsFLetter(fab),
       contract: new web3.eth.Contract(
         abi,
         address
       ),
-      events: abi.filter(obj => obj.type === 'event').map(obj => obj.name),
+      eventAbis: abi.filter(obj => obj.type === 'event').map(obj => obj.name),
     });
     removeAddress(trackAddresses, address);
   }
