@@ -1,5 +1,3 @@
-const { web3 } = require('./helper');
-
 // iterates over events and adds / removes edges accordingly
 module.exports.connections = async (events, graph) => {
   events.map(event => {
