@@ -7,7 +7,7 @@ module.exports.fromGraph = async (graph, eventName) => {
       // console.log(`checking ${label} with ${node.eventAbis} for ${eventName}`);
       if (!node.eventAbis.includes(eventName)) return [];
 
-      const events = await fromContract(node.contract, eventName).catch(console.log);
+      const events = await fromContract(node.contract, eventName);
       message(events.length, eventName, label);
 
       return events;
@@ -31,6 +31,7 @@ fromContract = async (contract, eventName) => {
     };
 
     if (eventName === 'LogSetAuthority') {
+      // console.log('LogSetAuthority',contract.options.address,log.returnValues)
       out.dst = log.returnValues.authority;
     }
 

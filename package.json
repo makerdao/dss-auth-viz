@@ -9,7 +9,7 @@
     "mz": "^2.7.0",
     "opener": "^1.5.1",
     "viz.js": "^2.1.1",
-    "web3": "^1.0.0-beta.36"
+    "web3": "^1.0.0-beta.55"
   },
   "scripts": {
     "start": "node ./src/index.js",
