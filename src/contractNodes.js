@@ -245,6 +245,12 @@ module.exports.getMainNodes = (addresses, abis) => [
     abi: abis.End,
     address: addresses.MCD_END,
   },
+  {
+    node: 'gov-actions',
+    label: 'Gov Actions',
+    abi: abis.GovActions,
+    address: addresses.MCD_GOV_ACTIONS,
+  },
 ];
 
 module.exports.getFabNodes = [

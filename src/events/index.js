@@ -42,7 +42,7 @@ const logSetOwner = async graph => {
 };
 
 const logSetAuthority = async graph => {
-  // return await dsAuth.fromGraph(graph, 'LogSetAuthority');
+  return await dsAuth.fromGraph(graph, 'LogSetAuthority');
 };
 
 // ------------------------------------------------------------

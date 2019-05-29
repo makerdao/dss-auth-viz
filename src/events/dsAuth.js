@@ -4,7 +4,7 @@ module.exports.fromGraph = async (graph, eventName) => {
   const out = await Promise.all(
     graph.nodes().map(async label => {
       const node = graph.node(label);
-      console.log(`checking ${label} with ${node.eventAbis} for ${eventName}`);
+      // console.log(`checking ${label} with ${node.eventAbis} for ${eventName}`);
       if (!node.eventAbis.includes(eventName)) return [];
 
       const events = await fromContract(node.contract, eventName).catch(console.log);

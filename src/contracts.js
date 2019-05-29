@@ -26,7 +26,7 @@ const setNodes = async (graph, addresses, abis) => {
   const fabs = getFabNodes;
 
   for(const node of mainNodes) {
-    console.log(`adding Node for ${node.node}`);
+    // console.log(`adding Node for ${node.node}`);
     graph.setNode(node.node, {
       label: node.label,
       contract: new web3.eth.Contract(node.abi, node.address),
@@ -36,7 +36,7 @@ const setNodes = async (graph, addresses, abis) => {
   }
   // Dss-Deploy Fabs
   for(const fab of fabs) {
-    console.log('adding Node for', fab);
+    // console.log('adding Node for', fab);
     const address = await graph
       .node('deploy')
       .contract.methods[`${fab}`]()
@@ -66,11 +66,8 @@ const setNodes = async (graph, addresses, abis) => {
 // -----------------------------------------------------------------------------
 
 const addresses = async dir => {
-  const unusedAddresses = [
-  ];
   const json = await fs.readFile(path.join(dir, 'out', 'addresses.json'));
-  const addresses = JSON.parse(json);
-  return addresses;
+  return JSON.parse(json);
 };
 
 // -----------------------------------------------------------------------------

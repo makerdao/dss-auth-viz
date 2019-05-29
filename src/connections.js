@@ -4,12 +4,12 @@
 module.exports.connections = async (events, graph) => {
   events.map(event => {
     if (!event) { return graph; }
-    console.log(`event at blockNumber: ${event.blockNumber}, ${event.src}, ${event.type}, ${event.dst}`);
+    // console.log(`event at blockNumber: ${event.blockNumber}, ${event.src}, ${event.type}, ${event.dst}`);
     const src = label(event.src, graph);
     const dst = label(event.dst, graph);
 
     if (!src || !dst) { return graph; }
-    console.log(`connecting node: ${src} to ${dst}`);
+    // console.log(`${event.type}'ing ${src} to ${dst}`);
 
     switch (event.type) {
       case 'rely': {
