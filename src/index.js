@@ -1,6 +1,7 @@
 const { events } = require('./events');
 const { contracts } = require('./contracts');
 const { connections } = require('./connections');
+const { paint } = require('./paint');
 
 const dagre = require('dagre');
 const dot = require('graphlib-dot');
@@ -19,6 +20,8 @@ const main = async () => {
   graph = await connections(await events(graph), graph);
 
   console.log(dot.write(graph));
+
+  if (process.env.PAINT) await paint(graph);
 };
 
 // ------------------------------------------------------------
