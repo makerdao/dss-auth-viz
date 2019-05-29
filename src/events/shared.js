@@ -17,9 +17,13 @@ module.exports.message = (count, name, label) => {
 
 module.exports.getRawLogs = async (contract, filter, eventName) => {
   return await contract.getPastEvents(eventName, {
-    filter,
+    filter: filter,
     fromBlock: 0,
     toBlock: web3.eth.blockNumber
+  }).catch(e => {
+    console.log(`Warning: Unrecognised ${eventName} event for contract: ${contract.address}`);
+    //console.log(contract.jsonInterface);
+    return [];
   });
 };
 

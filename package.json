@@ -1,5 +1,5 @@
 {
-  "name": "testchain_scripts",
+  "name": "dss-auth-viz",
   "version": "1.0.0",
   "main": "index.js",
   "license": "AGPL-3.0-only",

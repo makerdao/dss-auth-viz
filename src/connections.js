@@ -3,24 +3,32 @@
 // iterates over events and adds / removes edges accordingly
 module.exports.connections = async (events, graph) => {
   events.map(event => {
+    if (!event) { return graph; }
+    // console.log(`event at blockNumber: ${event.blockNumber}, ${event.src}, ${event.type}, ${event.dst}`);
     const src = label(event.src, graph);
+    const dst = label(event.dst, graph);
+
+    if (!src || !dst) { return graph; }
+    // console.log(`${event.type}'ing ${src} to ${dst}`);
+
     switch (event.type) {
       case 'rely': {
-        const guy = label(event.guy, graph);
-        graph.setEdge(src, guy, 'rely');
+        graph.setEdge(src, dst, {label: 'rely'});
         break;
       }
 
       case 'deny': {
-        const guy = label(event.guy, graph);
-        graph.removeEdge(src, guy, 'deny');
+        graph.removeEdge(src, dst);
         break;
       }
 
       case 'LogSetOwner': {
-        const owner = label(event.owner, graph);
-        graph.setEdge(src, owner, 'rely');
-        console.log(graph.outEdges(src));
+        graph.setEdge(src, dst, {label: 'owner'});
+        break;
+      }
+
+      case 'LogSetAuthority': {
+        graph.setEdge(src, dst, {label: 'authority'});
         break;
       }
     }
@@ -41,7 +49,9 @@ const label = (address, graph) => {
   });
 
   if (labels.length === 0) {
-    throw new Error(`no nodes found with address ${address}`);
+    // throw new Error(`no nodes found with address ${address}`);
+    console.log(`----- no nodes found with address ${address} ----- `);
+    return false;
   }
 
   if (labels.length > 1) {

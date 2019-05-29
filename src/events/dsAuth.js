@@ -1,55 +1,13 @@
 const { message, getRawLogs } = require('./shared');
 
-// ------------------------------------------------------------
-
-const ignore = [
-  'vatFab',
-  'pitFab',
-  'dripFab',
-  'vowFab',
-  'catFab',
-  'tokenFab',
-  'guardFab',
-  'daiJoinFab',
-  'daiMoveFab',
-  'flapFab',
-  'flopFab',
-  'flipFab',
-  'spotFab',
-  'proxyFab',
-  'null',
-  'root',
-  'vat',
-  'pit',
-  'drip',
-  'cat',
-  'vow',
-  'flap',
-  'flop',
-  'daiJoin',
-  'daiMove',
-  'joinDgx',
-  'moveDgx',
-  'flipDgx',
-  'spotDgx',
-  'joinEth',
-  'moveEth',
-  'flipEth',
-  'spotEth',
-  'joinRep',
-  'moveRep',
-  'flipRep',
-  'spotRep'
-];
-// ------------------------------------------------------------
-
 module.exports.fromGraph = async (graph, eventName) => {
   const out = await Promise.all(
     graph.nodes().map(async label => {
-      if (ignore.includes(label)) return [];
+      const node = graph.node(label);
+      // console.log(`checking ${label} with ${node.eventAbis} for ${eventName}`);
+      if (!node.eventAbis.includes(eventName)) return [];
 
-      const contract = graph.node(label).contract;
-      const events = await fromContract(contract, eventName);
+      const events = await fromContract(node.contract, eventName).catch(console.log);
       message(events.length, eventName, label);
 
       return events;
@@ -73,11 +31,11 @@ fromContract = async (contract, eventName) => {
     };
 
     if (eventName === 'LogSetAuthority') {
-      out.authority = log.returnValues.authority;
+      out.dst = log.returnValues.authority;
     }
 
     if (eventName === 'LogSetOwner') {
-      out.owner = log.returnValues.owner;
+      out.dst = log.returnValues.owner;
     }
 
     return out;

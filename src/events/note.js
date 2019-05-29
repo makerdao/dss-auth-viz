@@ -1,55 +1,16 @@
 const { getRawLogs } = require('./shared');
 const { signatures, message } = require('./shared');
 
-// ------------------------------------------------------------
-
-const ignore = [
-  'vatFab',
-  'pitFab',
-  'dripFab',
-  'vowFab',
-  'catFab',
-  'tokenFab',
-  'guardFab',
-  'daiJoinFab',
-  'daiMoveFab',
-  'flapFab',
-  'flopFab',
-  'flipFab',
-  'spotFab',
-  'proxyFab',
-  'null',
-  'root',
-  'deploy',
-  'daiMove',
-  'moveDgx',
-  'moveEth',
-  'moveRep',
-  'spotDgx',
-  'spotEth',
-  'spotRep',
-  'daiGuard'
-];
-
-// ------------------------------------------------------------
-
 module.exports.fromGraph = async (graph, sig) => {
   const events = await Promise.all(
     graph.nodes().map(async label => {
-      if (ignore.includes(label)) return [];
-      const contract = graph.node(label).contract;
+      const node = graph.node(label);
+      // console.log(`checking ${label} with ${node.eventAbis} for LogNote`);
+      if (!node.eventAbis.includes('LogNote')) return [];
 
-      switch (label) {
-        case 'vat':
-          const vatNotes = await fromContract(contract, sig, 'Note');
-          message(vatNotes.length, type(sig), label);
-          return vatNotes;
-
-        default:
-          const dsNotes = await fromContract(contract, sig, 'LogNote');
-          message(dsNotes.length, type(sig), label);
-          return dsNotes;
-      }
+      const dsNotes = await fromContract(node.contract, sig, 'LogNote');
+      message(dsNotes.length, type(sig), label);
+      return dsNotes;
     })
   );
 
@@ -59,18 +20,18 @@ module.exports.fromGraph = async (graph, sig) => {
 // ------------------------------------------------------------
 
 const fromContract = async (contract, sig, eventName) => {
-  const raw = await getRawLogs(contract, { sig }, eventName);
+  const raw = await getRawLogs(contract, { sig: sig }, eventName);
 
   return raw.map(log => {
-    const guy = log.returnValues.foo;
+    const usr = log.returnValues.arg1 || log.returnValues.foo
     return {
+      type: type(sig),
       blockNumber: log.blockNumber,
       logIndex: log.logIndex,
       src: log.address,
-      guy: '0x' + guy.substr(guy.length - 40),
-      type: type(sig)
+      dst: '0x' + usr.substr(usr.length - 40),
     };
-  });
+  })
 };
 
 // ------------------------------------------------------------
