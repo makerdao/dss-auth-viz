@@ -90,6 +90,12 @@ module.exports.getMainNodes = (addresses, abis) => [
     address: addresses.MCD_PAUSE,
   },
   {
+    node: 'dspauseproxy',
+    label: 'DSPauseProxy',
+    abi: abis.DSPauseProxy,
+    address: addresses.MCD_PAUSE_PROXY,
+  },
+  {
     node: 'pipEth',
     label: 'Pip (ETH)',
     abi: abis.DSValue,
