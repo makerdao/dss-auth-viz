@@ -38,11 +38,11 @@ const deny = async graph => {
 };
 
 const logSetOwner = async graph => {
-  return await dsAuth.fromGraph(graph, 'LogSetOwner');
+  return await dsAuth.fromGraph(graph, 'owner');
 };
 
 const logSetAuthority = async graph => {
-  return await dsAuth.fromGraph(graph, 'LogSetAuthority');
+  return await dsAuth.fromGraph(graph, 'authority');
 };
 
 // ------------------------------------------------------------

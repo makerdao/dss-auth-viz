@@ -22,7 +22,8 @@ module.exports.paint = async (graph, _outPath = './../graph.svg') => {
     // write the svg tags to a file
     const writePath = path.resolve(__dirname, _outPath);
     fs.writeFileSync(writePath, htmlString);
-    return opener(writePath);
+    // return opener(writePath);
+    return;
   } catch (err) {
     console.error(err);
   }

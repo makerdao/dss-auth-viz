@@ -4,8 +4,8 @@ module.exports.fromGraph = async (graph, eventName) => {
   const out = await Promise.all(
     graph.nodes().map(async label => {
       const node = graph.node(label);
-      // console.log(`checking ${label} with ${node.eventAbis} for ${eventName}`);
-      if (!node.eventAbis.includes(eventName)) return [];
+      if (node.abis == undefined) {console.log(node.label, node.abis)}
+      if (!node.abis.includes(eventName)) return [];
 
       const events = await fromContract(node.contract, eventName);
       message(events.length, eventName, label);
@@ -20,27 +20,15 @@ module.exports.fromGraph = async (graph, eventName) => {
 // ------------------------------------------------------------
 
 fromContract = async (contract, eventName) => {
-  const raw = await getRawLogs(contract, {}, eventName);
+  const out = {
+    type: eventName,
+    src: contract.options.address
+  };
 
-  return raw.map(log => {
-    const out = {
-      type: eventName,
-      blockNumber: log.blockNumber,
-      logIndex: log.logIndex,
-      src: log.address
-    };
+  const address = await contract.methods[eventName]().call();
+  out.dst = address;
 
-    if (eventName === 'LogSetAuthority') {
-      // console.log('LogSetAuthority',contract.options.address,log.returnValues)
-      out.dst = log.returnValues.authority;
-    }
-
-    if (eventName === 'LogSetOwner') {
-      out.dst = log.returnValues.owner;
-    }
-
-    return out;
-  });
+  return [out];
 };
 
 // ------------------------------------------------------------

@@ -26,12 +26,12 @@ module.exports.connections = async (events, graph) => {
         break;
       }
 
-      case 'LogSetOwner': {
+      case 'owner': {
         graph.setEdge(src, dst, {label: 'owner'});
         break;
       }
 
-      case 'LogSetAuthority': {
+      case 'authority': {
         graph.setEdge(src, dst, {label: 'authority'});
         break;
       }
@@ -46,6 +46,7 @@ module.exports.connections = async (events, graph) => {
 // reverse lookup a label from an address
 const label = (address, graph) => {
   const labels = graph.nodes().filter(label => {
+    if (!address) { address = 'null Address'; return false; }
     return (
       graph.node(label).contract.options.address.toLowerCase() ===
       address.toLowerCase()
@@ -74,6 +75,7 @@ const createEmptyNode = (address, graph) => {
         address: address,
       }
     },
+    abis: [],
     eventAbis: [],
   });
 }
