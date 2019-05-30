@@ -1,51 +1,13 @@
 const { message, getRawLogs } = require('./shared');
 
-// ------------------------------------------------------------
-
-const ignore = [
-  'null',
-  'root',
-  'deploy',
-  'vatFab',
-  'jugFab',
-  'vowFab',
-  'catFab',
-  'daiFab',
-  'daiJoinFab',
-  'flapFab',
-  'flopFab',
-  'flipFab',
-  'spotFab',
-  'potFab',
-  'pauseFab',
-  'vat',
-  'jug',
-  'pot',
-  'cat',
-  'vow',
-  'flap',
-  'flop',
-  'spot',
-  'pause',
-  'ETH',
-  'joinETH-A',
-  'flipETH-A',
-  'joinETH-B',
-  'flipETH-B',
-  'COL1',
-  'joinCOL1-A',
-  'flipCOL1-A',
-  'daiJoin',
-];
-// ------------------------------------------------------------
-
 module.exports.fromGraph = async (graph, eventName) => {
   const out = await Promise.all(
     graph.nodes().map(async label => {
-      if (ignore.includes(label)) return [];
+      const node = graph.node(label);
+      // console.log(`checking ${label} with ${node.eventAbis} for ${eventName}`);
+      if (!node.eventAbis.includes(eventName)) return [];
 
-      const contract = graph.node(label).contract;
-      const events = await fromContract(contract, eventName);
+      const events = await fromContract(node.contract, eventName);
       message(events.length, eventName, label);
 
       return events;
@@ -69,6 +31,7 @@ fromContract = async (contract, eventName) => {
     };
 
     if (eventName === 'LogSetAuthority') {
+      // console.log('LogSetAuthority',contract.options.address,log.returnValues)
       out.dst = log.returnValues.authority;
     }
 

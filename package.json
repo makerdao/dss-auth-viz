@@ -1,5 +1,5 @@
 {
-  "name": "testchain_scripts",
+  "name": "dss-auth-viz",
   "version": "1.0.0",
   "main": "index.js",
   "license": "AGPL-3.0-only",
@@ -7,9 +7,12 @@
     "dagre": "^0.8.2",
     "graphlib-dot": "^0.6.2",
     "mz": "^2.7.0",
-    "web3": "^1.0.0-beta.36"
+    "opener": "^1.5.1",
+    "viz.js": "^2.1.1",
+    "web3": "^1.0.0-beta.55"
   },
   "scripts": {
-    "start": "node ./src/index.js"
+    "start": "node ./src/index.js",
+    "paint": "PAINT=true node ./src/index.js"
   }
 }

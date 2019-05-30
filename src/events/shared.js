@@ -21,10 +21,10 @@ module.exports.getRawLogs = async (contract, filter, eventName) => {
     fromBlock: 0,
     toBlock: web3.eth.blockNumber
   }).catch(e => {
+    console.log('error', e);
     console.log(`Warning: Unrecognised ${eventName} event for contract: ${contract.address}`);
-    //console.log(contract.jsonInterface);
+    // console.log(contract._jsonInterface);
     return [];
   });
 };
-
 // ------------------------------------------------------------

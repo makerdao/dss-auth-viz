@@ -1,6 +1,7 @@
 const { events } = require('./events');
 const { contracts } = require('./contracts');
 const { connections } = require('./connections');
+const { paint } = require('./paint');
 
 const dagre = require('dagre');
 const dot = require('graphlib-dot');
@@ -12,9 +13,6 @@ const main = async () => {
   if (!dir) {
     throw new Error('you must provide a path to the testchain-deployment repository');
   }
-  if (!process.env.DEPLOYER) {
-    throw new Error('DEPLOYER address must be defined');
-  }
 
   let graph = new dagre.graphlib.Graph();
 
@@ -22,6 +20,8 @@ const main = async () => {
   graph = await connections(await events(graph), graph);
 
   console.log(dot.write(graph));
+
+  if (process.env.PAINT) await paint(graph);
 };
 
 // ------------------------------------------------------------

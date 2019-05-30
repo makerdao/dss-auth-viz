@@ -1,12 +1,19 @@
-// ------------------------------------------------------------
-
 // iterates over events and adds / removes edges accordingly
 module.exports.connections = async (events, graph) => {
   events.map(event => {
+    if (!event) { return graph; }
     const src = label(event.src, graph);
     const dst = label(event.dst, graph);
 
-    console.log(event.blockNumber, src, event.src, event.type, dst);
+    if (!src || !dst) {
+      console.log('-----------------------------');
+      console.log(`event at blockNumber: ${event.blockNumber}, ${event.src}, ${event.type}, ${event.dst}`);
+      console.log(`event missing src (${src}) or dst (${dst})`);
+      console.log('-----------------------------');
+      return graph;
+    }
+    // console.log(`event at blockNumber: ${event.blockNumber}, ${event.src}, ${event.type}, ${event.dst}`);
+    // console.log(`${event.type}'ing ${src} to ${dst}`);
 
     switch (event.type) {
       case 'rely': {
@@ -46,7 +53,10 @@ const label = (address, graph) => {
   });
 
   if (labels.length === 0) {
-    throw new Error(`no nodes found with address ${address}`);
+    // throw new Error(`no nodes found with address ${address}`);
+    console.log(`----- no nodes found with address ${address} creating an empty node----- `);
+    createEmptyNode(address, graph);
+    return address;
   }
 
   if (labels.length > 1) {
@@ -55,5 +65,17 @@ const label = (address, graph) => {
 
   return labels[0];
 };
+
+const createEmptyNode = (address, graph) => {
+  graph.setNode(address, {
+    label: address,
+    contract: {
+      options: {
+        address: address,
+      }
+    },
+    eventAbis: [],
+  });
+}
 
 // ------------------------------------------------------------
