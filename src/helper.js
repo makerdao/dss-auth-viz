@@ -2,7 +2,7 @@ const Web3 = require('web3');
 
 const url = process.env.ETH_RPC_URL
   ? process.env.ETH_RPC_URL
-  : 'http://localhost:2000';
+  : 'http://localhost:8545';
 
 const capsFLetter = string => {
   return string.charAt(0).toUpperCase() + string.slice(1);
