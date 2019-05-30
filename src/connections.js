@@ -46,6 +46,7 @@ module.exports.connections = async (events, graph) => {
 // reverse lookup a label from an address
 const label = (address, graph) => {
   const labels = graph.nodes().filter(label => {
+    if (!address) { address = 'null Address'; return false; }
     return (
       graph.node(label).contract.options.address.toLowerCase() ===
       address.toLowerCase()

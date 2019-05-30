@@ -20,27 +20,24 @@ module.exports.fromGraph = async (graph, eventName) => {
 // ------------------------------------------------------------
 
 fromContract = async (contract, eventName) => {
-  const raw = await getRawLogs(contract, {}, eventName);
+  const out = {
+    type: eventName,
+    src: contract.options.address
+  };
 
-  return raw.map(log => {
-    const out = {
-      type: eventName,
-      blockNumber: log.blockNumber,
-      logIndex: log.logIndex,
-      src: log.address
-    };
+  if (eventName === 'LogSetAuthority') {
+    // console.log('LogSetAuthority',authority, contract.options.address);
+    const authority = await contract.methods.authority().call();
+    out.dst = authority;
+  }
 
-    if (eventName === 'LogSetAuthority') {
-      // console.log('LogSetAuthority',contract.options.address,log.returnValues)
-      out.dst = log.returnValues.authority;
-    }
+  if (eventName === 'LogSetOwner') {
+    // console.log('LogSetOwner',owner, contract.options.address);
+    const owner = await contract.methods.owner().call();
+    out.dst = owner;
+  }
 
-    if (eventName === 'LogSetOwner') {
-      out.dst = log.returnValues.owner;
-    }
-
-    return out;
-  });
+  return [out];
 };
 
 // ------------------------------------------------------------

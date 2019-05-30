@@ -1,7 +1,7 @@
 module.exports.getMainNodes = (addresses, abis) => [
   {
-    node: 'null',
-    label: 'NULL',
+    node: 'zero',
+    label: '0x address',
     abi: [],
     address: '0x0000000000000000000000000000000000000000',
   },
