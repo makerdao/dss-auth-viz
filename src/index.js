@@ -9,7 +9,7 @@ const dot = require('graphlib-dot');
 // ------------------------------------------------------------
 
 const main = async () => {
-  const dir = process.argv[2];
+  const dir = process.argv[2] || process.env.TESTCHAIN_PATH || '../testchain-dss-deployment-scripts';
   if (!dir) {
     throw new Error('you must provide a path to the testchain-deployment repository');
   }

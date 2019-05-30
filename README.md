@@ -4,6 +4,11 @@ A tool to visualize and understand the permissions created when deploying the DS
 
 ## Deployment
 
+### Commands
+- `yarn install`
+- `yarn start <CUSTOM/PATH/TO/TESTCHAIN>`
+- `yarn paint <CUSTOM/PATH/TO/TESTCHAIN>`
+
 ### Prerequisites
 
 You need to have run [`testchain-dss-deployment-scripts`](https://github.com/makerdao/testchain-dss-deployment-scripts)
@@ -33,3 +38,4 @@ This will result in a console output of the `digraph` as well as the creation of
 ### Optional flags
 
 `ETH_RPC_URL`: to override the default `http://localhost:8545`
+`process.argv[2]` || `TESTCHAIN_PATH`: to override the default testchain directory (`../testchain-dss-deployment-scripts`)
