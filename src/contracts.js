@@ -49,6 +49,7 @@ const setNodes = async (graph, addresses, abis) => {
         abi,
         address
       ),
+      abis: abi.map(obj => obj.name),
       eventAbis: abi.filter(obj => obj.type === 'event').map(obj => obj.name),
     });
     removeAddress(trackAddresses, address);

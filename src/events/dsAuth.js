@@ -4,7 +4,8 @@ module.exports.fromGraph = async (graph, eventName) => {
   const out = await Promise.all(
     graph.nodes().map(async label => {
       const node = graph.node(label);
-      if (!node.contract.jsonInterface.abi.methods.hasOwnProperty(eventName)) return [];
+      if (node.abis == undefined) {console.log(node.label, node.abis)}
+      if (!node.abis.includes(eventName)) return [];
 
       const events = await fromContract(node.contract, eventName);
       message(events.length, eventName, label);

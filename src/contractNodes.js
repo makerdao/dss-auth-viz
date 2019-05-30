@@ -26,7 +26,7 @@ module.exports.getMainNodes = (addresses, abis) => [
   {
     node: 'dai',
     label: 'DAI',
-    abi: abis.DSToken,
+    abi: abis.Dai,
     address: addresses.MCD_DAI,
   },
   {
@@ -218,13 +218,13 @@ module.exports.getMainNodes = (addresses, abis) => [
   {
     node: 'eth',
     label: 'ETH',
-    abi: abis.DSToken,
+    abi: abis.WETH9_,
     address: addresses.ETH,
   },
   {
     node: 'col1',
     label: 'COL1',
-    abi: abis.DSToken,
+    abi: abis.Token1,
     address: addresses.COL1,
   },
   {

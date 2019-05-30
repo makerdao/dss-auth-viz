@@ -75,6 +75,7 @@ const createEmptyNode = (address, graph) => {
         address: address,
       }
     },
+    abis: [],
     eventAbis: [],
   });
 }
