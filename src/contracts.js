@@ -30,6 +30,7 @@ const setNodes = async (graph, addresses, abis) => {
     graph.setNode(node.node, {
       label: node.label,
       contract: new web3.eth.Contract(node.abi, node.address),
+      abis: node.abi.map(obj => obj.name),
       eventAbis: node.abi.filter(obj => obj.type === 'event').map(obj => obj.name),
     });
     removeAddress(trackAddresses, node.address);

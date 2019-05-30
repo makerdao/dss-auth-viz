@@ -26,12 +26,12 @@ module.exports.connections = async (events, graph) => {
         break;
       }
 
-      case 'LogSetOwner': {
+      case 'owner': {
         graph.setEdge(src, dst, {label: 'owner'});
         break;
       }
 
-      case 'LogSetAuthority': {
+      case 'authority': {
         graph.setEdge(src, dst, {label: 'authority'});
         break;
       }
