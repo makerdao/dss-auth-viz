@@ -26,9 +26,31 @@ fromContract = async (contract, eventName) => {
   };
 
   const address = await contract.methods[eventName]().call();
+  if (!address) {
+    console.log(contract.options.address, address, eventName);
+    const addresses = await fromContractEvent(contract, eventName);
+    console.log(addresses);
+  }
   out.dst = address;
 
   return [out];
 };
 
 // ------------------------------------------------------------
+
+fromContractEvent = async (contract, type) => {
+  const eventName = type === 'authority' ? 'LogSetAuthority' : 'LogSetOwner';
+  const raw = await getRawLogs(contract, {}, eventName);
+  console.log(raw);
+
+  return raw.map(log => {
+    if (eventName === 'LogSetAuthority') {
+      // console.log('LogSetAuthority',contract.options.address,log.returnValues)
+      return log.returnValues.authority;
+    }
+
+    if (eventName === 'LogSetOwner') {
+      return log.returnValues.owner;
+    }
+  });
+}

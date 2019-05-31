@@ -1,4 +1,4 @@
-module.exports.getMainNodes = (addresses, abis) => [
+module.exports.getMainNodes = (addresses, abis, config) => [
   {
     node: 'zero',
     label: '0x address',
@@ -7,7 +7,7 @@ module.exports.getMainNodes = (addresses, abis) => [
   },
   {
     node: 'root',
-    label: 'root',
+    label: `root - ${config.description}`,
     abi: [],
     address: addresses.ETH_FROM || process.env.DEPLOYER,
   },
@@ -97,8 +97,8 @@ module.exports.getMainNodes = (addresses, abis) => [
   },
   {
     node: 'pipEth',
-    label: 'Pip (ETH)',
-    abi: abis.DSValue,
+    label: `Pip (ETH) - ${config.tokens.ETH.pip.type}`,
+    abi: config.tokens.ETH.pip.type === 'median' ? abis.Median : abis.DSValue,
     address: addresses.PIP_ETH,
   },
   {
@@ -127,9 +127,9 @@ module.exports.getMainNodes = (addresses, abis) => [
   },
   {
     node: 'pipCol1',
-    label: 'Pip (Col1)',
-    abi: abis.DSValue,
-    address: addresses.PIP_COL1,
+    label: `Pip (Col1) - ${config.tokens.COL1.pip.type}`,
+    abi: config.tokens.COL1.pip.type === 'median' ? abis.Median : abis.DSValue,
+    address: addresses.VAL_COL1,
   },
   {
     node: 'joinCol1_A',

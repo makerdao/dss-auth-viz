@@ -11,18 +11,19 @@ module.exports.contracts = async (graph, testchainOutputDir) => {
   return await setNodes(
     graph,
     await addresses(testchainOutputDir),
-    await abis(`${testchainOutputDir}`)
+    await abis(`${testchainOutputDir}`),
+    await config(`${testchainOutputDir}`),
   );
 };
 
 // -----------------------------------------------------------------------------
 
-const setNodes = async (graph, addresses, abis) => {
+const setNodes = async (graph, addresses, abis, config) => {
   if (!addresses.ETH_FROM && !process.env.DEPLOYER) {
     throw new Error('addresses.json ETH_FROM or DEPLOYER address must be defined');
   }
   const trackAddresses = Object.assign({}, addresses);
-  const mainNodes = getMainNodes(addresses, abis);
+  const mainNodes = getMainNodes(addresses, abis, config);
   const fabs = getFabNodes;
 
   for(const node of mainNodes) {
@@ -79,6 +80,11 @@ const abis = async dir => {
   const deployOut = path.join(dir, 'contracts', 'dss-deploy', 'out');
   return Object.assign(getAbis(out), getAbis(deployOut));
 }
+
+const config = async dir => {
+  const json = await fs.readFile(path.join(dir, 'out', 'config.json'));
+  return JSON.parse(json);
+};
 
 const getAbis = async dir => {
   const files = (await fs.readdir(dir)).filter(path => path.endsWith('.abi'));
