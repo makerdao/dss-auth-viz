@@ -19,6 +19,7 @@ module.exports.contracts = async (graph, testchainOutputDir) => {
 // -----------------------------------------------------------------------------
 
 const setNodes = async (graph, addresses, abis, config) => {
+  graph.setGraph(config.description);
   if (!addresses.ETH_FROM && !process.env.DEPLOYER) {
     throw new Error('addresses.json ETH_FROM or DEPLOYER address must be defined');
   }

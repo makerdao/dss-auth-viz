@@ -19,6 +19,7 @@ const main = async () => {
   graph = await contracts(graph, dir);
   graph = await connections(await events(graph), graph);
 
+  console.log(`--- Graph for: ${graph.graph()} ---`);
   console.log(dot.write(graph));
 
   if (process.env.PAINT) await paint(graph);
