@@ -7,7 +7,7 @@ module.exports.getMainNodes = (addresses, abis, config) => [
   },
   {
     node: 'root',
-    label: 'root',
+    label: 'deployer',
     abi: [],
     address: addresses.ETH_FROM || process.env.DEPLOYER,
   },
