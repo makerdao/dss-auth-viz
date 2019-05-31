@@ -17,22 +17,22 @@ module.exports.connections = async (events, graph) => {
 
     switch (event.type) {
       case 'rely': {
-        graph.setEdge(src, dst, {label: 'rely'});
+        graph.setEdge(src, dst, {label: 'rely'}, 'rely');
         break;
       }
 
       case 'deny': {
-        graph.removeEdge(src, dst);
+        graph.removeEdge(src, dst, 'rely');
         break;
       }
 
       case 'owner': {
-        graph.setEdge(src, dst, {label: 'owner'});
+        graph.setEdge(src, dst, {label: 'owner'}, 'owner');
         break;
       }
 
       case 'authority': {
-        graph.setEdge(src, dst, {label: 'authority'});
+        graph.setEdge(src, dst, {label: 'authority'}, 'authority');
         break;
       }
     }
@@ -46,6 +46,10 @@ module.exports.connections = async (events, graph) => {
 // reverse lookup a label from an address
 const label = (address, graph) => {
   const labels = graph.nodes().filter(label => {
+    if (!graph.node(label).contract.options.address){
+      console.log('label', label, graph.node(label));
+      return false;
+    }
     if (!address) { address = 'null Address'; return false; }
     return (
       graph.node(label).contract.options.address.toLowerCase() ===

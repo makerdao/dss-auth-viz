@@ -14,7 +14,7 @@ const main = async () => {
     throw new Error('you must provide a path to the testchain-deployment repository');
   }
 
-  let graph = new dagre.graphlib.Graph();
+  let graph = new dagre.graphlib.Graph({multigraph: true });
 
   graph = await contracts(graph, dir);
   graph = await connections(await events(graph), graph);
