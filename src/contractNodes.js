@@ -1,3 +1,7 @@
+module.exports.knownExtraneousAddresses = [
+  'POLL_ID',
+];
+
 module.exports.mainNodes = [
   {
     node: 'MCD_DEPLOY',
@@ -118,6 +122,18 @@ module.exports.mainNodes = [
   {
     node: 'MCD_GOV_ACTIONS',
     label: 'GovActions',
+  },
+  {
+    node: 'GOV_POLL_GEN',
+    label: 'GovPollingGenerator',
+  },
+  {
+    node: 'VOTE_YES',
+    label: 'VoteYes',
+  },
+  {
+    node: 'VOTE_NO',
+    label: 'VoteNo',
   },
 ];
 

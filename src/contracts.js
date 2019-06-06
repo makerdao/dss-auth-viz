@@ -7,7 +7,13 @@ const {
   createEmptyNode,
   createNode,
 } = require('./helper');
-const {mainNodes, colNodes, fabNodes} = require('./contractNodes');
+
+const {
+  mainNodes,
+  colNodes,
+  fabNodes,
+  knownExtraneousAddresses
+} = require('./contractNodes');
 
 // -----------------------------------------------------------------------------
 
@@ -88,6 +94,9 @@ const setNodes = async (graph, addresses, abis, config) => {
     removeAddress(trackAddresses, address);
   }
 
+  for(const extra of knownExtraneousAddresses) {
+    removeAddress(trackAddresses, addresses[extra]);
+  }
   if (Object.keys(trackAddresses).length != 0) {
     console.log('==== WARNING ====')
     console.log('The following addresses exist in dss-deploy\'s');
