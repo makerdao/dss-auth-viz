@@ -97,8 +97,8 @@ module.exports.getMainNodes = (addresses, abis, config) => [
   },
   {
     node: 'pipEth',
-    label: `Pip (ETH) - ${config.tokens.ETH.pip.type}`,
-    abi: config.tokens.ETH.pip.type === 'median' ? abis.Median : abis.DSValue,
+    label: `Pip (ETH) - ${config.tokens.ETH.pipConfig.type}`,
+    abi: config.tokens.ETH.pipConfig.type === 'median' ? abis.Median : abis.DSValue,
     address: addresses.PIP_ETH,
   },
   {
@@ -127,8 +127,8 @@ module.exports.getMainNodes = (addresses, abis, config) => [
   },
   {
     node: 'pipCol1',
-    label: `Pip (Col1) - ${config.tokens.COL1.pip.type}`,
-    abi: config.tokens.COL1.pip.type === 'median' ? abis.Median : abis.DSValue,
+    label: `Pip (Col1) - ${config.tokens.COL1.pipConfig.type}`,
+    abi: config.tokens.COL1.pipConfig.type === 'median' ? abis.Median : abis.DSValue,
     address: addresses.VAL_COL1,
   },
   {

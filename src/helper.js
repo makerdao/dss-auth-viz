@@ -17,6 +17,20 @@ const removeAddress = (addresses, address) => {
   // return addresses;
 }
 
+const createEmptyNode = (label, address, graph) => {
+  graph.setNode(label, {
+    label,
+    contract: {
+      options: {
+        address: address,
+      }
+    },
+    abis: [],
+    eventAbis: [],
+  });
+}
+
 module.exports.web3 = new Web3(new Web3.providers.HttpProvider(url));
 module.exports.capsFLetter = capsFLetter;
 module.exports.removeAddress = removeAddress;
+module.exports.createEmptyNode = createEmptyNode;

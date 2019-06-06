@@ -1,4 +1,6 @@
 // iterates over events and adds / removes edges accordingly
+const { createEmptyNode } = require('./helper');
+
 module.exports.connections = async (events, graph) => {
   events.map(event => {
     if (!event) { return graph; }
@@ -60,7 +62,7 @@ const label = (address, graph) => {
   if (labels.length === 0) {
     // throw new Error(`no nodes found with address ${address}`);
     console.log(`----- no nodes found with address ${address} creating an empty node----- `);
-    createEmptyNode(address, graph);
+    createEmptyNode(address, address, graph);
     return address;
   }
 
@@ -70,18 +72,5 @@ const label = (address, graph) => {
 
   return labels[0];
 };
-
-const createEmptyNode = (address, graph) => {
-  graph.setNode(address, {
-    label: address,
-    contract: {
-      options: {
-        address: address,
-      }
-    },
-    abis: [],
-    eventAbis: [],
-  });
-}
 
 // ------------------------------------------------------------

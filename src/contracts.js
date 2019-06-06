@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('mz/fs');
-const { web3, capsFLetter, removeAddress } = require('./helper');
+const { web3, capsFLetter, removeAddress, createEmptyNode } = require('./helper');
 const {getMainNodes, getFabNodes} = require('./contractNodes');
 
 // -----------------------------------------------------------------------------
@@ -60,8 +60,13 @@ const setNodes = async (graph, addresses, abis, config) => {
   if (Object.keys(trackAddresses).length != 0) {
     console.log('==== WARNING ====')
     console.log('The following addresses exist in dss-deploy\'s');
-    console.log('addresses.json, but are not added to the nodes here.');
+    console.log('addresses.json. Update contractNodes with correct ABIs and label');
+    console.log('Adding them as empty nodes for now.');
     console.log(trackAddresses);
+    for(const label in trackAddresses) {
+      const address = trackAddresses[label];
+      createEmptyNode(`Empty - ${label}`, address, graph);
+    }
   }
 
   return graph;
