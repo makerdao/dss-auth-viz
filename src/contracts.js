@@ -1,7 +1,13 @@
 const path = require('path');
 const fs = require('mz/fs');
-const { web3, capsFLetter, removeAddress, createEmptyNode } = require('./helper');
-const {getMainNodes, getFabNodes} = require('./contractNodes');
+const {
+  web3,
+  capsFLetter,
+  removeAddress,
+  createEmptyNode,
+  createNode,
+} = require('./helper');
+const {getMainNodes, fabNodes} = require('./contractNodes');
 
 // -----------------------------------------------------------------------------
 
@@ -25,35 +31,43 @@ const setNodes = async (graph, addresses, abis, config) => {
   }
   const trackAddresses = Object.assign({}, addresses);
   const mainNodes = getMainNodes(addresses, abis, config);
-  const fabs = getFabNodes;
+  const fabs = fabNodes;
+
+  // ZERO ADDRESS node
+  createEmptyNode('zero', '0x0000000000000000000000000000000000000000', graph);
+  // ETH_FROM / DEPLOYER node
+  createEmptyNode('deployer', addresses.ETH_FROM || process.env.DEPLOYER, graph);
+  if (addresses.hasOwnProperty('ETH_FROM')) {
+    removeAddress(trackAddresses, addresses.ETH_FROM);
+  }
 
   for(const node of mainNodes) {
     // console.log(`adding Node for ${node.node}`);
-    graph.setNode(node.node, {
-      label: node.label,
-      contract: new web3.eth.Contract(node.abi, node.address),
-      abis: node.abi.map(obj => obj.name),
-      eventAbis: node.abi.filter(obj => obj.type === 'event').map(obj => obj.name),
-    });
-    removeAddress(trackAddresses, node.address);
+    const abi = abis[node.abiName] || abis[node.label] || [];
+    const address = addresses[node.node];
+    createNode(node.node, node.label, abi, address, graph);
+    removeAddress(trackAddresses, address);
   }
+
+  // Add Collateral
+  // for( const col of colNodes) {
+  //   graph.setNode(node.node, {
+  //     label: node.label,
+  //     contract: new web3.eth.Contract(node.abi, node.address),
+  //     abis: node.abi.map(obj => obj.name),
+  //     eventAbis: node.abi.filter(obj => obj.type === 'event').map(obj => obj.name),
+  //   });
+  //   removeAddress(trackAddresses, node.address);
+  // }
+
   // Dss-Deploy Fabs
   for(const fab of fabs) {
-    // console.log('adding Node for', fab);
     const address = await graph
-      .node('deploy')
+      .node('MCD_DEPLOY')
       .contract.methods[`${fab}`]()
       .call();
     const abi = abis[capsFLetter(fab)];
-    graph.setNode(fab, {
-      label: capsFLetter(fab),
-      contract: new web3.eth.Contract(
-        abi,
-        address
-      ),
-      abis: abi.map(obj => obj.name),
-      eventAbis: abi.filter(obj => obj.type === 'event').map(obj => obj.name),
-    });
+    createNode(fab, capsFLetter(fab), abi, address, graph);
     removeAddress(trackAddresses, address);
   }
 
