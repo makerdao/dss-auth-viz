@@ -37,7 +37,7 @@ const main = async () => {
 
   if (process.env.PAINT) {
     const name = graph.graph().replace(/\s+/g, '-').toLowerCase();
-    const outPath = `./../svg/graph-${name}.svg`;
+    const outPath = `./../out/graph-${name}.svg`;
     await paint(graph, outPath);
   }
 };
