@@ -1,259 +1,182 @@
-module.exports.getMainNodes = (addresses, abis, config) => [
+module.exports.knownExtraneousAddresses = [
+  'POLL_ID',
+];
+
+module.exports.mainNodes = [
   {
-    node: 'zero',
-    label: '0x address',
-    abi: [],
-    address: '0x0000000000000000000000000000000000000000',
-  },
-  {
-    node: 'root',
-    label: 'deployer',
-    abi: [],
-    address: addresses.ETH_FROM || process.env.DEPLOYER,
-  },
-  {
-    node: 'deploy',
+    node: 'MCD_DEPLOY',
     label: 'DssDeploy',
-    abi: abis.DssDeploy,
-    address: addresses.MCD_DEPLOY,
   },
   {
-    node: 'vat',
+    node: 'MCD_VAT',
     label: 'Vat',
-    abi: abis.Vat,
-    address: addresses.MCD_VAT,
   },
   {
-    node: 'dai',
-    label: 'DAI',
-    abi: abis.Dai,
-    address: addresses.MCD_DAI,
+    node: 'MCD_DAI',
+    label: 'Dai',
   },
   {
-    node: 'daiJoin',
-    label: 'daiJoin',
-    abi: abis.DaiJoin,
-    address: addresses.MCD_JOIN_DAI,
+    node: 'MCD_JOIN_DAI',
+    label: 'DaiJoin',
   },
   {
-    node: 'jug',
+    node: 'MCD_JUG',
     label: 'Jug',
-    abi: abis.Jug,
-    address: addresses.MCD_JUG,
   },
   {
-    node: 'pot',
+    node: 'MCD_POT',
     label: 'Pot',
-    abi: abis.Pot,
-    address: addresses.MCD_POT,
   },
   {
-    node: 'flap',
+    node: 'MCD_FLAP',
     label: 'Flapper',
-    abi: abis.Flapper,
-    address: addresses.MCD_FLAP,
   },
   {
-    node: 'flop',
-    label: 'flop',
-    abi: abis.Flopper,
-    address: addresses.MCD_FLOP,
+    node: 'MCD_FLOP',
+    label: 'Flopper',
   },
   {
-    node: 'vow',
+    node: 'MCD_VOW',
     label: 'Vow',
-    abi: abis.Vow,
-    address: addresses.MCD_VOW,
   },
   {
-    node: 'cat',
+    node: 'MCD_CAT',
     label: 'Cat',
-    abi: abis.Cat,
-    address: addresses.MCD_CAT,
   },
   {
-    node: 'spotEth',
+    node: 'MCD_SPOT',
     label: 'Spotter',
-    abi: abis.Spotter,
-    address: addresses.MCD_SPOT,
   },
   {
-    node: 'gov',
+    node: 'MCD_GOV',
     label: 'MKR',
-    abi: abis.DSToken,
-    address: addresses.MCD_GOV,
+    abiName: 'DSToken',
   },
   {
-    node: 'dspause',
+    node: 'MCD_PAUSE',
     label: 'DSPause',
-    abi: abis.DSPause,
-    address: addresses.MCD_PAUSE,
   },
   {
-    node: 'dspauseproxy',
+    node: 'MCD_PAUSE_PROXY',
     label: 'DSPauseProxy',
-    abi: abis.DSPauseProxy,
-    address: addresses.MCD_PAUSE_PROXY,
   },
   {
-    node: 'pipEth',
-    label: `Pip (ETH) - ${config.tokens.ETH.pip.type}`,
-    abi: config.tokens.ETH.pip.type === 'median' ? abis.Median : abis.DSValue,
-    address: addresses.PIP_ETH,
-  },
-  {
-    node: 'joinEth_A',
-    label: 'ETHJoin_A',
-    abi: abis.ETHJoin,
-    address: addresses.MCD_JOIN_ETH_A
-  },
-  {
-    node: 'joinEth_B',
-    label: 'ETHJoin_B',
-    abi: abis.ETHJoin,
-    address: addresses.MCD_JOIN_ETH_B
-  },
-  {
-    node: 'flipEth_A',
-    label: 'Flipper (ETH-A)',
-    abi: abis.Flipper,
-    address: addresses.MCD_FLIP_ETH_A
-  },
-  {
-    node: 'flipEth_B',
-    label: 'Flipper (ETH-B)',
-    abi: abis.Flipper,
-    address: addresses.MCD_FLIP_ETH_B
-  },
-  {
-    node: 'pipCol1',
-    label: `Pip (Col1) - ${config.tokens.COL1.pip.type}`,
-    abi: config.tokens.COL1.pip.type === 'median' ? abis.Median : abis.DSValue,
-    address: addresses.VAL_COL1,
-  },
-  {
-    node: 'joinCol1_A',
-    label: 'JoinCol1_A',
-    abi: abis.GemJoin,
-    address: addresses.MCD_JOIN_COL1_A,
-  },
-  {
-    node: 'flipCol1_A',
-    label: 'Flipper (COL1-A)',
-    abi: abis.Flipper,
-    address: addresses.MCD_FLIP_COL1_A
-  },
-  {
-    node: 'flipCol1_A',
-    label: 'Flipper (COL1-A)',
-    abi: abis.Flipper,
-    address: addresses.MCD_FLIP_COL1_A
-  },
-  {
-    node: 'multicall',
+    node: 'MULTICALL',
     label: 'Multicall',
-    abi: abis.Multicall,
-    address: addresses.MULTICALL,
   },
   {
-    node: 'faucet',
-    label: 'Faucet',
-    abi: abis.TokenFaucet,
-    address: addresses.FAUCET,
+    node: 'FAUCET',
+    label: 'TokenFaucet',
   },
   {
-    node: 'gov-guard',
+    node: 'MCD_GOV_GUARD',
     label: 'Gov Guard',
-    abi: abis.DSGuard,
-    address: addresses.MCD_GOV_GUARD,
+    abiName: 'DSGuard',
   },
   {
-    node: 'iou',
+    node: 'MCD_IOU',
     label: 'IOU',
-    abi: abis.DSToken,
-    address: addresses.MCD_IOU,
+    abiName: 'DSToken',
   },
   {
-    node: 'dschief',
+    node: 'MCD_ADM',
     label: 'DSChief',
-    abi: abis.DSChief,
-    address: addresses.MCD_ADM,
   },
   {
-    node: 'vote-proxy-factory',
-    label: 'Vote Proxy Factory',
-    abi: abis.VoteProxyFactory,
-    address: addresses.VOTE_PROXY_FACTORY,
+    node: 'VOTE_PROXY_FACTORY',
+    label: 'VoteProxyFactory',
   },
   {
-    node: 'proxy-actions',
-    label: 'Proxy Actions',
-    abi: abis.DssProxyActions,
-    address: addresses.PROXY_ACTIONS,
+    node: 'PROXY_ACTIONS',
+    label: 'DssProxyActions',
   },
   {
-    node: 'cdp-manager',
-    label: 'CDP Manager',
-    abi: abis.DssCdpManager,
-    address: addresses.CDP_MANAGER,
+    node: 'CDP_MANAGER',
+    label: 'DssCdpManager',
   },
   {
-    node: 'get-cdps',
-    label: 'Get CDPs',
-    abi: abis.GetCdps,
-    address: addresses.GET_CDPS,
+    node: 'GET_CDPS',
+    label: 'GetCdps',
   },
   {
-    node: 'proxy-factory',
-    label: 'Proxy Factory',
-    abi: abis.DSProxyFactory,
-    address: addresses.PROXY_FACTORY,
+    node: 'PROXY_FACTORY',
+    label: 'DSProxyFactory',
   },
   {
-    node: 'proxy-registry',
-    label: 'Proxy Registry',
-    abi: abis.ProxyRegistry,
-    address: addresses.PROXY_REGISTRY,
+    node: 'PROXY_REGISTRY',
+    label: 'ProxyRegistry',
   },
   {
-    node: 'eth',
-    label: 'ETH',
-    abi: abis.WETH9_,
-    address: addresses.ETH,
+    node: 'PROXY_PAUSE_ACTIONS',
+    label: 'TestchainPauseProxyActions',
   },
   {
-    node: 'col1',
-    label: 'COL1',
-    abi: abis.Token1,
-    address: addresses.COL1,
-  },
-  {
-    node: 'proxy-pause-actions',
-    label: 'Proxy Pause Actions',
-    abi: abis.TestchainPauseProxyActions,
-    address: addresses.PROXY_PAUSE_ACTIONS,
-  },
-  {
-    node: 'proxy-deployer',
+    node: 'PROXY_DEPLOYER',
     label: 'Proxy Deployer',
-    abi: abis.DSProxy,
-    address: addresses.PROXY_DEPLOYER,
+    abiName: 'DSProxy',
   },
   {
-    node: 'end',
+    node: 'MCD_END',
     label: 'End',
-    abi: abis.End,
-    address: addresses.MCD_END,
   },
   {
-    node: 'gov-actions',
-    label: 'Gov Actions',
-    abi: abis.GovActions,
-    address: addresses.MCD_GOV_ACTIONS,
+    node: 'MCD_GOV_ACTIONS',
+    label: 'GovActions',
+  },
+  {
+    node: 'GOV_POLL_GEN',
+    label: 'GovPollingGenerator',
+  },
+  {
+    node: 'VOTE_YES',
+    label: 'VoteYes',
+  },
+  {
+    node: 'VOTE_NO',
+    label: 'VoteNo',
   },
 ];
 
-module.exports.getFabNodes = [
+module.exports.colNodes = [
+  {
+    col: 'ETH',
+    colAbiName: 'WETH9_',
+    ilks: ['A', 'B', 'C'],
+    join: 'GemJoin'
+  },
+  {
+    col: 'COL1',
+    colAbiName: 'Token1',
+    ilks: ['A'],
+    join: 'GemJoin'
+  },
+  {
+    col: 'COL2',
+    colAbiName: 'Token2',
+    ilks: ['A'],
+    join: 'GemJoin'
+  },
+  {
+    col: 'COL3',
+    colAbiName: 'Token3',
+    ilks: ['A'],
+    join: 'GemJoin2'
+  },
+  {
+    col: 'COL4',
+    colAbiName: 'Token4',
+    ilks: ['A'],
+    join: 'GemJoin'
+  },
+  {
+    col: 'COL5',
+    colAbiName: 'Token5',
+    ilks: ['A'],
+    join: 'GemJoin3'
+  },
+]
+
+module.exports.fabNodes = [
   'vatFab',
   'jugFab',
   'vowFab',

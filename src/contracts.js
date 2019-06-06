@@ -1,7 +1,19 @@
 const path = require('path');
 const fs = require('mz/fs');
-const { web3, capsFLetter, removeAddress } = require('./helper');
-const {getMainNodes, getFabNodes} = require('./contractNodes');
+const {
+  web3,
+  capsFLetter,
+  removeAddress,
+  createEmptyNode,
+  createNode,
+} = require('./helper');
+
+const {
+  mainNodes,
+  colNodes,
+  fabNodes,
+  knownExtraneousAddresses
+} = require('./contractNodes');
 
 // -----------------------------------------------------------------------------
 
@@ -24,44 +36,77 @@ const setNodes = async (graph, addresses, abis, config) => {
     throw new Error('addresses.json ETH_FROM or DEPLOYER address must be defined');
   }
   const trackAddresses = Object.assign({}, addresses);
-  const mainNodes = getMainNodes(addresses, abis, config);
-  const fabs = getFabNodes;
+
+  // ZERO ADDRESS node
+  createEmptyNode('zero', '0x0000000000000000000000000000000000000000', graph);
+  // ETH_FROM / DEPLOYER node
+  createEmptyNode('deployer', addresses.ETH_FROM || process.env.DEPLOYER, graph);
+  if (addresses.hasOwnProperty('ETH_FROM')) {
+    removeAddress(trackAddresses, addresses.ETH_FROM);
+  }
 
   for(const node of mainNodes) {
     // console.log(`adding Node for ${node.node}`);
-    graph.setNode(node.node, {
-      label: node.label,
-      contract: new web3.eth.Contract(node.abi, node.address),
-      abis: node.abi.map(obj => obj.name),
-      eventAbis: node.abi.filter(obj => obj.type === 'event').map(obj => obj.name),
-    });
-    removeAddress(trackAddresses, node.address);
-  }
-  // Dss-Deploy Fabs
-  for(const fab of fabs) {
-    // console.log('adding Node for', fab);
-    const address = await graph
-      .node('deploy')
-      .contract.methods[`${fab}`]()
-      .call();
-    const abi = abis[capsFLetter(fab)];
-    graph.setNode(fab, {
-      label: capsFLetter(fab),
-      contract: new web3.eth.Contract(
-        abi,
-        address
-      ),
-      abis: abi.map(obj => obj.name),
-      eventAbis: abi.filter(obj => obj.type === 'event').map(obj => obj.name),
-    });
+    const abi = abis[node.abiName] || abis[node.label] || [];
+    const address = addresses[node.node];
+    createNode(node.node, node.label, abi, address, graph);
     removeAddress(trackAddresses, address);
   }
 
+  // Add Collateral
+  for( const col of colNodes) {
+    // create collateral node
+    const colAbi = abis[col.colAbiName];
+    const colAddress = addresses[col.col];
+    createNode(col.col, col.col, colAbi, colAddress, graph);
+    removeAddress(trackAddresses, colAddress);
+
+    // create pip
+    const pipType = config.tokens[col.col].pipConfig.type === 'median' ? 'Median' : 'DSValue';
+    const pipAbi = abis[pipType];
+    const pipAddress = addresses[`PIP_${col.col}`];
+    createNode(`PIP_${col.col}`, `PIP_${col.col} - ${pipType}`, pipAbi, pipAddress, graph);
+    removeAddress(trackAddresses, pipAddress);
+
+    // create ilkTypes
+    for(const ilk of col.ilks) {
+      // create Ilk Join
+      const ilkJoinAbi = abis[col.join];
+      const ilkJoinAddress = addresses[`MCD_JOIN_${col.col}_${ilk}`];
+      createNode(`${col.col}Join_${ilk}`, `${col.col}Join_${ilk}`, ilkJoinAbi, ilkJoinAddress, graph);
+      removeAddress(trackAddresses, ilkJoinAddress);
+      // create Ilk Flipper
+      const ilkFlipAbi = abis.Flipper;
+      const ilkFlipAddress = addresses[`MCD_FLIP_${col.col}_${ilk}`];
+      createNode(`Flipper (${col.col}-${ilk})`, `Flipper (${col.col}-${ilk})`, ilkFlipAbi, ilkFlipAddress, graph);
+      removeAddress(trackAddresses, ilkFlipAddress);
+    }
+  }
+
+  // Dss-Deploy Fabs
+  for(const fab of fabNodes) {
+    const address = await graph
+      .node('MCD_DEPLOY')
+      .contract.methods[`${fab}`]()
+      .call();
+    const abi = abis[capsFLetter(fab)];
+    createNode(fab, capsFLetter(fab), abi, address, graph);
+    removeAddress(trackAddresses, address);
+  }
+
+  for(const extra of knownExtraneousAddresses) {
+    removeAddress(trackAddresses, addresses[extra]);
+  }
   if (Object.keys(trackAddresses).length != 0) {
     console.log('==== WARNING ====')
     console.log('The following addresses exist in dss-deploy\'s');
-    console.log('addresses.json, but are not added to the nodes here.');
+    console.log('addresses.json. Update contractNodes with correct ABIs and label');
+    console.log('Adding them as empty nodes for now.');
     console.log(trackAddresses);
+    for(const label in trackAddresses) {
+      const address = trackAddresses[label];
+      createEmptyNode(`Empty - ${label}`, address, graph);
+    }
   }
 
   return graph;
