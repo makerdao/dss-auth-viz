@@ -9,6 +9,9 @@ module.exports.fromGraph = async (graph, sig) => {
       if (!node.eventAbis.includes('LogNote')) return [];
 
       const dsNotes = await fromContract(node.contract, sig, 'LogNote');
+      if (type(sig) === 'deny' && node.label === 'Flipper (COL4-A)') {
+        console.log('deny flipper 4-a', dsNotes);
+      }
       message(dsNotes.length, type(sig), label);
       return dsNotes;
     })

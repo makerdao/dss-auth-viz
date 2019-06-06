@@ -77,7 +77,7 @@ const setNodes = async (graph, addresses, abis, config) => {
       // create Ilk Flipper
       const ilkFlipAbi = abis.Flipper;
       const ilkFlipAddress = addresses[`MCD_FLIP_${col.col}_${ilk}`];
-      createNode(`Flipper (${col.col}-${ilk})`, `Flipper (${col.col}-${ilk})`, ilkFlipAbi, ilkFlipAddress, graph);
+      createNode(`Flipper_${col.col}-${ilk}`, `Flipper_${col.col}-${ilk}`, ilkFlipAbi, ilkFlipAddress, graph);
       removeAddress(trackAddresses, ilkFlipAddress);
     }
   }

@@ -6,7 +6,7 @@ const fs = require('mz/fs');
 
 const { Module, render } = require('viz.js/full.render.js');
 
-module.exports.paint = async (graph, _outPath = './../svg/graph.svg') => {
+module.exports.paint = async (graph, _outPath = './../out/graph.svg') => {
   try {
     // style
     graph.nodes().forEach(_node => {

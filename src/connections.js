@@ -24,7 +24,7 @@ module.exports.connections = async (events, graph) => {
       }
 
       case 'deny': {
-        graph.removeEdge(src, dst, 'rely');
+        const result = graph.removeEdge(src, dst, 'rely');
         break;
       }
 

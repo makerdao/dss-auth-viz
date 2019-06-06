@@ -22,7 +22,8 @@ module.exports.fromGraph = async (graph, eventName) => {
 fromContract = async (contract, eventName) => {
   const out = {
     type: eventName,
-    src: contract.options.address
+    src: contract.options.address,
+    blockNumber: -1
   };
 
   const address = await contract.methods[eventName]().call();
