@@ -7,7 +7,7 @@ const {
   createEmptyNode,
   createNode,
 } = require('./helper');
-const {getMainNodes, fabNodes} = require('./contractNodes');
+const {mainNodes, colNodes, fabNodes} = require('./contractNodes');
 
 // -----------------------------------------------------------------------------
 
@@ -30,8 +30,6 @@ const setNodes = async (graph, addresses, abis, config) => {
     throw new Error('addresses.json ETH_FROM or DEPLOYER address must be defined');
   }
   const trackAddresses = Object.assign({}, addresses);
-  const mainNodes = getMainNodes(addresses, abis, config);
-  const fabs = fabNodes;
 
   // ZERO ADDRESS node
   createEmptyNode('zero', '0x0000000000000000000000000000000000000000', graph);
@@ -50,18 +48,37 @@ const setNodes = async (graph, addresses, abis, config) => {
   }
 
   // Add Collateral
-  // for( const col of colNodes) {
-  //   graph.setNode(node.node, {
-  //     label: node.label,
-  //     contract: new web3.eth.Contract(node.abi, node.address),
-  //     abis: node.abi.map(obj => obj.name),
-  //     eventAbis: node.abi.filter(obj => obj.type === 'event').map(obj => obj.name),
-  //   });
-  //   removeAddress(trackAddresses, node.address);
-  // }
+  for( const col of colNodes) {
+    // create collateral node
+    const colAbi = abis[col.colAbiName];
+    const colAddress = addresses[col.col];
+    createNode(col.col, col.col, colAbi, colAddress, graph);
+    removeAddress(trackAddresses, colAddress);
+
+    // create pip
+    const pipType = config.tokens[col.col].pipConfig.type === 'median' ? 'Median' : 'DSValue';
+    const pipAbi = abis[pipType];
+    const pipAddress = addresses[`PIP_${col.col}`];
+    createNode(`PIP_${col.col}`, `PIP_${col.col} - ${pipType}`, pipAbi, pipAddress, graph);
+    removeAddress(trackAddresses, pipAddress);
+
+    // create ilkTypes
+    for(const ilk of col.ilks) {
+      // create Ilk Join
+      const ilkJoinAbi = abis[col.join];
+      const ilkJoinAddress = addresses[`MCD_JOIN_${col.col}_${ilk}`];
+      createNode(`${col.col}Join_${ilk}`, `${col.col}Join_${ilk}`, ilkJoinAbi, ilkJoinAddress, graph);
+      removeAddress(trackAddresses, ilkJoinAddress);
+      // create Ilk Flipper
+      const ilkFlipAbi = abis.Flipper;
+      const ilkFlipAddress = addresses[`MCD_FLIP_${col.col}_${ilk}`];
+      createNode(`Flipper (${col.col}-${ilk})`, `Flipper (${col.col}-${ilk})`, ilkFlipAbi, ilkFlipAddress, graph);
+      removeAddress(trackAddresses, ilkFlipAddress);
+    }
+  }
 
   // Dss-Deploy Fabs
-  for(const fab of fabs) {
+  for(const fab of fabNodes) {
     const address = await graph
       .node('MCD_DEPLOY')
       .contract.methods[`${fab}`]()
