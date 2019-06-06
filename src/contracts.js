@@ -95,6 +95,8 @@ const setNodes = async (graph, addresses, abis, config) => {
   }
 
   for(const extra of knownExtraneousAddresses) {
+    // these are keys from addresses.json that are
+    // 1) not addresses
     removeAddress(trackAddresses, addresses[extra]);
   }
   if (Object.keys(trackAddresses).length != 0) {
