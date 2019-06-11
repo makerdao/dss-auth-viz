@@ -17,11 +17,6 @@ module.exports.connections = async (events, graph) => {
     // console.log(`event at blockNumber: ${event.blockNumber}, ${event.src}, ${event.type}, ${event.dst}`);
     // console.log(`${event.type}'ing ${src} to ${dst}`);
 
-    if (src === 'MCD_DEPLOY' && dst === 'zero') {
-      dst = 'zero-deployer'
-      return;
-    }
-
     switch (event.type) {
       case 'rely': {
         graph.setEdge(src, dst, {label: 'rely'}, 'rely');
