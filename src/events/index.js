@@ -14,7 +14,7 @@ module.exports.events = async graph => {
   // events = events.concat(await logSetOwner(graph));
   // events = events.concat(await logSetAuthority(graph));
   events = events.concat(await logPermit(graph));
-  // events = events.concat(await logForbid(graph));
+  events = events.concat(await logForbid(graph));
 
   return sort(events);
 };
@@ -52,8 +52,8 @@ const logPermit = async graph => {
   return await dsGuard.fromGraph(graph, 'LogPermit');
 };
 
-// const logForbid = async graph => {
-//   return await dsGuard.fromGraph(graph, 'LogForbid');
-// };
+const logForbid = async graph => {
+  return await dsGuard.fromGraph(graph, 'LogForbid');
+};
 
 // ------------------------------------------------------------
