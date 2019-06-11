@@ -25,12 +25,15 @@ const main = async () => {
   }
   const config = await getConfig(`${dir}`);
 
-  let graph = new dagre.graphlib.Graph({multigraph: true });
+  let graph = new dagre.graphlib.Graph({ multigraph: true });
   const id = config.commit || Date.now();
   graph.setGraph(`${config.description} at ${id}`);
 
   graph = await contracts(graph, dir, config);
   graph = await connections(await events(graph), graph);
+  if (!process.env.VERBOSE) {
+    cleanGraph(graph);
+  }
 
   console.log(`--- Graph for: ${config.description}} ---`);
   console.log(dot.write(graph));
@@ -52,3 +55,31 @@ try {
 }
 
 // ------------------------------------------------------------
+
+const cleanGraph = graph => {
+  let isoLabel = 'Isolated Contracts:\r\n'
+  graph.setNode('isolated', {
+    label: isoLabel,
+  });
+  let counter = 0;
+  graph.nodes().map(label => {
+    if (label == 'isolated') return;
+    const edges = graph.nodeEdges(label);
+    if (edges.length === 0) {
+      counter++;
+      isoLabel = `${isoLabel} ${label},`;
+      if (counter == 5) {
+        isoLabel += '\r\n';
+        counter = 1;
+      }
+      graph.setNode('isolated', {
+        label: isoLabel,
+      })
+      graph.removeNode(label);
+    }
+  });
+  // isolated = graph.node('isolated');
+  graph.setNode('isolated', {
+    label: isoLabel.substr(0, isoLabel.length - 1),
+  })
+}
