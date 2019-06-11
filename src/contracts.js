@@ -124,8 +124,7 @@ const addresses = async dir => {
 
 const abis = async dir => {
   const out = path.join(dir, 'out', 'abi');
-  const deployOut = path.join(dir, 'contracts', 'dss-deploy', 'out');
-  return Object.assign(getAbis(out), getAbis(deployOut));
+  return getAbis(out);
 }
 
 const getAbis = async dir => {
