@@ -24,7 +24,7 @@ module.exports.connections = async (events, graph) => {
       }
 
       case 'deny': {
-        const result = graph.removeEdge(src, dst, 'rely');
+        graph.removeEdge(src, dst, 'rely');
         break;
       }
 
@@ -35,6 +35,16 @@ module.exports.connections = async (events, graph) => {
 
       case 'authority': {
         graph.setEdge(src, dst, {label: 'authority'}, 'authority');
+        break;
+      }
+
+      case 'LogPermit': {
+        graph.setEdge(src, dst, {label: `permit-${event.sig}`}, `permit-${event.sig}`);
+        break;
+      }
+
+      case 'LogForbid': {
+        graph.removeEdge(src, dst, `permit-${event.sig}`);
         break;
       }
     }
