@@ -17,6 +17,11 @@ module.exports.connections = async (events, graph) => {
     // console.log(`event at blockNumber: ${event.blockNumber}, ${event.src}, ${event.type}, ${event.dst}`);
     // console.log(`${event.type}'ing ${src} to ${dst}`);
 
+    if (src === 'MCD_DEPLOY' && dst === 'zero') {
+      dst = 'zero-deployer'
+      return;
+    }
+
     switch (event.type) {
       case 'rely': {
         graph.setEdge(src, dst, {label: 'rely'}, 'rely');
@@ -39,12 +44,13 @@ module.exports.connections = async (events, graph) => {
       }
 
       case 'LogPermit': {
-        graph.setEdge(src, dst, {label: `permit-${event.sig}`}, `permit-${event.sig}`);
+        // note src and dst are reversed here as src is the authorized contract
+        graph.setEdge(dst, src, {label: `permit-${event.sig}`}, `permit-${event.sig}`);
         break;
       }
 
       case 'LogForbid': {
-        graph.removeEdge(src, dst, `permit-${event.sig}`);
+        graph.removeEdge(dst, src, `permit-${event.sig}`);
         break;
       }
     }
