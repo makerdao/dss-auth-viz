@@ -25,7 +25,7 @@ const main = async () => {
   }
   const config = await getConfig(`${dir}`);
 
-  let graph = new dagre.graphlib.Graph({ multigraph: true, compound: true });
+  let graph = new dagre.graphlib.Graph({ multigraph: true });
   const id = config.commit || Date.now();
   graph.setGraph(`${config.description} at ${id}`);
 
