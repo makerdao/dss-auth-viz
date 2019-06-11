@@ -9,10 +9,10 @@ const { signatures } = require('./shared');
 module.exports.events = async graph => {
   let events = [];
 
-  // events = events.concat(await rely(graph));
-  // events = events.concat(await deny(graph));
-  // events = events.concat(await logSetOwner(graph));
-  // events = events.concat(await logSetAuthority(graph));
+  events = events.concat(await rely(graph));
+  events = events.concat(await deny(graph));
+  events = events.concat(await logSetOwner(graph));
+  events = events.concat(await logSetAuthority(graph));
   events = events.concat(await logPermit(graph));
   events = events.concat(await logForbid(graph));
 
