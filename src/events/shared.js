@@ -4,7 +4,9 @@ const { web3 } = require('../helper');
 
 module.exports.signatures = {
   rely: web3.eth.abi.encodeFunctionSignature('rely(address)'),
-  deny: web3.eth.abi.encodeFunctionSignature('deny(address)')
+  deny: web3.eth.abi.encodeFunctionSignature('deny(address)'),
+  mint: web3.eth.abi.encodeFunctionSignature('mint(address,uint256)'),
+  burn: web3.eth.abi.encodeFunctionSignature('burn(address,uint256)'),
 };
 
 // ------------------------------------------------------------
@@ -27,4 +29,8 @@ module.exports.getRawLogs = async (contract, filter, eventName) => {
     return [];
   });
 };
+
 // ------------------------------------------------------------
+
+module.exports.addressFromBytes32 = bytes32 => bytes32.substr(0, bytes32.length - 24);
+module.exports.sigFromBytes32 = bytes32 => bytes32.substr(0, bytes32.length - 56);
