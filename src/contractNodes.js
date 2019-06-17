@@ -135,6 +135,10 @@ module.exports.mainNodes = [
     node: 'VOTE_NO',
     label: 'VoteNo',
   },
+  {
+    node: 'MCD_ESM',
+    label: 'ESM',
+  },
 ];
 
 module.exports.colNodes = [
