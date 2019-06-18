@@ -61,7 +61,7 @@ const setNodes = async (graph, addresses, abis, config) => {
     removeAddress(trackAddresses, colAddress);
 
     // create pip
-    const pipType = config.tokens[col.col].pipConfig.type === 'median' ? 'Median' : 'DSValue';
+    const pipType = config.tokens[col.col].pip.type === 'median' ? 'Median' : 'DSValue';
     const pipAbi = abis[pipType];
     const pipAddress = addresses[`PIP_${col.col}`];
     createNode(`PIP_${col.col}`, `PIP_${col.col} - ${pipType}`, pipAbi, pipAddress, graph);
