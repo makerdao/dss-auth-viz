@@ -62,12 +62,12 @@ const setNodes = async (graph, addresses, abis, config) => {
 
     // create pip
     let pipType;
-    if (config.tokens[col.col].pip.hasOwnProperty('type') && config.tokens[col.col].pip.type !== 'median') {
+    if (config.tokens[col.col].pipDeploy.hasOwnProperty('type') && config.tokens[col.col].pipDeploy.type !== 'median') {
       pipType = 'DSValue';
     } else {
       pipType = 'Median';
     }
-    // const pipType = config.tokens[col.col].pip.type === 'median' ? 'Median' : 'DSValue';
+
     const pipAbi = abis[pipType];
     const pipAddress = addresses[`PIP_${col.col}`];
     createNode(`PIP_${col.col}`, `PIP_${col.col} - ${pipType}`, pipAbi, pipAddress, graph);

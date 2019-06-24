@@ -34,7 +34,7 @@ const main = async () => {
     cleanGraph(graph);
   }
 
-  console.log(`--- Graph for: ${config.description}} ---`);
+  console.log(`--- Graph for: ${config.description} ---`);
   console.log(dot.write(graph));
 
   if (process.env.PAINT) {
