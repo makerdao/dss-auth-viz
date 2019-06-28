@@ -66,7 +66,7 @@ module.exports.mainNodes = [
   },
   {
     node: 'FAUCET',
-    label: 'TokenFaucet',
+    label: 'RestrictedTokenFaucet',
   },
   {
     node: 'MCD_GOV_GUARD',
