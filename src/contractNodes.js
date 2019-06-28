@@ -74,6 +74,11 @@ module.exports.mainNodes = [
     abiName: 'DSGuard',
   },
   {
+    node: 'MCD_GOV_GUARD2',
+    label: 'Gov Guard 2',
+    abiName: 'DSGuard',
+  },
+  {
     node: 'MCD_IOU',
     label: 'IOU',
     abiName: 'DSToken',
