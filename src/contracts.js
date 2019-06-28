@@ -55,14 +55,22 @@ const setNodes = async (graph, addresses, abis, config) => {
   // Add Collateral
   for( const col of colNodes) {
     // create collateral node
-    const colAbi = abis[col.colAbiName];
+    let colAbi = [];
+    if (abis.hasOwnProperty(col.colAbiName)) {
+      colAbi = abis[col.colAbiName];
+    } else {
+      console.log('WARNING --- MISSING ABI', col);
+    }
     const colAddress = addresses[col.col];
     createNode(col.col, col.col, colAbi, colAddress, graph);
     removeAddress(trackAddresses, colAddress);
 
     // create pip
     let pipType;
-    if (config.tokens[col.col].pipDeploy.hasOwnProperty('type') && config.tokens[col.col].pipDeploy.type !== 'median') {
+    if (
+      config.tokens[col.col].hasOwnProperty('pipDeploy') &&
+      config.tokens[col.col].pipDeploy.hasOwnProperty('type') &&
+      config.tokens[col.col].pipDeploy.type !== 'median') {
       pipType = 'DSValue';
     } else {
       pipType = 'Median';

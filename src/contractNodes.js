@@ -149,34 +149,40 @@ module.exports.colNodes = [
     join: 'GemJoin'
   },
   {
-    col: 'COL1',
-    colAbiName: 'Token1',
+    col: 'REP',
+    colAbiName: 'REP',
     ilks: ['A'],
     join: 'GemJoin'
   },
   {
-    col: 'COL2',
-    colAbiName: 'Token2',
+    col: 'ZRX',
+    colAbiName: 'ZRX',
     ilks: ['A'],
     join: 'GemJoin'
   },
   {
-    col: 'COL3',
-    colAbiName: 'Token3',
+    col: 'OMG',
+    colAbiName: 'OMG',
     ilks: ['A'],
     join: 'GemJoin2'
   },
   {
-    col: 'COL4',
-    colAbiName: 'Token4',
+    col: 'BAT',
+    colAbiName: 'BAT',
     ilks: ['A'],
     join: 'GemJoin'
   },
   {
-    col: 'COL5',
-    colAbiName: 'Token5',
+    col: 'DGD',
+    colAbiName: 'DGD',
     ilks: ['A'],
     join: 'GemJoin3'
+  },
+  {
+    col: 'GNT',
+    colAbiName: 'GNT',
+    ilks: ['A'],
+    join: 'GemJoin4'
   },
 ]
 
