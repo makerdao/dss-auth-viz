@@ -1,0 +1,1 @@
+[{"constant":false,"inputs":[{"internalType":"contract DssCdpManager","name":"manager","type":"address"},{"internalType":"uint256","name":"cdp","type":"uint256"},{"internalType":"address","name":"dst","type":"address"}],"name":"doGive","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"}]
