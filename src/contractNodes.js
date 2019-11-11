@@ -96,6 +96,14 @@ module.exports.mainNodes = [
     label: 'DssProxyActions',
   },
   {
+    node: 'PROXY_ACTIONS_END',
+    label: 'DssProxyActionsEnd',
+  },
+  {
+    node: 'PROXY_ACTIONS_DSR',
+    label: 'DssProxyActionsDsr',
+  },
+  {
     node: 'CDP_MANAGER',
     label: 'DssCdpManager',
   },
@@ -144,6 +152,18 @@ module.exports.mainNodes = [
     node: 'MCD_ESM',
     label: 'ESM',
   },
+  {
+    node: 'SAI_TUB',
+    label: 'SaiTub',
+  },
+  {
+    node: 'MIGRATION',
+    label: 'ScdMcdMigration',
+  },
+  {
+    node: 'MIGRATION_PROXY_ACTIONS',
+    label: 'MigrationProxyActions',
+  },
 ];
 
 module.exports.colNodes = [
@@ -153,24 +173,24 @@ module.exports.colNodes = [
     ilks: ['A', 'B', 'C'],
     join: 'GemJoin'
   },
-  {
-    col: 'REP',
-    colAbiName: 'REP',
-    ilks: ['A'],
-    join: 'GemJoin'
-  },
-  {
-    col: 'ZRX',
-    colAbiName: 'ZRX',
-    ilks: ['A'],
-    join: 'GemJoin'
-  },
-  {
-    col: 'OMG',
-    colAbiName: 'OMG',
-    ilks: ['A'],
-    join: 'GemJoin2'
-  },
+  // {
+  //   col: 'REP',
+  //   colAbiName: 'REP',
+  //   ilks: ['A'],
+  //   join: 'GemJoin'
+  // },
+  // {
+  //   col: 'ZRX',
+  //   colAbiName: 'ZRX',
+  //   ilks: ['A'],
+  //   join: 'GemJoin'
+  // },
+  // {
+  //   col: 'OMG',
+  //   colAbiName: 'OMG',
+  //   ilks: ['A'],
+  //   join: 'GemJoin2'
+  // },
   {
     col: 'BAT',
     colAbiName: 'BAT',
@@ -178,17 +198,23 @@ module.exports.colNodes = [
     join: 'GemJoin'
   },
   {
-    col: 'DGD',
-    colAbiName: 'DGD',
+    col: 'SAI',
+    colAbiName: 'DSToken',
     ilks: ['A'],
-    join: 'GemJoin3'
+    join: 'AuthGemJoin'
   },
-  {
-    col: 'GNT',
-    colAbiName: 'GNT',
-    ilks: ['A'],
-    join: 'GemJoin4'
-  },
+  // {
+  //   col: 'DGD',
+  //   colAbiName: 'DGD',
+  //   ilks: ['A'],
+  //   join: 'GemJoin3'
+  // },
+  // {
+  //   col: 'GNT',
+  //   colAbiName: 'GNT',
+  //   ilks: ['A'],
+  //   join: 'GemJoin4'
+  // },
 ]
 
 module.exports.fabNodes = [

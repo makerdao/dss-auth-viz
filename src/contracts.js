@@ -39,9 +39,9 @@ const setNodes = async (graph, addresses, abis, config) => {
   // ZERO ADDRESS node
   createEmptyNode('zero', '0x0000000000000000000000000000000000000000', graph);
   // ETH_FROM / DEPLOYER node
-  createEmptyNode('deployer', addresses.ETH_FROM || process.env.DEPLOYER, graph);
-  if (addresses.hasOwnProperty('ETH_FROM')) {
-    removeAddress(trackAddresses, addresses.ETH_FROM);
+  createEmptyNode('deployer', addresses.DEPLOYER || process.env.DEPLOYER, graph);
+  if (addresses.hasOwnProperty('DEPLOYER')) {
+    removeAddress(trackAddresses, addresses.DEPLOYER);
   }
 
   for(const node of mainNodes) {
@@ -67,7 +67,10 @@ const setNodes = async (graph, addresses, abis, config) => {
 
     // create pip
     let pipType;
+    // console.log('tokens', config.tokens);
+    // console.log('col.col', col.col);
     if (
+      config.tokens.hasOwnProperty(col.col) &&
       config.tokens[col.col].hasOwnProperty('pipDeploy') &&
       config.tokens[col.col].pipDeploy.hasOwnProperty('type') &&
       config.tokens[col.col].pipDeploy.type !== 'median') {
@@ -84,13 +87,19 @@ const setNodes = async (graph, addresses, abis, config) => {
     // create ilkTypes
     for(const ilk of col.ilks) {
       // create Ilk Join
+      let ilkJoinName = `MCD_JOIN_${col.col}_${ilk}`
+      let ilkFlipName = `MCD_FLIP_${col.col}_${ilk}`
+      if (col.col === "SAI") {
+        ilkJoinName = `MCD_JOIN_${col.col}`
+        ilkFlipName = `MCD_FLIP_${col.col}`
+      }
       const ilkJoinAbi = abis[col.join];
-      const ilkJoinAddress = addresses[`MCD_JOIN_${col.col}_${ilk}`];
+      const ilkJoinAddress = addresses[ilkJoinName];
       createNode(`${col.col}Join_${ilk}`, `${col.col}Join_${ilk}`, ilkJoinAbi, ilkJoinAddress, graph);
       removeAddress(trackAddresses, ilkJoinAddress);
       // create Ilk Flipper
       const ilkFlipAbi = abis.Flipper;
-      const ilkFlipAddress = addresses[`MCD_FLIP_${col.col}_${ilk}`];
+      const ilkFlipAddress = addresses[ilkFlipName];
       createNode(`Flipper_${col.col}-${ilk}`, `Flipper_${col.col}-${ilk}`, ilkFlipAbi, ilkFlipAddress, graph);
       removeAddress(trackAddresses, ilkFlipAddress);
     }

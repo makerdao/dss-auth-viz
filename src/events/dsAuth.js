@@ -25,6 +25,10 @@ fromContract = async (contract, eventName) => {
     blockNumber: -1
   };
 
+  if (contract.methods.hasOwnProperty(eventName)) {
+    console.log(eventName)
+    // console.log(contract)
+  }
   const address = await contract.methods[eventName]().call();
   out.dst = address;
 

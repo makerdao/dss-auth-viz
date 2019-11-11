@@ -30,18 +30,21 @@ const main = async () => {
 
   graph = await contracts(graph, dir, config);
   graph = await connections(await events(graph), graph);
+  console.log('starting');
   if (!process.env.VERBOSE) {
     cleanGraph(graph);
   }
 
-  console.log(`--- Graph for: ${config.description} ---`);
-  console.log(dot.write(graph));
+  // console.log(`--- Graph for: ${config.description} ---`);
+  // console.log(dot.write(graph));
 
   if (process.env.PAINT) {
+    console.log('PAINT:', process.env.PAINT, 'name', name);
     const name = graph.graph().replace(/\s+/g, '-').toLowerCase();
     const outPath = `./../out/graph-${name}.svg`;
     await paint(graph, outPath);
   }
+  console.log('PAINT1:', process.env.PAINT, 'name', name);
 };
 
 // ------------------------------------------------------------
