@@ -168,36 +168,36 @@ module.exports.colNodes = [
     ilks: ['A'],
     join: 'AuthGemJoin'
   },
-  {
-    col: 'REP',
-    colAbiName: 'REP',
-    ilks: ['A'],
-    join: 'GemJoin'
-  },
-  {
-    col: 'ZRX',
-    colAbiName: 'ZRX',
-    ilks: ['A'],
-    join: 'GemJoin'
-  },
-  {
-    col: 'OMG',
-    colAbiName: 'OMG',
-    ilks: ['A'],
-    join: 'GemJoin2'
-  },
-  {
-    col: 'DGD',
-    colAbiName: 'DGD',
-    ilks: ['A'],
-    join: 'GemJoin3'
-  },
-  {
-    col: 'GNT',
-    colAbiName: 'GNT',
-    ilks: ['A'],
-    join: 'GemJoin4'
-  },
+  // {
+  //   col: 'REP',
+  //   colAbiName: 'REP',
+  //   ilks: ['A'],
+  //   join: 'GemJoin'
+  // },
+  // {
+  //   col: 'ZRX',
+  //   colAbiName: 'ZRX',
+  //   ilks: ['A'],
+  //   join: 'GemJoin'
+  // },
+  // {
+  //   col: 'OMG',
+  //   colAbiName: 'OMG',
+  //   ilks: ['A'],
+  //   join: 'GemJoin2'
+  // },
+  // {
+  //   col: 'DGD',
+  //   colAbiName: 'DGD',
+  //   ilks: ['A'],
+  //   join: 'GemJoin3'
+  // },
+  // {
+  //   col: 'GNT',
+  //   colAbiName: 'GNT',
+  //   ilks: ['A'],
+  //   join: 'GemJoin4'
+  // },
 ]
 
 module.exports.fabNodes = [
