@@ -60,7 +60,7 @@ module.exports.connections = async (events, graph) => {
 const label = (address, graph) => {
   const labels = graph.nodes().filter(label => {
     if (!graph.node(label).contract.options.address){
-      console.log('label', label, graph.node(label));
+      // console.log('label', label, graph.node(label));
       return false;
     }
     if (!address) { address = 'null Address'; return false; }
@@ -78,7 +78,7 @@ const label = (address, graph) => {
   }
 
   if (labels.length > 1) {
-    throw new Error(`more than one node in the graph with address ${address}`);
+    console.log(`----- more than one node in the graph with address ${address}`);
   }
 
   return labels[0];

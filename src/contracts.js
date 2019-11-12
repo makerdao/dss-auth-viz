@@ -47,8 +47,12 @@ const setNodes = async (graph, addresses, abis, config) => {
   for(const node of mainNodes) {
     // console.log(`adding Node for ${node.node}`);
     const abi = abis[node.abiName] || abis[node.label] || [];
-    const address = addresses[node.node];
-    createNode(node.node, node.label, abi, address, graph);
+    let address = addresses[node.node];
+    if (address == "") {
+      console.log(`NO ADDRESS FOR ${node.node}`);
+    } else {
+      createNode(node.node, node.label, abi, address, graph);
+    }
     removeAddress(trackAddresses, address);
   }
 

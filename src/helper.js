@@ -24,8 +24,9 @@ module.exports.createEmptyNode = (label, address, graph) => {
     label,
     contract: {
       options: {
-        address: address,
-      }
+        address,
+      },
+      address,
     },
     abis: [],
     eventAbis: [],

@@ -69,13 +69,8 @@ module.exports.mainNodes = [
     label: 'RestrictedTokenFaucet',
   },
   {
-    node: 'MCD_GOV_GUARD',
+    node: 'GOV_GUARD',
     label: 'Gov Guard',
-    abiName: 'DSGuard',
-  },
-  {
-    node: 'MCD_GOV_GUARD2',
-    label: 'Gov Guard 2',
     abiName: 'DSGuard',
   },
   {
@@ -137,18 +132,6 @@ module.exports.mainNodes = [
     label: 'GovActions',
   },
   {
-    node: 'GOV_POLL_GEN',
-    label: 'GovPollingGenerator',
-  },
-  {
-    node: 'VOTE_YES',
-    label: 'VoteYes',
-  },
-  {
-    node: 'VOTE_NO',
-    label: 'VoteNo',
-  },
-  {
     node: 'MCD_ESM',
     label: 'ESM',
   },
@@ -173,24 +156,6 @@ module.exports.colNodes = [
     ilks: ['A', 'B', 'C'],
     join: 'GemJoin'
   },
-  // {
-  //   col: 'REP',
-  //   colAbiName: 'REP',
-  //   ilks: ['A'],
-  //   join: 'GemJoin'
-  // },
-  // {
-  //   col: 'ZRX',
-  //   colAbiName: 'ZRX',
-  //   ilks: ['A'],
-  //   join: 'GemJoin'
-  // },
-  // {
-  //   col: 'OMG',
-  //   colAbiName: 'OMG',
-  //   ilks: ['A'],
-  //   join: 'GemJoin2'
-  // },
   {
     col: 'BAT',
     colAbiName: 'BAT',
@@ -203,18 +168,36 @@ module.exports.colNodes = [
     ilks: ['A'],
     join: 'AuthGemJoin'
   },
-  // {
-  //   col: 'DGD',
-  //   colAbiName: 'DGD',
-  //   ilks: ['A'],
-  //   join: 'GemJoin3'
-  // },
-  // {
-  //   col: 'GNT',
-  //   colAbiName: 'GNT',
-  //   ilks: ['A'],
-  //   join: 'GemJoin4'
-  // },
+  {
+    col: 'REP',
+    colAbiName: 'REP',
+    ilks: ['A'],
+    join: 'GemJoin'
+  },
+  {
+    col: 'ZRX',
+    colAbiName: 'ZRX',
+    ilks: ['A'],
+    join: 'GemJoin'
+  },
+  {
+    col: 'OMG',
+    colAbiName: 'OMG',
+    ilks: ['A'],
+    join: 'GemJoin2'
+  },
+  {
+    col: 'DGD',
+    colAbiName: 'DGD',
+    ilks: ['A'],
+    join: 'GemJoin3'
+  },
+  {
+    col: 'GNT',
+    colAbiName: 'GNT',
+    ilks: ['A'],
+    join: 'GemJoin4'
+  },
 ]
 
 module.exports.fabNodes = [
