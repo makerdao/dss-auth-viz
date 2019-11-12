@@ -153,7 +153,7 @@ module.exports.colNodes = [
   {
     col: 'ETH',
     colAbiName: 'WETH9_',
-    ilks: ['A', 'B', 'C'],
+    ilks: ['A'],
     join: 'GemJoin'
   },
   {
