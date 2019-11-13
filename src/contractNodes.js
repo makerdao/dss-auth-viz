@@ -157,6 +157,10 @@ module.exports.mainNodes = [
     node: 'MIGRATION_PROXY_ACTIONS',
     label: 'MigrationProxyActions',
   },
+  {
+    node: 'MKR_MULTISIG',
+    label: 'MkrMultisig',
+  },
 ];
 
 module.exports.colNodes = [
