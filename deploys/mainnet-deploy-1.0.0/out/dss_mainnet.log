@@ -1,0 +1,2842 @@
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ dappBuild osm
++ [[ -n yes ]]
++ return
++ dappBuild testchain-medians
++ [[ -n yes ]]
++ return
+++ jq -r '.tokens | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ tokens='ETH
+BAT'
++ for token in $tokens
+++ jq -r '.tokens.ETH | .pip | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ pipAddr=0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763
++ [[ 0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763 == '' ]]
++ eval 'export PIP_ETH=0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763'
+++ export PIP_ETH=0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763
+++ PIP_ETH=0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763
++ copyAbis osm
++ local lib
++ lib=osm
++ mkdir -p /home/nanexcool/makerdao/dss-deploy-scripts/out/abi
++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/osm/out -name '*.abi' '!' -name '*Test.abi' '!' -name '*Like.abi' '!' -name '*DSNote.abi' '!' -name '*FakeUser.abi' '!' -name '*Hevm.abi' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/abi ';'
++ copyAbis testchain-medians
++ local lib
++ lib=testchain-medians
++ mkdir -p /home/nanexcool/makerdao/dss-deploy-scripts/out/abi
++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/testchain-medians/out -name '*.abi' '!' -name '*Test.abi' '!' -name '*Like.abi' '!' -name '*DSNote.abi' '!' -name '*FakeUser.abi' '!' -name '*Hevm.abi' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/abi ';'
++ eval 'export VAL_ETH=$PIP_ETH'
+++ export VAL_ETH=0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763
+++ VAL_ETH=0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763
++ for token in $tokens
+++ jq -r '.tokens.BAT | .pip | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ pipAddr=0xb4eb54af9cc7882df0121d26c5b97e802915abe6
++ [[ 0xb4eb54af9cc7882df0121d26c5b97e802915abe6 == '' ]]
++ eval 'export PIP_BAT=0xb4eb54af9cc7882df0121d26c5b97e802915abe6'
+++ export PIP_BAT=0xb4eb54af9cc7882df0121d26c5b97e802915abe6
+++ PIP_BAT=0xb4eb54af9cc7882df0121d26c5b97e802915abe6
++ copyAbis osm
++ local lib
++ lib=osm
++ mkdir -p /home/nanexcool/makerdao/dss-deploy-scripts/out/abi
++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/osm/out -name '*.abi' '!' -name '*Test.abi' '!' -name '*Like.abi' '!' -name '*DSNote.abi' '!' -name '*FakeUser.abi' '!' -name '*Hevm.abi' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/abi ';'
++ copyAbis testchain-medians
++ local lib
++ lib=testchain-medians
++ mkdir -p /home/nanexcool/makerdao/dss-deploy-scripts/out/abi
++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/testchain-medians/out -name '*.abi' '!' -name '*Test.abi' '!' -name '*Like.abi' '!' -name '*DSNote.abi' '!' -name '*FakeUser.abi' '!' -name '*Hevm.abi' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/abi ';'
++ eval 'export VAL_BAT=$PIP_BAT'
+++ export VAL_BAT=0xb4eb54af9cc7882df0121d26c5b97e802915abe6
+++ VAL_BAT=0xb4eb54af9cc7882df0121d26c5b97e802915abe6
++ dappBuild multicall
++ [[ -n yes ]]
++ return
+++ dappCreate multicall Multicall
+++ set -e
+++ local lib
+++ lib=multicall
+++ local class
+++ class=Multicall
+++ DAPP_OUT=/nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/multicall/out
+++ dapp create Multicall
+++ seth send --create /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/multicall/out/Multicall.bin 'Multicall()'
+seth-send: Published transaction with 2267 bytes of calldata.
+seth-send: 0x496bb1fe16f0433e3b7b24178edfa24de9857fa22aeea884eb52a5f75c0bcc1d
+seth-send: Waiting for transaction receipt......................
+seth-send: Transaction included in block 8928117.
+++ copyAbis multicall
+++ local lib
+++ lib=multicall
+++ mkdir -p /home/nanexcool/makerdao/dss-deploy-scripts/out/abi
+++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/multicall/out -name '*.abi' '!' -name '*Test.abi' '!' -name '*Like.abi' '!' -name '*DSNote.abi' '!' -name '*FakeUser.abi' '!' -name '*Hevm.abi' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/abi ';'
+++ copyBins multicall
+++ local lib
+++ lib=multicall
+++ mkdir -p /home/nanexcool/makerdao/dss-deploy-scripts/out/bin
+++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/multicall/out -name '*.bin' '!' -name '*Test.bin' '!' -name '*Like.bin' '!' -name '*DSNote.bin' '!' -name '*FakeUser.bin' '!' -name '*Hevm.bin' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/bin ';'
+++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/multicall/out -name '*.bin-runtime' '!' -name '*Test.bin-runtime' '!' -name '*Like.bin-runtime' '!' -name '*DSNote.bin-runtime' '!' -name '*FakeUser.bin-runtime' '!' -name '*Hevm.bin-runtime' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/bin ';'
++ MULTICALL=0x5e227ad1969ea493b43f840cff78d08a6fc17796
++ log 'multicall deployed'
++ printf '%b\n' '\033[0;32m✓ multicall deployed\033[0m'
+[0;32m✓ multicall deployed[0m
++ dappBuild token-faucet
++ [[ -n yes ]]
++ return
+++ jq -r '.faucet | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ FAUCET=0x0000000000000000000000000000000000000000
++ [[ -z 0x0000000000000000000000000000000000000000 ]]
++ dappBuild dss-proxy-actions
++ [[ -n yes ]]
++ return
+++ jq -r '.proxyRegistry | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ PROXY_REGISTRY=0x4678f0a6958e4d2bc4f1baf7bc52e8f3564f3fe4
++ [[ -z 0x4678f0a6958e4d2bc4f1baf7bc52e8f3564f3fe4 ]]
+++ seth storage 0x4678f0a6958e4d2bc4f1baf7bc52e8f3564f3fe4 1
++ PROXY_FACTORY=0x000000000000000000000000a26e15c895efc0616177b7c1e7270a4c7d51c997
++ PROXY_FACTORY=0xa26e15c895efc0616177b7c1e7270a4c7d51c997
++ log 'proxy-registry deployed'
++ printf '%b\n' '\033[0;32m✓ proxy-registry deployed\033[0m'
+[0;32m✓ proxy-registry deployed[0m
++ PATH=/nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-deploy/bin:/nix/store/d9s1kq1bnwqgxwcvv4zrc36ysnxg8gv7-coreutils-8.30/bin:/nix/store/wnjv27b3j6jfdl0968xpcymlc7chpqil-gnugrep-3.3/bin:/nix/store/x1khw8x0465xhkv6w31af75syyyxc65j-gnused-4.7/bin:/nix/store/krhqmaqal0gklh15rs2bwrqzz8mg9lrn-findutils-4.6.0/bin:/nix/store/qnramp80ns84njlskrbq7417m8zkfm6a-bc-1.07.1/bin:/nix/store/71c7mp4ldflyim2hcdmr36rxvxgc82id-jq-1.6-bin/bin:/nix/store/0gjhjxjvm03qdvlz9v2fx4mfw683cyag-solc-0.5.12/bin:/nix/store/86z4w9863n4w7yrnq6kcw435zjwxqppb-dapp-0.25.0/bin:/nix/store/qr33vqgjs7nhni6ygrx44v1pwggl9gvp-ethsign-0.13.0-bin/bin:/nix/store/8n33rmzw303h7n589yzmkall6kg7cqxn-seth-0.8.2/bin:/nix/store/9zdhfsl48whxzqhazkm8npk5im5qvz9h-mcd-0.2.1/bin:/nix/store/df7yx6azl8y6ram083nfid9pd04qwqhi-dss-deploy/bin
++ deploy-fab
+++ export DAPP_OUT=/nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out
+++ DAPP_OUT=/nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out
+++ export ADDRESS_DIR=/home/nanexcool/makerdao/dss-deploy-scripts
+++ ADDRESS_DIR=/home/nanexcool/makerdao/dss-deploy-scripts
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
++ export ETH_FROM=0xdDb108893104dE4E1C6d0E47c42237dB4E617ACc
++ ETH_FROM=0xdDb108893104dE4E1C6d0E47c42237dB4E617ACc
++ dappBuild
++ [[ -n 1 ]]
++ return
++ export SETH_ASYNC=yes
++ SETH_ASYNC=yes
+++ seth nonce 0xdDb108893104dE4E1C6d0E47c42237dB4E617ACc
++ ETH_NONCE=1211
+++ ETH_NONCE=1211
+++ dapp create VatFab
+++ seth send --create /nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out/VatFab.bin 'VatFab()'
++ VAT_FABtx=0x2fb6e9b7e06a2151eec4ebe0060bdb99d1f0227b6913168ba5634c6b1ffc1dbe
+++ ETH_NONCE=1212
+++ dapp create JugFab
+++ seth send --create /nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out/JugFab.bin 'JugFab()'
++ JUG_FABtx=0x66958f74fa8b7f76877925b81723199abd144a85070006c66138c2354488c9fd
+++ ETH_NONCE=1213
+++ dapp create VowFab
+++ seth send --create /nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out/VowFab.bin 'VowFab()'
++ VOW_FABtx=0x80758f77281bb0b9b8195ed02bceeef4243605a7e204ae28970230f11296a9ff
+++ ETH_NONCE=1214
+++ dapp create CatFab
+++ seth send --create /nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out/CatFab.bin 'CatFab()'
++ CAT_FABtx=0xc8fc8f7412023b6028b63de0ff6cd7a0b07b53f0f47b37919e11fa3436b19dad
+++ ETH_NONCE=1215
+++ dapp create DaiFab
+++ seth send --create /nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out/DaiFab.bin 'DaiFab()'
++ DAI_FABtx=0x2efbced6ff40226635298626956df931e25b2efaa04be509fba9ad33f006b579
+++ ETH_NONCE=1216
+++ dapp create DaiJoinFab
+++ seth send --create /nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out/DaiJoinFab.bin 'DaiJoinFab()'
++ MCD_JOIN_FABtx=0x51b7c5c5cf71ff4aca9b71efcd46c53a79de7d897b6905d207caff550e723286
+++ ETH_NONCE=1217
+++ dapp create FlapFab
+++ seth send --create /nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out/FlapFab.bin 'FlapFab()'
++ FLAP_FABtx=0x46e061464c94d7e45a540b48052b087daa723e65d626bc9ddee4475e18c33637
+++ ETH_NONCE=1218
+++ dapp create FlopFab
+++ seth send --create /nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out/FlopFab.bin 'FlopFab()'
++ FLOP_FABtx=0xcbb1c56b4c34d9ddaa326038b89c87fb316f7b37386c34a7a50d91ade8c7a767
+++ ETH_NONCE=1219
+++ dapp create FlipFab
+++ seth send --create /nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out/FlipFab.bin 'FlipFab()'
++ FLIP_FABtx=0xd2987bc5b4366113eb550eefce4b47dbf8745131a19e50c4d5ac47b8f9c47c52
+++ ETH_NONCE=1220
+++ dapp create SpotFab
+++ seth send --create /nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out/SpotFab.bin 'SpotFab()'
++ SPOT_FABtx=0xafbc6953390c015527bf485c7d7af9b9ea1fcc0ecca4bbef612e2c86b2753343
+++ ETH_NONCE=1221
+++ dapp create PotFab
+++ seth send --create /nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out/PotFab.bin 'PotFab()'
++ POT_FABtx=0x5d9dc5ae15936960fece6f920889ae95c6358cdf95785a91105b4623ba276551
+++ ETH_NONCE=1222
+++ dapp create EndFab
+++ seth send --create /nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out/EndFab.bin 'EndFab()'
++ END_FABtx=0x239188e6a26b6021f9d00c92e3f1ded62db6ee37782e708ab5901d8186af4c41
+++ ETH_NONCE=1223
+++ dapp create ESMFab
+++ seth send --create /nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out/ESMFab.bin 'ESMFab()'
++ ESM_FABtx=0x5f19493077c17e00f7b434c1ea7c97115d7d1b5462e6df1d194a3c5c0e283be0
+++ ETH_NONCE=1224
+++ dapp create PauseFab
+++ seth send --create /nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out/PauseFab.bin 'PauseFab()'
++ PAUSE_FABtx=0xfa194bbbf466506dc7c5584b2fce6e3cabc40910e45dc28b20edc14218895c57
++ export SETH_ASYNC=no
++ SETH_ASYNC=no
+++ seth receipt 0x2fb6e9b7e06a2151eec4ebe0060bdb99d1f0227b6913168ba5634c6b1ffc1dbe status
++ test 1 -eq 0
+++ seth receipt 0x66958f74fa8b7f76877925b81723199abd144a85070006c66138c2354488c9fd status
++ test 1 -eq 0
+++ seth receipt 0x80758f77281bb0b9b8195ed02bceeef4243605a7e204ae28970230f11296a9ff status
++ test 1 -eq 0
+++ seth receipt 0xc8fc8f7412023b6028b63de0ff6cd7a0b07b53f0f47b37919e11fa3436b19dad status
++ test 1 -eq 0
+++ seth receipt 0x2efbced6ff40226635298626956df931e25b2efaa04be509fba9ad33f006b579 status
++ test 1 -eq 0
+++ seth receipt 0x51b7c5c5cf71ff4aca9b71efcd46c53a79de7d897b6905d207caff550e723286 status
++ test 1 -eq 0
+++ seth receipt 0x46e061464c94d7e45a540b48052b087daa723e65d626bc9ddee4475e18c33637 status
++ test 1 -eq 0
+++ seth receipt 0xcbb1c56b4c34d9ddaa326038b89c87fb316f7b37386c34a7a50d91ade8c7a767 status
++ test 1 -eq 0
+++ seth receipt 0xd2987bc5b4366113eb550eefce4b47dbf8745131a19e50c4d5ac47b8f9c47c52 status
++ test 1 -eq 0
+++ seth receipt 0xafbc6953390c015527bf485c7d7af9b9ea1fcc0ecca4bbef612e2c86b2753343 status
++ test 1 -eq 0
+++ seth receipt 0x5d9dc5ae15936960fece6f920889ae95c6358cdf95785a91105b4623ba276551 status
++ test 1 -eq 0
+++ seth receipt 0x239188e6a26b6021f9d00c92e3f1ded62db6ee37782e708ab5901d8186af4c41 status
++ test 1 -eq 0
+++ seth receipt 0x5f19493077c17e00f7b434c1ea7c97115d7d1b5462e6df1d194a3c5c0e283be0 status
++ test 1 -eq 0
+++ seth receipt 0xfa194bbbf466506dc7c5584b2fce6e3cabc40910e45dc28b20edc14218895c57 status
++ test 1 -eq 0
+++ seth receipt 0x2fb6e9b7e06a2151eec4ebe0060bdb99d1f0227b6913168ba5634c6b1ffc1dbe contractAddress
++ VAT_FAB=0x403689148fa98a5a6fdcc0b984914ae968d788e5
+++ seth receipt 0x66958f74fa8b7f76877925b81723199abd144a85070006c66138c2354488c9fd contractAddress
++ JUG_FAB=0x45f0a929889ec8cc2d5b8cd79ab55e3279945cde
+++ seth receipt 0x80758f77281bb0b9b8195ed02bceeef4243605a7e204ae28970230f11296a9ff contractAddress
++ VOW_FAB=0x68322ca1a9aeb8c1d610b5fc8a8920aa0fba423b
+++ seth receipt 0xc8fc8f7412023b6028b63de0ff6cd7a0b07b53f0f47b37919e11fa3436b19dad contractAddress
++ CAT_FAB=0xa9ee75d81d78c36c4163004e6cc7a988eec9433e
+++ seth receipt 0x2efbced6ff40226635298626956df931e25b2efaa04be509fba9ad33f006b579 contractAddress
++ DAI_FAB=0xb5b06a16621616875a6c2637948bf98ea57c58fa
+++ seth receipt 0x51b7c5c5cf71ff4aca9b71efcd46c53a79de7d897b6905d207caff550e723286 contractAddress
++ MCD_JOIN_FAB=0x64a84e558192dd025f3a96775fee8fb530f27177
+++ seth receipt 0x46e061464c94d7e45a540b48052b087daa723e65d626bc9ddee4475e18c33637 contractAddress
++ FLAP_FAB=0xd27a5f3416d8791fc238c148c93630d9e3c882e5
+++ seth receipt 0xcbb1c56b4c34d9ddaa326038b89c87fb316f7b37386c34a7a50d91ade8c7a767 contractAddress
++ FLOP_FAB=0xc41c4759f67ff54c7a7314d155f40fc6504f5d28
+++ seth receipt 0xd2987bc5b4366113eb550eefce4b47dbf8745131a19e50c4d5ac47b8f9c47c52 contractAddress
++ FLIP_FAB=0xbab4fbea257abbfe84f4588d4eedc43656e46fc5
+++ seth receipt 0xafbc6953390c015527bf485c7d7af9b9ea1fcc0ecca4bbef612e2c86b2753343 contractAddress
++ SPOT_FAB=0xdedd12bcb045c02b2fe11031c2b269bcde457410
+++ seth receipt 0x5d9dc5ae15936960fece6f920889ae95c6358cdf95785a91105b4623ba276551 contractAddress
++ POT_FAB=0x1a5ee7c64cf874c735968e3a42fa13f1c03427f9
+++ seth receipt 0x239188e6a26b6021f9d00c92e3f1ded62db6ee37782e708ab5901d8186af4c41 contractAddress
++ END_FAB=0xfd34e2c588a519f173d54be539a56fed4830ba53
+++ seth receipt 0x5f19493077c17e00f7b434c1ea7c97115d7d1b5462e6df1d194a3c5c0e283be0 contractAddress
++ ESM_FAB=0x2e278c5fb9231581f4284a253cc5728b6acd372d
+++ seth receipt 0xfa194bbbf466506dc7c5584b2fce6e3cabc40910e45dc28b20edc14218895c57 contractAddress
++ PAUSE_FAB=0x84f2b4648990d93c0f478d5d82d3c38d98a4ee91
++ cat
+++ seth chain
+++ seth chain
+++ git rev-parse HEAD
+++ date
+++ seth chain
++ . load-fab-ethlive
+++ export VAT_FAB=0x403689148fa98a5a6fdcc0b984914ae968d788e5
+++ VAT_FAB=0x403689148fa98a5a6fdcc0b984914ae968d788e5
+++ export JUG_FAB=0x45f0a929889ec8cc2d5b8cd79ab55e3279945cde
+++ JUG_FAB=0x45f0a929889ec8cc2d5b8cd79ab55e3279945cde
+++ export VOW_FAB=0x68322ca1a9aeb8c1d610b5fc8a8920aa0fba423b
+++ VOW_FAB=0x68322ca1a9aeb8c1d610b5fc8a8920aa0fba423b
+++ export CAT_FAB=0xa9ee75d81d78c36c4163004e6cc7a988eec9433e
+++ CAT_FAB=0xa9ee75d81d78c36c4163004e6cc7a988eec9433e
+++ export DAI_FAB=0xb5b06a16621616875a6c2637948bf98ea57c58fa
+++ DAI_FAB=0xb5b06a16621616875a6c2637948bf98ea57c58fa
+++ export MCD_JOIN_FAB=0x64a84e558192dd025f3a96775fee8fb530f27177
+++ MCD_JOIN_FAB=0x64a84e558192dd025f3a96775fee8fb530f27177
+++ export FLAP_FAB=0xd27a5f3416d8791fc238c148c93630d9e3c882e5
+++ FLAP_FAB=0xd27a5f3416d8791fc238c148c93630d9e3c882e5
+++ export FLOP_FAB=0xc41c4759f67ff54c7a7314d155f40fc6504f5d28
+++ FLOP_FAB=0xc41c4759f67ff54c7a7314d155f40fc6504f5d28
+++ export FLIP_FAB=0xbab4fbea257abbfe84f4588d4eedc43656e46fc5
+++ FLIP_FAB=0xbab4fbea257abbfe84f4588d4eedc43656e46fc5
+++ export SPOT_FAB=0xdedd12bcb045c02b2fe11031c2b269bcde457410
+++ SPOT_FAB=0xdedd12bcb045c02b2fe11031c2b269bcde457410
+++ export POT_FAB=0x1a5ee7c64cf874c735968e3a42fa13f1c03427f9
+++ POT_FAB=0x1a5ee7c64cf874c735968e3a42fa13f1c03427f9
+++ export END_FAB=0xfd34e2c588a519f173d54be539a56fed4830ba53
+++ END_FAB=0xfd34e2c588a519f173d54be539a56fed4830ba53
+++ export ESM_FAB=0x2e278c5fb9231581f4284a253cc5728b6acd372d
+++ ESM_FAB=0x2e278c5fb9231581f4284a253cc5728b6acd372d
+++ export PAUSE_FAB=0x84f2b4648990d93c0f478d5d82d3c38d98a4ee91
+++ PAUSE_FAB=0x84f2b4648990d93c0f478d5d82d3c38d98a4ee91
+++ seth chain
++ rm load-fab-ethlive
++ log 'fabs deployed'
++ printf '%b\n' '\033[0;32m✓ fabs deployed\033[0m'
+[0;32m✓ fabs deployed[0m
++ export MCD_PAUSE_DELAY=0
++ MCD_PAUSE_DELAY=0
++ unset MCD_ADM
+++ jq -r '.gov | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ MCD_GOV=0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2
++ [[ -z 0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2 ]]
++ newGovToken=false
++ export MCD_GOV
+++++ jq -r '.esm_min | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++++ seth --to-wei 50000 eth
+++ seth --to-uint256 50000000000000000000000
++ MCD_ESM_MIN=000000000000000000000000000000000000000000000a968163f0a57b400000
++ export MCD_ESM_MIN
+++ jq -r '.esm_pit | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ MCD_ESM_PIT=0x69076e44a9c70a67d5b79d95795aba299083c275
++ export MCD_ESM_PIT
++ deploy-core
+++ export DAPP_OUT=/nix/store/k3jwrmw7hyzrg8ma7x4lzm09g7bqkp5r-dss-deploy-optimized-solidity-packages/dapp/dss-deploy/out
+++ DAPP_OUT=/nix/store/k3jwrmw7hyzrg8ma7x4lzm09g7bqkp5r-dss-deploy-optimized-solidity-packages/dapp/dss-deploy/out
+++ export ADDRESS_DIR=/home/nanexcool/makerdao/dss-deploy-scripts
+++ ADDRESS_DIR=/home/nanexcool/makerdao/dss-deploy-scripts
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
++ export ETH_FROM=0xdDb108893104dE4E1C6d0E47c42237dB4E617ACc
++ ETH_FROM=0xdDb108893104dE4E1C6d0E47c42237dB4E617ACc
++ export SOLC_FLAGS=--optimize
++ SOLC_FLAGS=--optimize
++ dappBuild
++ [[ -n 1 ]]
++ return
++ test -z 0x403689148fa98a5a6fdcc0b984914ae968d788e5
++ test -z 0x45f0a929889ec8cc2d5b8cd79ab55e3279945cde
++ test -z 0x68322ca1a9aeb8c1d610b5fc8a8920aa0fba423b
++ test -z 0xa9ee75d81d78c36c4163004e6cc7a988eec9433e
++ test -z 0xb5b06a16621616875a6c2637948bf98ea57c58fa
++ test -z 0x64a84e558192dd025f3a96775fee8fb530f27177
++ test -z 0xd27a5f3416d8791fc238c148c93630d9e3c882e5
++ test -z 0xc41c4759f67ff54c7a7314d155f40fc6504f5d28
++ test -z 0xbab4fbea257abbfe84f4588d4eedc43656e46fc5
++ test -z 0xdedd12bcb045c02b2fe11031c2b269bcde457410
++ test -z 0x1a5ee7c64cf874c735968e3a42fa13f1c03427f9
++ test -z 0xfd34e2c588a519f173d54be539a56fed4830ba53
++ test -z 0x2e278c5fb9231581f4284a253cc5728b6acd372d
++ test -z 0x84f2b4648990d93c0f478d5d82d3c38d98a4ee91
++ test -z 0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2
+++ dapp create DssDeploy 0x403689148fa98a5a6fdcc0b984914ae968d788e5 0x45f0a929889ec8cc2d5b8cd79ab55e3279945cde 0x68322ca1a9aeb8c1d610b5fc8a8920aa0fba423b 0xa9ee75d81d78c36c4163004e6cc7a988eec9433e 0xb5b06a16621616875a6c2637948bf98ea57c58fa 0x64a84e558192dd025f3a96775fee8fb530f27177 0xd27a5f3416d8791fc238c148c93630d9e3c882e5 0xc41c4759f67ff54c7a7314d155f40fc6504f5d28 0xbab4fbea257abbfe84f4588d4eedc43656e46fc5 0xdedd12bcb045c02b2fe11031c2b269bcde457410 0x1a5ee7c64cf874c735968e3a42fa13f1c03427f9 0xfd34e2c588a519f173d54be539a56fed4830ba53 0x2e278c5fb9231581f4284a253cc5728b6acd372d 0x84f2b4648990d93c0f478d5d82d3c38d98a4ee91
+++ seth send --create /nix/store/k3jwrmw7hyzrg8ma7x4lzm09g7bqkp5r-dss-deploy-optimized-solidity-packages/dapp/dss-deploy/out/DssDeploy.bin 'DssDeploy(address,address,address,address,address,address,address,address,address,address,address,address,address,address)' 0x403689148fa98a5a6fdcc0b984914ae968d788e5 0x45f0a929889ec8cc2d5b8cd79ab55e3279945cde 0x68322ca1a9aeb8c1d610b5fc8a8920aa0fba423b 0xa9ee75d81d78c36c4163004e6cc7a988eec9433e 0xb5b06a16621616875a6c2637948bf98ea57c58fa 0x64a84e558192dd025f3a96775fee8fb530f27177 0xd27a5f3416d8791fc238c148c93630d9e3c882e5 0xc41c4759f67ff54c7a7314d155f40fc6504f5d28 0xbab4fbea257abbfe84f4588d4eedc43656e46fc5 0xdedd12bcb045c02b2fe11031c2b269bcde457410 0x1a5ee7c64cf874c735968e3a42fa13f1c03427f9 0xfd34e2c588a519f173d54be539a56fed4830ba53 0x2e278c5fb9231581f4284a253cc5728b6acd372d 0x84f2b4648990d93c0f478d5d82d3c38d98a4ee91
+seth-send: Published transaction with 14091 bytes of calldata.
+seth-send: 0xa4e10b0578187107bf533d0a6c1106c79cc9ce91a1fd662961d9b2a97c80634b
+seth-send: Waiting for transaction receipt...............
+seth-send: Transaction included in block 8928141.
++ MCD_DEPLOY=0xbaa65281c2fa2baacb2cb550ba051525a480d3f4
++ '[' -z '' ']'
+++ dapp create DSRoles
+++ seth send --create /nix/store/k3jwrmw7hyzrg8ma7x4lzm09g7bqkp5r-dss-deploy-optimized-solidity-packages/dapp/dss-deploy/out/DSRoles.bin 'DSRoles()'
+seth-send: Published transaction with 2742 bytes of calldata.
+seth-send: 0xf993b6cb1e5d7764ff296ea21935d84e19c3c87aa40fe03d7958e8af20f1c85b
+seth-send: Waiting for transaction receipt................
+seth-send: Transaction included in block 8928146.
++ MCD_ADM=0x0560328fdbf78edeba4ea13cfb1467e1fb44d2ed
++ seth send 0x0560328fdbf78edeba4ea13cfb1467e1fb44d2ed 'setRootUser(address,bool)' 0xdDb108893104dE4E1C6d0E47c42237dB4E617ACc true
+seth-send: Published transaction with 68 bytes of calldata.
+seth-send: 0x785288bc06bd072d4df90e27b7e544bb9f1c9603b78aa8c710a827dc0464da85
+seth-send: Waiting for transaction receipt...........
+seth-send: Transaction included in block 8928149.
++ seth send 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'deployVat()'
+seth-send: Published transaction with 4 bytes of calldata.
+seth-send: 0xa39edcdeb7310150d7be44b8da94e5043d1cf8600d59f855a65c7a9c035b06a7
+seth-send: Waiting for transaction receipt.............
+seth-send: Transaction included in block 8928152.
+++ seth rpc net_version
++ seth send 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'deployDai(uint256)' 1
+seth-send: Published transaction with 36 bytes of calldata.
+seth-send: 0x495402df7d45fe36329b0bd94487f49baee62026d50f654600f6771bd2a596ab
+seth-send: Waiting for transaction receipt.....................................................
+seth-send: Transaction included in block 8928158.
++ seth send 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'deployTaxation()'
+seth-send: Published transaction with 4 bytes of calldata.
+seth-send: 0xaac1fe54d617a879bb05bec28b1dd4159f3ad1ba1e67f02de65da0c13d6ce674
+seth-send: Waiting for transaction receipt.......
+seth-send: Transaction included in block 8928160.
++ seth send 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'deployAuctions(address)' 0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2
+seth-send: Published transaction with 36 bytes of calldata.
+seth-send: 0x85f00375c202fe934a8b77dc510f7b190bf084cd416f16d4276f867877ab6788
+seth-send: Waiting for transaction receipt.........
+seth-send: Transaction included in block 8928163.
++ seth send 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'deployLiquidator()'
+seth-send: Published transaction with 4 bytes of calldata.
+seth-send: 0x00d3bfaa8425a58ec798663f36ffc3546dabe91b3e7994bc723585db50f3822d
+seth-send: Waiting for transaction receipt......................
+seth-send: Transaction included in block 8928165.
++ MCD_ESM_PIT=0x69076e44a9c70a67d5b79d95795aba299083c275
++ MCD_ESM_MIN=000000000000000000000000000000000000000000000a968163f0a57b400000
++ seth send 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'deployShutdown(address,address,uint256)' 0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2 0x69076e44a9c70a67d5b79d95795aba299083c275 000000000000000000000000000000000000000000000a968163f0a57b400000
+seth-send: Published transaction with 100 bytes of calldata.
+seth-send: 0x37c693bf250b35c477b0332ef0dc74f2c4419f51527e851af807f29949e8e6e1
+seth-send: Waiting for transaction receipt........
+seth-send: Transaction included in block 8928169.
++ MCD_PAUSE_DELAY=0
+++ seth --to-uint256 0
++ seth send 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'deployPause(uint256,address)' 0000000000000000000000000000000000000000000000000000000000000000 0x0560328fdbf78edeba4ea13cfb1467e1fb44d2ed
+seth-send: Published transaction with 68 bytes of calldata.
+seth-send: 0x60215e5c38f8d02a64b4c029619d9efe88671dd7468ad84997f0812fe0ae6cc6
+seth-send: Waiting for transaction receipt.......
+seth-send: Transaction included in block 8928171.
++ cat
+++ seth chain
+++ seth chain
+++ git rev-parse HEAD
+++ date
+++ seth call 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'vat()(address)'
+++ seth call 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'jug()(address)'
+++ seth call 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'cat()(address)'
+++ seth call 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'vow()(address)'
+++ seth call 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'daiJoin()(address)'
+++ seth call 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'flap()(address)'
+++ seth call 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'flop()(address)'
+++ seth call 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'spotter()(address)'
+++ seth call 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'pot()(address)'
+++ seth call 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'end()(address)'
+++ seth call 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'esm()(address)'
+++ seth call 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'pause()(address)'
++++ seth call 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'pause()(address)'
+++ seth call 0xbe286431454714f511008713973d3b053a2d38f3 'proxy()(address)'
+++ seth call 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'dai()(address)'
+++ seth chain
++ . load-mcd-ethlive
+++ export MCD_DEPLOY=0xbaa65281c2fa2baacb2cb550ba051525a480d3f4
+++ MCD_DEPLOY=0xbaa65281c2fa2baacb2cb550ba051525a480d3f4
+++ export MCD_GOV=0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2
+++ MCD_GOV=0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2
+++ export MCD_ADM=0x0560328fdbf78edeba4ea13cfb1467e1fb44d2ed
+++ MCD_ADM=0x0560328fdbf78edeba4ea13cfb1467e1fb44d2ed
+++ export MCD_VAT=0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b
+++ MCD_VAT=0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b
+++ export MCD_JUG=0x19c0976f590d67707e62397c87829d896dc0f1f1
+++ MCD_JUG=0x19c0976f590d67707e62397c87829d896dc0f1f1
+++ export MCD_CAT=0x78f2c2af65126834c51822f56be0d7469d7a523e
+++ MCD_CAT=0x78f2c2af65126834c51822f56be0d7469d7a523e
+++ export MCD_VOW=0xa950524441892a31ebddf91d3ceefa04bf454466
+++ MCD_VOW=0xa950524441892a31ebddf91d3ceefa04bf454466
+++ export MCD_JOIN_DAI=0x9759a6ac90977b93b58547b4a71c78317f391a28
+++ MCD_JOIN_DAI=0x9759a6ac90977b93b58547b4a71c78317f391a28
+++ export MCD_FLAP=0xdfe0fb1be2a52cdbf8fb962d5701d7fd0902db9f
+++ MCD_FLAP=0xdfe0fb1be2a52cdbf8fb962d5701d7fd0902db9f
+++ export MCD_FLOP=0xbe00fe8dfd9c079f1e5f5ad7ae9a3ad2c571fcac
+++ MCD_FLOP=0xbe00fe8dfd9c079f1e5f5ad7ae9a3ad2c571fcac
+++ export MCD_SPOT=0x65c79fcb50ca1594b025960e539ed7a9a6d434a3
+++ MCD_SPOT=0x65c79fcb50ca1594b025960e539ed7a9a6d434a3
+++ export MCD_POT=0x197e90f9fad81970ba7976f33cbd77088e5d7cf7
+++ MCD_POT=0x197e90f9fad81970ba7976f33cbd77088e5d7cf7
+++ export MCD_END=0xab14d3ce3f733cacb76ec2abe7d2fcb00c99f3d5
+++ MCD_END=0xab14d3ce3f733cacb76ec2abe7d2fcb00c99f3d5
+++ export MCD_ESM=0x0581a0abe32aae9b5f0f68defab77c6759100085
+++ MCD_ESM=0x0581a0abe32aae9b5f0f68defab77c6759100085
+++ export MCD_PAUSE=0xbe286431454714f511008713973d3b053a2d38f3
+++ MCD_PAUSE=0xbe286431454714f511008713973d3b053a2d38f3
+++ export MCD_PAUSE_PROXY=0xbe8e3e3618f7474f8cb1d074a26affef007e98fb
+++ MCD_PAUSE_PROXY=0xbe8e3e3618f7474f8cb1d074a26affef007e98fb
+++ export MCD_DAI=0x6b175474e89094c44da98b954eedeac495271d0f
+++ MCD_DAI=0x6b175474e89094c44da98b954eedeac495271d0f
+++ seth chain
++ rm load-mcd-ethlive
++ log 'core deployed'
++ printf '%b\n' '\033[0;32m✓ core deployed\033[0m'
+[0;32m✓ core deployed[0m
++ [[ false == true ]]
+++ jq -r '.tokens | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ tokens='ETH
+BAT'
++ for token in $tokens
+++ jq -r '.tokens.ETH.ilks | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ilks=A
+++ jq -r '.tokens.ETH | .gem | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ gemAddr=0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2
++ eval 'export ETH=0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'
+++ export ETH=0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2
+++ ETH=0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2
++ for ilk in $ilks
+++ echo ETH
+++ tr '[:upper:]' '[:lower:]'
++ deploy-ilk-eth A
+++ export DAPP_OUT=/nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out
+++ DAPP_OUT=/nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out
+++ export ADDRESS_DIR=/home/nanexcool/makerdao/dss-deploy-scripts
+++ ADDRESS_DIR=/home/nanexcool/makerdao/dss-deploy-scripts
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
++ export ETH_FROM=0xdDb108893104dE4E1C6d0E47c42237dB4E617ACc
++ ETH_FROM=0xdDb108893104dE4E1C6d0E47c42237dB4E617ACc
++ dappBuild
++ [[ -n 1 ]]
++ return
++ test -z 0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2
++ test -z 0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763
++ export ETH
++ export PIP_ETH
++ source /nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/bin/deploy-ilk ETH A GemJoin
+++ export BIN_DIR=/nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/bin
+++ BIN_DIR=/nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/bin
+++ export LIB_DIR=/nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/lib
+++ LIB_DIR=/nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/lib
+++ export LIBEXEC_DIR=/nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/libexec
+++ LIBEXEC_DIR=/nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/libexec
+++ export CONFIG_DIR=/nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/share/config
+++ CONFIG_DIR=/nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/share/config
+++ export PATH=/nix/store/d9s1kq1bnwqgxwcvv4zrc36ysnxg8gv7-coreutils-8.30/bin:/nix/store/wnjv27b3j6jfdl0968xpcymlc7chpqil-gnugrep-3.3/bin:/nix/store/x1khw8x0465xhkv6w31af75syyyxc65j-gnused-4.7/bin:/nix/store/krhqmaqal0gklh15rs2bwrqzz8mg9lrn-findutils-4.6.0/bin:/nix/store/qnramp80ns84njlskrbq7417m8zkfm6a-bc-1.07.1/bin:/nix/store/71c7mp4ldflyim2hcdmr36rxvxgc82id-jq-1.6-bin/bin:/nix/store/0gjhjxjvm03qdvlz9v2fx4mfw683cyag-solc-0.5.12/bin:/nix/store/86z4w9863n4w7yrnq6kcw435zjwxqppb-dapp-0.25.0/bin:/nix/store/qr33vqgjs7nhni6ygrx44v1pwggl9gvp-ethsign-0.13.0-bin/bin:/nix/store/8n33rmzw303h7n589yzmkall6kg7cqxn-seth-0.8.2/bin:/nix/store/9zdhfsl48whxzqhazkm8npk5im5qvz9h-mcd-0.2.1/bin:/nix/store/ccl7j6yhkz0x5gf4vyxll824d5hzgayw-git-2.19.2/bin
+++ PATH=/nix/store/d9s1kq1bnwqgxwcvv4zrc36ysnxg8gv7-coreutils-8.30/bin:/nix/store/wnjv27b3j6jfdl0968xpcymlc7chpqil-gnugrep-3.3/bin:/nix/store/x1khw8x0465xhkv6w31af75syyyxc65j-gnused-4.7/bin:/nix/store/krhqmaqal0gklh15rs2bwrqzz8mg9lrn-findutils-4.6.0/bin:/nix/store/qnramp80ns84njlskrbq7417m8zkfm6a-bc-1.07.1/bin:/nix/store/71c7mp4ldflyim2hcdmr36rxvxgc82id-jq-1.6-bin/bin:/nix/store/0gjhjxjvm03qdvlz9v2fx4mfw683cyag-solc-0.5.12/bin:/nix/store/86z4w9863n4w7yrnq6kcw435zjwxqppb-dapp-0.25.0/bin:/nix/store/qr33vqgjs7nhni6ygrx44v1pwggl9gvp-ethsign-0.13.0-bin/bin:/nix/store/8n33rmzw303h7n589yzmkall6kg7cqxn-seth-0.8.2/bin:/nix/store/9zdhfsl48whxzqhazkm8npk5im5qvz9h-mcd-0.2.1/bin:/nix/store/ccl7j6yhkz0x5gf4vyxll824d5hzgayw-git-2.19.2/bin
+++ export DAPP_LIB=/nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp
+++ DAPP_LIB=/nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp
+++ export DAPP_SKIP_BUILD=yes
+++ DAPP_SKIP_BUILD=yes
+++ export DAPP_OUT=/nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out
+++ DAPP_OUT=/nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out
+++ export SKIP_BUILD=1
+++ SKIP_BUILD=1
+++ exec -a /nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/bin/.deploy-ilk-eth-wrapped /nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/bin/.deploy-ilk-wrapped ETH A GemJoin
+++ export DAPP_OUT=/nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out
+++ DAPP_OUT=/nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out
+++ export ADDRESS_DIR=/home/nanexcool/makerdao/dss-deploy-scripts
+++ ADDRESS_DIR=/home/nanexcool/makerdao/dss-deploy-scripts
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
++ export ETH_FROM=0xdDb108893104dE4E1C6d0E47c42237dB4E617ACc
++ ETH_FROM=0xdDb108893104dE4E1C6d0E47c42237dB4E617ACc
++ dappBuild
++ [[ -n 1 ]]
++ return
++ test -z ETH
++ test -z GemJoin
++ tok=ETH
++ [[ -n A ]]
++ ilk=ETH-A
++ ilkVar=ETH_A
++ ilkJoin=GemJoin
++ decimals=
++ test -z 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4
+++ seth call 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'vat()(address)'
++ MCD_VAT=0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b
+++++ seth --from-ascii ETH-A
++++ seth --to-bytes32 0x4554482d41
++++ eval echo '$ETH'
+++++ echo 0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2
+++ dapp create GemJoin 0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b 4554482d41000000000000000000000000000000000000000000000000000000 0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2 ''
+++ seth send --create /nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out/GemJoin.bin 'GemJoin(address,bytes32,address)' 0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b 4554482d41000000000000000000000000000000000000000000000000000000 0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2 ''
+seth-send: Published transaction with 4046 bytes of calldata.
+seth-send: 0x221879b4baac28b773ecd81d647930a051215d2d30cfe9b8c257a3e877673b04
+seth-send: Waiting for transaction receipt........
+seth-send: Transaction included in block 8928176.
++ contract=0x2f0b23f53734252bda2277357e97e1517d6b042a
++ eval export '\MCD_JOIN_ETH_A=0x2f0b23f53734252bda2277357e97e1517d6b042a'
+++ export MCD_JOIN_ETH_A=0x2f0b23f53734252bda2277357e97e1517d6b042a
+++ MCD_JOIN_ETH_A=0x2f0b23f53734252bda2277357e97e1517d6b042a
++++ seth --from-ascii ETH-A
+++ seth --to-bytes32 0x4554482d41
+++ eval echo '$MCD_JOIN_ETH_A'
++++ echo 0x2f0b23f53734252bda2277357e97e1517d6b042a
+++ eval echo '$PIP_ETH'
++++ echo 0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763
++ seth send 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'deployCollateral(bytes32,address,address)' 4554482d41000000000000000000000000000000000000000000000000000000 0x2f0b23f53734252bda2277357e97e1517d6b042a 0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763
+seth-send: Published transaction with 100 bytes of calldata.
+seth-send: 0x7ec7b2c4298e796293fac70119c847385cc73bb1ec7f651dfa079855b61de985
+seth-send: Waiting for transaction receipt.....................
+seth-send: Transaction included in block 8928180.
++ IFS='
+'
++ read -r line
+++++ seth --from-ascii ETH-A
++++ seth --to-bytes32 0x4554482d41
+++ seth call 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'ilks(bytes32)(address,address)' 4554482d41000000000000000000000000000000000000000000000000000000
++ data+=("$line")
++ IFS='
+'
++ read -r line
++ data+=("$line")
++ IFS='
+'
++ read -r line
++ eval export '\MCD_FLIP_ETH_A=0xd8a04f5412223f513dc55f839574430f5ec15531'
+++ export MCD_FLIP_ETH_A=0xd8a04f5412223f513dc55f839574430f5ec15531
+++ MCD_FLIP_ETH_A=0xd8a04f5412223f513dc55f839574430f5ec15531
++ cat
+++ echo ETH-A
+++ tr '[:upper:]' '[:lower:]'
+++ seth chain
+++ seth chain
+++ git rev-parse HEAD
+++ date
+++ eval echo '$PIP_ETH'
++++ echo 0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763
+++ eval echo '$ETH'
++++ echo 0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2
+++ eval echo '$MCD_JOIN_ETH_A'
++++ echo 0x2f0b23f53734252bda2277357e97e1517d6b042a
+++ eval echo '$MCD_FLIP_ETH_A'
++++ echo 0xd8a04f5412223f513dc55f839574430f5ec15531
++ log 'ETH-A deployed'
++ printf '%b\n' '\033[0;32m✓ ETH-A deployed\033[0m'
+[0;32m✓ ETH-A deployed[0m
+++ echo ETH
+++ tr '[:upper:]' '[:lower:]'
+++ echo A
+++ tr '[:upper:]' '[:lower:]'
+++ seth chain
++ . load-ilk-eth-a-ethlive
+++ export PIP_ETH=0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763
+++ PIP_ETH=0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763
+++ export ETH=0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2
+++ ETH=0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2
+++ export MCD_JOIN_ETH_A=0x2f0b23f53734252bda2277357e97e1517d6b042a
+++ MCD_JOIN_ETH_A=0x2f0b23f53734252bda2277357e97e1517d6b042a
+++ export MCD_FLIP_ETH_A=0xd8a04f5412223f513dc55f839574430f5ec15531
+++ MCD_FLIP_ETH_A=0xd8a04f5412223f513dc55f839574430f5ec15531
+++ echo ETH
+++ tr '[:upper:]' '[:lower:]'
+++ echo A
+++ tr '[:upper:]' '[:lower:]'
+++ seth chain
++ rm load-ilk-eth-a-ethlive
++ [[ ETH != \E\T\H ]]
++ export SKIP_BUILD=true
++ SKIP_BUILD=true
++ for token in $tokens
+++ jq -r '.tokens.BAT.ilks | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ilks=A
+++ jq -r '.tokens.BAT | .gem | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ gemAddr=0x0d8775f648430679a709e98d2b0cb6250d2887ef
++ eval 'export BAT=0x0d8775f648430679a709e98d2b0cb6250d2887ef'
+++ export BAT=0x0d8775f648430679a709e98d2b0cb6250d2887ef
+++ BAT=0x0d8775f648430679a709e98d2b0cb6250d2887ef
++ for ilk in $ilks
+++ echo BAT
+++ tr '[:upper:]' '[:lower:]'
++ deploy-ilk-bat A
+++ export DAPP_OUT=/nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out
+++ DAPP_OUT=/nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out
+++ export ADDRESS_DIR=/home/nanexcool/makerdao/dss-deploy-scripts
+++ ADDRESS_DIR=/home/nanexcool/makerdao/dss-deploy-scripts
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
++ export ETH_FROM=0xdDb108893104dE4E1C6d0E47c42237dB4E617ACc
++ ETH_FROM=0xdDb108893104dE4E1C6d0E47c42237dB4E617ACc
++ dappBuild
++ [[ -n 1 ]]
++ return
++ test -z 0x0d8775f648430679a709e98d2b0cb6250d2887ef
++ test -z 0xb4eb54af9cc7882df0121d26c5b97e802915abe6
++ export BAT
++ export PIP_BAT
++ source /nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/bin/deploy-ilk BAT A GemJoin
+++ export BIN_DIR=/nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/bin
+++ BIN_DIR=/nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/bin
+++ export LIB_DIR=/nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/lib
+++ LIB_DIR=/nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/lib
+++ export LIBEXEC_DIR=/nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/libexec
+++ LIBEXEC_DIR=/nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/libexec
+++ export CONFIG_DIR=/nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/share/config
+++ CONFIG_DIR=/nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/share/config
+++ export PATH=/nix/store/d9s1kq1bnwqgxwcvv4zrc36ysnxg8gv7-coreutils-8.30/bin:/nix/store/wnjv27b3j6jfdl0968xpcymlc7chpqil-gnugrep-3.3/bin:/nix/store/x1khw8x0465xhkv6w31af75syyyxc65j-gnused-4.7/bin:/nix/store/krhqmaqal0gklh15rs2bwrqzz8mg9lrn-findutils-4.6.0/bin:/nix/store/qnramp80ns84njlskrbq7417m8zkfm6a-bc-1.07.1/bin:/nix/store/71c7mp4ldflyim2hcdmr36rxvxgc82id-jq-1.6-bin/bin:/nix/store/0gjhjxjvm03qdvlz9v2fx4mfw683cyag-solc-0.5.12/bin:/nix/store/86z4w9863n4w7yrnq6kcw435zjwxqppb-dapp-0.25.0/bin:/nix/store/qr33vqgjs7nhni6ygrx44v1pwggl9gvp-ethsign-0.13.0-bin/bin:/nix/store/8n33rmzw303h7n589yzmkall6kg7cqxn-seth-0.8.2/bin:/nix/store/9zdhfsl48whxzqhazkm8npk5im5qvz9h-mcd-0.2.1/bin:/nix/store/ccl7j6yhkz0x5gf4vyxll824d5hzgayw-git-2.19.2/bin
+++ PATH=/nix/store/d9s1kq1bnwqgxwcvv4zrc36ysnxg8gv7-coreutils-8.30/bin:/nix/store/wnjv27b3j6jfdl0968xpcymlc7chpqil-gnugrep-3.3/bin:/nix/store/x1khw8x0465xhkv6w31af75syyyxc65j-gnused-4.7/bin:/nix/store/krhqmaqal0gklh15rs2bwrqzz8mg9lrn-findutils-4.6.0/bin:/nix/store/qnramp80ns84njlskrbq7417m8zkfm6a-bc-1.07.1/bin:/nix/store/71c7mp4ldflyim2hcdmr36rxvxgc82id-jq-1.6-bin/bin:/nix/store/0gjhjxjvm03qdvlz9v2fx4mfw683cyag-solc-0.5.12/bin:/nix/store/86z4w9863n4w7yrnq6kcw435zjwxqppb-dapp-0.25.0/bin:/nix/store/qr33vqgjs7nhni6ygrx44v1pwggl9gvp-ethsign-0.13.0-bin/bin:/nix/store/8n33rmzw303h7n589yzmkall6kg7cqxn-seth-0.8.2/bin:/nix/store/9zdhfsl48whxzqhazkm8npk5im5qvz9h-mcd-0.2.1/bin:/nix/store/ccl7j6yhkz0x5gf4vyxll824d5hzgayw-git-2.19.2/bin
+++ export DAPP_LIB=/nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp
+++ DAPP_LIB=/nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp
+++ export DAPP_SKIP_BUILD=yes
+++ DAPP_SKIP_BUILD=yes
+++ export DAPP_OUT=/nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out
+++ DAPP_OUT=/nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out
+++ export SKIP_BUILD=1
+++ SKIP_BUILD=1
+++ exec -a /nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/bin/.deploy-ilk-bat-wrapped /nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/bin/.deploy-ilk-wrapped BAT A GemJoin
+++ export DAPP_OUT=/nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out
+++ DAPP_OUT=/nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out
+++ export ADDRESS_DIR=/home/nanexcool/makerdao/dss-deploy-scripts
+++ ADDRESS_DIR=/home/nanexcool/makerdao/dss-deploy-scripts
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
++ export ETH_FROM=0xdDb108893104dE4E1C6d0E47c42237dB4E617ACc
++ ETH_FROM=0xdDb108893104dE4E1C6d0E47c42237dB4E617ACc
++ dappBuild
++ [[ -n 1 ]]
++ return
++ test -z BAT
++ test -z GemJoin
++ tok=BAT
++ [[ -n A ]]
++ ilk=BAT-A
++ ilkVar=BAT_A
++ ilkJoin=GemJoin
++ decimals=
++ test -z 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4
+++ seth call 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'vat()(address)'
++ MCD_VAT=0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b
+++++ seth --from-ascii BAT-A
++++ seth --to-bytes32 0x4241542d41
++++ eval echo '$BAT'
+++++ echo 0x0d8775f648430679a709e98d2b0cb6250d2887ef
+++ dapp create GemJoin 0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b 4241542d41000000000000000000000000000000000000000000000000000000 0x0d8775f648430679a709e98d2b0cb6250d2887ef ''
+++ seth send --create /nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out/GemJoin.bin 'GemJoin(address,bytes32,address)' 0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b 4241542d41000000000000000000000000000000000000000000000000000000 0x0d8775f648430679a709e98d2b0cb6250d2887ef ''
+seth-send: Published transaction with 4046 bytes of calldata.
+seth-send: 0xa3fb779b9c71d743f37c071f77e76829de47951a67eddecd53750120fb55e5e9
+seth-send: Waiting for transaction receipt........................................
+seth-send: Transaction included in block 8928185.
++ contract=0x3d0b1912b66114d4096f48a8cee3a56c231772ca
++ eval export '\MCD_JOIN_BAT_A=0x3d0b1912b66114d4096f48a8cee3a56c231772ca'
+++ export MCD_JOIN_BAT_A=0x3d0b1912b66114d4096f48a8cee3a56c231772ca
+++ MCD_JOIN_BAT_A=0x3d0b1912b66114d4096f48a8cee3a56c231772ca
++++ seth --from-ascii BAT-A
+++ seth --to-bytes32 0x4241542d41
+++ eval echo '$MCD_JOIN_BAT_A'
++++ echo 0x3d0b1912b66114d4096f48a8cee3a56c231772ca
+++ eval echo '$PIP_BAT'
++++ echo 0xb4eb54af9cc7882df0121d26c5b97e802915abe6
++ seth send 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'deployCollateral(bytes32,address,address)' 4241542d41000000000000000000000000000000000000000000000000000000 0x3d0b1912b66114d4096f48a8cee3a56c231772ca 0xb4eb54af9cc7882df0121d26c5b97e802915abe6
+seth-send: Published transaction with 100 bytes of calldata.
+seth-send: 0x06cf0716136996c21e79d7cd47c5a534bc680e8828a5ff703c6eac74c267510e
+seth-send: Waiting for transaction receipt.............
+seth-send: Transaction included in block 8928187.
++ IFS='
+'
++ read -r line
+++++ seth --from-ascii BAT-A
++++ seth --to-bytes32 0x4241542d41
+++ seth call 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'ilks(bytes32)(address,address)' 4241542d41000000000000000000000000000000000000000000000000000000
++ data+=("$line")
++ IFS='
+'
++ read -r line
++ data+=("$line")
++ IFS='
+'
++ read -r line
++ eval export '\MCD_FLIP_BAT_A=0xaa745404d55f88c108a28c86abe7b5a1e7817c07'
+++ export MCD_FLIP_BAT_A=0xaa745404d55f88c108a28c86abe7b5a1e7817c07
+++ MCD_FLIP_BAT_A=0xaa745404d55f88c108a28c86abe7b5a1e7817c07
++ cat
+++ echo BAT-A
+++ tr '[:upper:]' '[:lower:]'
+++ seth chain
+++ seth chain
+++ git rev-parse HEAD
+++ date
+++ eval echo '$PIP_BAT'
++++ echo 0xb4eb54af9cc7882df0121d26c5b97e802915abe6
+++ eval echo '$BAT'
++++ echo 0x0d8775f648430679a709e98d2b0cb6250d2887ef
+++ eval echo '$MCD_JOIN_BAT_A'
++++ echo 0x3d0b1912b66114d4096f48a8cee3a56c231772ca
+++ eval echo '$MCD_FLIP_BAT_A'
++++ echo 0xaa745404d55f88c108a28c86abe7b5a1e7817c07
++ log 'BAT-A deployed'
++ printf '%b\n' '\033[0;32m✓ BAT-A deployed\033[0m'
+[0;32m✓ BAT-A deployed[0m
+++ echo BAT
+++ tr '[:upper:]' '[:lower:]'
+++ echo A
+++ tr '[:upper:]' '[:lower:]'
+++ seth chain
++ . load-ilk-bat-a-ethlive
+++ export PIP_BAT=0xb4eb54af9cc7882df0121d26c5b97e802915abe6
+++ PIP_BAT=0xb4eb54af9cc7882df0121d26c5b97e802915abe6
+++ export BAT=0x0d8775f648430679a709e98d2b0cb6250d2887ef
+++ BAT=0x0d8775f648430679a709e98d2b0cb6250d2887ef
+++ export MCD_JOIN_BAT_A=0x3d0b1912b66114d4096f48a8cee3a56c231772ca
+++ MCD_JOIN_BAT_A=0x3d0b1912b66114d4096f48a8cee3a56c231772ca
+++ export MCD_FLIP_BAT_A=0xaa745404d55f88c108a28c86abe7b5a1e7817c07
+++ MCD_FLIP_BAT_A=0xaa745404d55f88c108a28c86abe7b5a1e7817c07
+++ echo BAT
+++ tr '[:upper:]' '[:lower:]'
+++ echo A
+++ tr '[:upper:]' '[:lower:]'
+++ seth chain
++ rm load-ilk-bat-a-ethlive
++ [[ BAT != \E\T\H ]]
++ [[ 0x0d8775f648430679a709e98d2b0cb6250d2887ef == '' ]]
++ export SKIP_BUILD=true
++ SKIP_BUILD=true
+++ dappCreate dss-proxy-actions-optimized DssProxyActions
+++ set -e
+++ local lib
+++ lib=dss-proxy-actions-optimized
+++ local class
+++ class=DssProxyActions
+++ DAPP_OUT=/nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-proxy-actions-optimized/out
+++ dapp create DssProxyActions
+++ seth send --create /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-proxy-actions-optimized/out/DssProxyActions.bin 'DssProxyActions()'
+seth-send: Published transaction with 18915 bytes of calldata.
+seth-send: 0xf8d77223a186036835221a7af44cca109bdbf0e9bc55f105557e06c2bae81372
+seth-send: Waiting for transaction receipt.............
+seth-send: Transaction included in block 8928191.
+++ copyAbis dss-proxy-actions-optimized
+++ local lib
+++ lib=dss-proxy-actions-optimized
+++ mkdir -p /home/nanexcool/makerdao/dss-deploy-scripts/out/abi
+++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-proxy-actions-optimized/out -name '*.abi' '!' -name '*Test.abi' '!' -name '*Like.abi' '!' -name '*DSNote.abi' '!' -name '*FakeUser.abi' '!' -name '*Hevm.abi' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/abi ';'
+++ copyBins dss-proxy-actions-optimized
+++ local lib
+++ lib=dss-proxy-actions-optimized
+++ mkdir -p /home/nanexcool/makerdao/dss-deploy-scripts/out/bin
+++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-proxy-actions-optimized/out -name '*.bin' '!' -name '*Test.bin' '!' -name '*Like.bin' '!' -name '*DSNote.bin' '!' -name '*FakeUser.bin' '!' -name '*Hevm.bin' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/bin ';'
+++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-proxy-actions-optimized/out -name '*.bin-runtime' '!' -name '*Test.bin-runtime' '!' -name '*Like.bin-runtime' '!' -name '*DSNote.bin-runtime' '!' -name '*FakeUser.bin-runtime' '!' -name '*Hevm.bin-runtime' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/bin ';'
++ PROXY_ACTIONS=0x82ecd135dce65fbc6dbdd0e4237e0af93ffd5038
+++ dappCreate dss-proxy-actions-optimized DssProxyActionsEnd
+++ set -e
+++ local lib
+++ lib=dss-proxy-actions-optimized
+++ local class
+++ class=DssProxyActionsEnd
+++ DAPP_OUT=/nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-proxy-actions-optimized/out
+++ dapp create DssProxyActionsEnd
+++ seth send --create /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-proxy-actions-optimized/out/DssProxyActionsEnd.bin 'DssProxyActionsEnd()'
+seth-send: Published transaction with 4043 bytes of calldata.
+seth-send: 0x52c3304814492cf4b77dcb7d265dc5c7af0b94df1078ea6c10623de5f3534bb3
+seth-send: Waiting for transaction receipt........
+seth-send: Transaction included in block 8928193.
+++ copyAbis dss-proxy-actions-optimized
+++ local lib
+++ lib=dss-proxy-actions-optimized
+++ mkdir -p /home/nanexcool/makerdao/dss-deploy-scripts/out/abi
+++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-proxy-actions-optimized/out -name '*.abi' '!' -name '*Test.abi' '!' -name '*Like.abi' '!' -name '*DSNote.abi' '!' -name '*FakeUser.abi' '!' -name '*Hevm.abi' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/abi ';'
+++ copyBins dss-proxy-actions-optimized
+++ local lib
+++ lib=dss-proxy-actions-optimized
+++ mkdir -p /home/nanexcool/makerdao/dss-deploy-scripts/out/bin
+++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-proxy-actions-optimized/out -name '*.bin' '!' -name '*Test.bin' '!' -name '*Like.bin' '!' -name '*DSNote.bin' '!' -name '*FakeUser.bin' '!' -name '*Hevm.bin' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/bin ';'
+++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-proxy-actions-optimized/out -name '*.bin-runtime' '!' -name '*Test.bin-runtime' '!' -name '*Like.bin-runtime' '!' -name '*DSNote.bin-runtime' '!' -name '*FakeUser.bin-runtime' '!' -name '*Hevm.bin-runtime' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/bin ';'
++ PROXY_ACTIONS_END=0x069b2fb501b6f16d1f5fe245b16f6993808f1008
+++ dappCreate dss-proxy-actions-optimized DssProxyActionsDsr
+++ set -e
+++ local lib
+++ lib=dss-proxy-actions-optimized
+++ local class
+++ class=DssProxyActionsDsr
+++ DAPP_OUT=/nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-proxy-actions-optimized/out
+++ dapp create DssProxyActionsDsr
+++ seth send --create /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-proxy-actions-optimized/out/DssProxyActionsDsr.bin 'DssProxyActionsDsr()'
+seth-send: Published transaction with 3427 bytes of calldata.
+seth-send: 0x98c995072efa9f3e7334f0d611a24472786acc32c555422eab7303b77d3f29c0
+seth-send: Waiting for transaction receipt............
+seth-send: Transaction included in block 8928195.
+++ copyAbis dss-proxy-actions-optimized
+++ local lib
+++ lib=dss-proxy-actions-optimized
+++ mkdir -p /home/nanexcool/makerdao/dss-deploy-scripts/out/abi
+++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-proxy-actions-optimized/out -name '*.abi' '!' -name '*Test.abi' '!' -name '*Like.abi' '!' -name '*DSNote.abi' '!' -name '*FakeUser.abi' '!' -name '*Hevm.abi' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/abi ';'
+++ copyBins dss-proxy-actions-optimized
+++ local lib
+++ lib=dss-proxy-actions-optimized
+++ mkdir -p /home/nanexcool/makerdao/dss-deploy-scripts/out/bin
+++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-proxy-actions-optimized/out -name '*.bin' '!' -name '*Test.bin' '!' -name '*Like.bin' '!' -name '*DSNote.bin' '!' -name '*FakeUser.bin' '!' -name '*Hevm.bin' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/bin ';'
+++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-proxy-actions-optimized/out -name '*.bin-runtime' '!' -name '*Test.bin-runtime' '!' -name '*Like.bin-runtime' '!' -name '*DSNote.bin-runtime' '!' -name '*FakeUser.bin-runtime' '!' -name '*Hevm.bin-runtime' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/bin ';'
++ PROXY_ACTIONS_DSR=0x07ee93aeea0a36fff2a9b95dd22bd6049ee54f26
++ log 'proxy actions deployed'
++ printf '%b\n' '\033[0;32m✓ proxy actions deployed\033[0m'
+[0;32m✓ proxy actions deployed[0m
++ CDP_MANAGER_FACTORY=0x2a35FA541A8481B3A05609F01096d546C26b4A2d
++ ETH_GAS=9000000
++ seth send 0x2a35FA541A8481B3A05609F01096d546C26b4A2d 'create(address)' 0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b
+seth-send: Published transaction with 36 bytes of calldata.
+seth-send: 0xc72dab9bb98ae3b590f58c20cd0d53d6fe5ef46012879735d43862ff6fdc79f2
+seth-send: Waiting for transaction receipt...........................
+seth-send: Transaction included in block 8928198.
++ ETH_GAS=9000000
++ seth send 0x2a35FA541A8481B3A05609F01096d546C26b4A2d 'more()'
+seth-send: Published transaction with 4 bytes of calldata.
+seth-send: 0x4c6fd28ccbfb98adbd697fbd6b63edb22d50862689f9fe25ec46520e89fa0714
+seth-send: Waiting for transaction receipt................................................
+seth-send: Transaction included in block 8928203.
+++ seth call 0x2a35FA541A8481B3A05609F01096d546C26b4A2d 'manager()(address)'
++ CDP_MANAGER=0x5ef30b9986345249bc32d8928b7ee64de9435e39
++ log 'manager deployed'
++ printf '%b\n' '\033[0;32m✓ manager deployed\033[0m'
+[0;32m✓ manager deployed[0m
+++ dappCreate dss-proxy-actions GetCdps
+++ set -e
+++ local lib
+++ lib=dss-proxy-actions
+++ local class
+++ class=GetCdps
+++ DAPP_OUT=/nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-proxy-actions/out
+++ dapp create GetCdps
+++ seth send --create /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-proxy-actions/out/GetCdps.bin 'GetCdps()'
+seth-send: Published transaction with 3047 bytes of calldata.
+seth-send: 0x8783f0ea388303082bf19848525f1d01d0dd60f212f921b2ad52656bc5eab9ed
+seth-send: Waiting for transaction receipt............
+seth-send: Transaction included in block 8928205.
+++ copyAbis dss-proxy-actions
+++ local lib
+++ lib=dss-proxy-actions
+++ mkdir -p /home/nanexcool/makerdao/dss-deploy-scripts/out/abi
+++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-proxy-actions/out -name '*.abi' '!' -name '*Test.abi' '!' -name '*Like.abi' '!' -name '*DSNote.abi' '!' -name '*FakeUser.abi' '!' -name '*Hevm.abi' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/abi ';'
+++ copyBins dss-proxy-actions
+++ local lib
+++ lib=dss-proxy-actions
+++ mkdir -p /home/nanexcool/makerdao/dss-deploy-scripts/out/bin
+++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-proxy-actions/out -name '*.bin' '!' -name '*Test.bin' '!' -name '*Like.bin' '!' -name '*DSNote.bin' '!' -name '*FakeUser.bin' '!' -name '*Hevm.bin' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/bin ';'
+++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-proxy-actions/out -name '*.bin-runtime' '!' -name '*Test.bin-runtime' '!' -name '*Like.bin-runtime' '!' -name '*DSNote.bin-runtime' '!' -name '*FakeUser.bin-runtime' '!' -name '*Hevm.bin-runtime' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/bin ';'
++ GET_CDPS=0x36a724bd100c39f0ea4d3a20f7097ee01a8ff573
++ log 'getCdps deployed'
++ printf '%b\n' '\033[0;32m✓ getCdps deployed\033[0m'
+[0;32m✓ getCdps deployed[0m
+++ jq -r '.migration.tub | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ SAI_TUB=0x448a5065aebb8e423f0896e6c5d525c040f59af3
++++ jq -r '.migration.ethAdapterVarName | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ eval echo '$MCD_JOIN_ETH_A'
++++ echo 0x2f0b23f53734252bda2277357e97e1517d6b042a
++ ethAdapterAddr=0x2f0b23f53734252bda2277357e97e1517d6b042a
++ [[ -n 0x448a5065aebb8e423f0896e6c5d525c040f59af3 ]]
++ [[ -n 0x2f0b23f53734252bda2277357e97e1517d6b042a ]]
+++ seth call 0x448a5065aebb8e423f0896e6c5d525c040f59af3 'sai()(address)'
++ SAI=0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359
++ export SAI
++ deploy-ilk-sai
+++ export DAPP_OUT=/nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out
+++ DAPP_OUT=/nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out
+++ export ADDRESS_DIR=/home/nanexcool/makerdao/dss-deploy-scripts
+++ ADDRESS_DIR=/home/nanexcool/makerdao/dss-deploy-scripts
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
++ export ETH_FROM=0xdDb108893104dE4E1C6d0E47c42237dB4E617ACc
++ ETH_FROM=0xdDb108893104dE4E1C6d0E47c42237dB4E617ACc
++ dappBuild
++ [[ -n 1 ]]
++ return
++ test -z 0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359
++ test -z ''
+++ dapp create DSValue
+++ seth send --create /nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out/DSValue.bin 'DSValue()'
+seth-send: Published transaction with 3025 bytes of calldata.
+seth-send: 0x4882096060bf714a4adc29a7a73f5d2e5ce9d7622ec0b8097b91bc237fb9be27
+seth-send: Waiting for transaction receipt......................
+seth-send: Transaction included in block 8928207.
++ PIP_SAI=0x54003dbf6ae6cba6ddae571ccdc34d834b44ab1e
++ export SAI
++ export PIP_SAI
++ source /nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/bin/deploy-ilk SAI '' AuthGemJoin
+++ export BIN_DIR=/nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/bin
+++ BIN_DIR=/nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/bin
+++ export LIB_DIR=/nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/lib
+++ LIB_DIR=/nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/lib
+++ export LIBEXEC_DIR=/nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/libexec
+++ LIBEXEC_DIR=/nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/libexec
+++ export CONFIG_DIR=/nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/share/config
+++ CONFIG_DIR=/nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/share/config
+++ export PATH=/nix/store/d9s1kq1bnwqgxwcvv4zrc36ysnxg8gv7-coreutils-8.30/bin:/nix/store/wnjv27b3j6jfdl0968xpcymlc7chpqil-gnugrep-3.3/bin:/nix/store/x1khw8x0465xhkv6w31af75syyyxc65j-gnused-4.7/bin:/nix/store/krhqmaqal0gklh15rs2bwrqzz8mg9lrn-findutils-4.6.0/bin:/nix/store/qnramp80ns84njlskrbq7417m8zkfm6a-bc-1.07.1/bin:/nix/store/71c7mp4ldflyim2hcdmr36rxvxgc82id-jq-1.6-bin/bin:/nix/store/0gjhjxjvm03qdvlz9v2fx4mfw683cyag-solc-0.5.12/bin:/nix/store/86z4w9863n4w7yrnq6kcw435zjwxqppb-dapp-0.25.0/bin:/nix/store/qr33vqgjs7nhni6ygrx44v1pwggl9gvp-ethsign-0.13.0-bin/bin:/nix/store/8n33rmzw303h7n589yzmkall6kg7cqxn-seth-0.8.2/bin:/nix/store/9zdhfsl48whxzqhazkm8npk5im5qvz9h-mcd-0.2.1/bin:/nix/store/ccl7j6yhkz0x5gf4vyxll824d5hzgayw-git-2.19.2/bin
+++ PATH=/nix/store/d9s1kq1bnwqgxwcvv4zrc36ysnxg8gv7-coreutils-8.30/bin:/nix/store/wnjv27b3j6jfdl0968xpcymlc7chpqil-gnugrep-3.3/bin:/nix/store/x1khw8x0465xhkv6w31af75syyyxc65j-gnused-4.7/bin:/nix/store/krhqmaqal0gklh15rs2bwrqzz8mg9lrn-findutils-4.6.0/bin:/nix/store/qnramp80ns84njlskrbq7417m8zkfm6a-bc-1.07.1/bin:/nix/store/71c7mp4ldflyim2hcdmr36rxvxgc82id-jq-1.6-bin/bin:/nix/store/0gjhjxjvm03qdvlz9v2fx4mfw683cyag-solc-0.5.12/bin:/nix/store/86z4w9863n4w7yrnq6kcw435zjwxqppb-dapp-0.25.0/bin:/nix/store/qr33vqgjs7nhni6ygrx44v1pwggl9gvp-ethsign-0.13.0-bin/bin:/nix/store/8n33rmzw303h7n589yzmkall6kg7cqxn-seth-0.8.2/bin:/nix/store/9zdhfsl48whxzqhazkm8npk5im5qvz9h-mcd-0.2.1/bin:/nix/store/ccl7j6yhkz0x5gf4vyxll824d5hzgayw-git-2.19.2/bin
+++ export DAPP_LIB=/nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp
+++ DAPP_LIB=/nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp
+++ export DAPP_SKIP_BUILD=yes
+++ DAPP_SKIP_BUILD=yes
+++ export DAPP_OUT=/nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out
+++ DAPP_OUT=/nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out
+++ export SKIP_BUILD=1
+++ SKIP_BUILD=1
+++ exec -a /nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/bin/.deploy-ilk-sai-wrapped /nix/store/z2lz9vsmcznxrpf0kzsi6f64hhrbkhnh-dss-deploy-non-optimized/bin/.deploy-ilk-wrapped SAI '' AuthGemJoin
+++ export DAPP_OUT=/nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out
+++ DAPP_OUT=/nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out
+++ export ADDRESS_DIR=/home/nanexcool/makerdao/dss-deploy-scripts
+++ ADDRESS_DIR=/home/nanexcool/makerdao/dss-deploy-scripts
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
++ export ETH_FROM=0xdDb108893104dE4E1C6d0E47c42237dB4E617ACc
++ ETH_FROM=0xdDb108893104dE4E1C6d0E47c42237dB4E617ACc
++ dappBuild
++ [[ -n 1 ]]
++ return
++ test -z SAI
++ test -z AuthGemJoin
++ tok=SAI
++ [[ -n '' ]]
++ ilk=SAI
++ ilkVar=SAI
++ ilkJoin=AuthGemJoin
++ decimals=
++ test -z 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4
+++ seth call 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'vat()(address)'
++ MCD_VAT=0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b
+++++ seth --from-ascii SAI
++++ seth --to-bytes32 0x534149
++++ eval echo '$SAI'
+++++ echo 0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359
+++ dapp create AuthGemJoin 0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b 5341490000000000000000000000000000000000000000000000000000000000 0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359 ''
+++ seth send --create /nix/store/z8p7jag9b4bflipfqnd54r9zrw2wqra5-dss-deploy-non-optimized-solidity-packages/dapp/dss-deploy/out/AuthGemJoin.bin 'AuthGemJoin(address,bytes32,address)' 0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b 5341490000000000000000000000000000000000000000000000000000000000 0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359 ''
+seth-send: Published transaction with 4229 bytes of calldata.
+seth-send: 0x683a1aeab483da2c9a462064e46513bf8b4a0a541c7b862fee9c120cc0095bf4
+seth-send: Waiting for transaction receipt.............
+seth-send: Transaction included in block 8928210.
++ contract=0xad37fd42185ba63009177058208dd1be4b136e6b
++ eval export '\MCD_JOIN_SAI=0xad37fd42185ba63009177058208dd1be4b136e6b'
+++ export MCD_JOIN_SAI=0xad37fd42185ba63009177058208dd1be4b136e6b
+++ MCD_JOIN_SAI=0xad37fd42185ba63009177058208dd1be4b136e6b
++++ seth --from-ascii SAI
+++ seth --to-bytes32 0x534149
+++ eval echo '$MCD_JOIN_SAI'
++++ echo 0xad37fd42185ba63009177058208dd1be4b136e6b
+++ eval echo '$PIP_SAI'
++++ echo 0x54003dbf6ae6cba6ddae571ccdc34d834b44ab1e
++ seth send 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'deployCollateral(bytes32,address,address)' 5341490000000000000000000000000000000000000000000000000000000000 0xad37fd42185ba63009177058208dd1be4b136e6b 0x54003dbf6ae6cba6ddae571ccdc34d834b44ab1e
+seth-send: Published transaction with 100 bytes of calldata.
+seth-send: 0xd019ab31fa58a0a01ddf96392d6c2fdbed55f56d58e3bc93d395a82b476d0a50
+seth-send: Waiting for transaction receipt.............
+seth-send: Transaction included in block 8928212.
++ IFS='
+'
++ read -r line
+++++ seth --from-ascii SAI
++++ seth --to-bytes32 0x534149
+++ seth call 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'ilks(bytes32)(address,address)' 5341490000000000000000000000000000000000000000000000000000000000
++ data+=("$line")
++ IFS='
+'
++ read -r line
++ data+=("$line")
++ IFS='
+'
++ read -r line
++ eval export '\MCD_FLIP_SAI=0x5432b2f3c0dff95aa191c45e5cbd539e2820ae72'
+++ export MCD_FLIP_SAI=0x5432b2f3c0dff95aa191c45e5cbd539e2820ae72
+++ MCD_FLIP_SAI=0x5432b2f3c0dff95aa191c45e5cbd539e2820ae72
++ cat
+++ echo SAI
+++ tr '[:upper:]' '[:lower:]'
+++ seth chain
+++ seth chain
+++ git rev-parse HEAD
+++ date
+++ eval echo '$PIP_SAI'
++++ echo 0x54003dbf6ae6cba6ddae571ccdc34d834b44ab1e
+++ eval echo '$SAI'
++++ echo 0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359
+++ eval echo '$MCD_JOIN_SAI'
++++ echo 0xad37fd42185ba63009177058208dd1be4b136e6b
+++ eval echo '$MCD_FLIP_SAI'
++++ echo 0x5432b2f3c0dff95aa191c45e5cbd539e2820ae72
++ log 'SAI deployed'
++ printf '%b\n' '\033[0;32m✓ SAI deployed\033[0m'
+[0;32m✓ SAI deployed[0m
+++ seth chain
++ . load-ilk-sai-ethlive
+++ export PIP_SAI=0x54003dbf6ae6cba6ddae571ccdc34d834b44ab1e
+++ PIP_SAI=0x54003dbf6ae6cba6ddae571ccdc34d834b44ab1e
+++ export SAI=0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359
+++ SAI=0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359
+++ export MCD_JOIN_SAI=0xad37fd42185ba63009177058208dd1be4b136e6b
+++ MCD_JOIN_SAI=0xad37fd42185ba63009177058208dd1be4b136e6b
+++ export MCD_FLIP_SAI=0x5432b2f3c0dff95aa191c45e5cbd539e2820ae72
+++ MCD_FLIP_SAI=0x5432b2f3c0dff95aa191c45e5cbd539e2820ae72
+++ seth chain
++ rm load-ilk-sai-ethlive
++++ seth --to-wei 1 ETH
+++ seth --to-uint256 1000000000000000000
++ seth send 0x54003dbf6ae6cba6ddae571ccdc34d834b44ab1e 'poke(bytes32)' 0000000000000000000000000000000000000000000000000de0b6b3a7640000
+seth-send: Published transaction with 36 bytes of calldata.
+seth-send: 0x819e1549c74568ce0692605e9b4dda8808909df6237c75eca2b703e03c0189d7
+seth-send: Waiting for transaction receipt...................
+seth-send: Transaction included in block 8928216.
++ seth send 0x54003dbf6ae6cba6ddae571ccdc34d834b44ab1e 'setOwner(address)' 0xbe8e3e3618f7474f8cb1d074a26affef007e98fb
+seth-send: Published transaction with 36 bytes of calldata.
+seth-send: 0x34b5dac4051d9f2eb5291afa16345b08be3a419e3d6b7c411de7267410df2e15
+seth-send: Waiting for transaction receipt.....................................
+seth-send: Transaction included in block 8928221.
++ dappBuild scd-mcd-migration
++ [[ -n yes ]]
++ return
+++ dappCreate scd-mcd-migration ScdMcdMigration 0x448a5065aebb8e423f0896e6c5d525c040f59af3 0x5ef30b9986345249bc32d8928b7ee64de9435e39 0xad37fd42185ba63009177058208dd1be4b136e6b 0x2f0b23f53734252bda2277357e97e1517d6b042a 0x9759a6ac90977b93b58547b4a71c78317f391a28
+++ set -e
+++ local lib
+++ lib=scd-mcd-migration
+++ local class
+++ class=ScdMcdMigration
+++ DAPP_OUT=/nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/scd-mcd-migration/out
+++ dapp create ScdMcdMigration 0x448a5065aebb8e423f0896e6c5d525c040f59af3 0x5ef30b9986345249bc32d8928b7ee64de9435e39 0xad37fd42185ba63009177058208dd1be4b136e6b 0x2f0b23f53734252bda2277357e97e1517d6b042a 0x9759a6ac90977b93b58547b4a71c78317f391a28
+++ seth send --create /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/scd-mcd-migration/out/ScdMcdMigration.bin 'ScdMcdMigration(address,address,address,address,address)' 0x448a5065aebb8e423f0896e6c5d525c040f59af3 0x5ef30b9986345249bc32d8928b7ee64de9435e39 0xad37fd42185ba63009177058208dd1be4b136e6b 0x2f0b23f53734252bda2277357e97e1517d6b042a 0x9759a6ac90977b93b58547b4a71c78317f391a28
+seth-send: Published transaction with 12068 bytes of calldata.
+seth-send: 0xd6ec009c0b8daacbe5ad5cc9647a5df910d910081de6d5146b4f8fc31e66980e
+seth-send: Waiting for transaction receipt........
+seth-send: Transaction included in block 8928226.
+++ copyAbis scd-mcd-migration
+++ local lib
+++ lib=scd-mcd-migration
+++ mkdir -p /home/nanexcool/makerdao/dss-deploy-scripts/out/abi
+++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/scd-mcd-migration/out -name '*.abi' '!' -name '*Test.abi' '!' -name '*Like.abi' '!' -name '*DSNote.abi' '!' -name '*FakeUser.abi' '!' -name '*Hevm.abi' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/abi ';'
+++ copyBins scd-mcd-migration
+++ local lib
+++ lib=scd-mcd-migration
+++ mkdir -p /home/nanexcool/makerdao/dss-deploy-scripts/out/bin
+++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/scd-mcd-migration/out -name '*.bin' '!' -name '*Test.bin' '!' -name '*Like.bin' '!' -name '*DSNote.bin' '!' -name '*FakeUser.bin' '!' -name '*Hevm.bin' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/bin ';'
+++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/scd-mcd-migration/out -name '*.bin-runtime' '!' -name '*Test.bin-runtime' '!' -name '*Like.bin-runtime' '!' -name '*DSNote.bin-runtime' '!' -name '*FakeUser.bin-runtime' '!' -name '*Hevm.bin-runtime' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/bin ';'
++ MIGRATION=0xc73e0383f3aff3215e6f04b0331d58cecf0ab849
++ seth send 0xad37fd42185ba63009177058208dd1be4b136e6b 'rely(address)' 0xc73e0383f3aff3215e6f04b0331d58cecf0ab849
+seth-send: Published transaction with 36 bytes of calldata.
+seth-send: 0x3ff9a7917e68f9a34af77a33c12b2a484bc854362c1a7a66707cba0296c67962
+seth-send: Waiting for transaction receipt................
+seth-send: Transaction included in block 8928229.
++ seth send 0xad37fd42185ba63009177058208dd1be4b136e6b 'rely(address)' 0xbe8e3e3618f7474f8cb1d074a26affef007e98fb
+seth-send: Published transaction with 36 bytes of calldata.
+seth-send: 0xe75985a122f39f20ee799486b1e7bd71979351f9b3c19e78a50e3df5a0d6b309
+seth-send: Waiting for transaction receipt................
+seth-send: Transaction included in block 8928233.
++ seth send 0xad37fd42185ba63009177058208dd1be4b136e6b 'deny(address)' 0xdDb108893104dE4E1C6d0E47c42237dB4E617ACc
+seth-send: Published transaction with 36 bytes of calldata.
+seth-send: 0xd7cac2a56ca35c98c67b9a2835df96578a2a36caa7c8c42c2ccc84c99b7059e6
+seth-send: Waiting for transaction receipt.........................
+seth-send: Transaction included in block 8928235.
++++ seth --from-ascii SAI
+++ seth --to-bytes32 0x534149
++ seth send 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'releaseAuthFlip(bytes32)' 5341490000000000000000000000000000000000000000000000000000000000
+seth-send: Published transaction with 36 bytes of calldata.
+seth-send: 0x6e3f052cf2810d9f014520fa7d91ea459805aacbe82707be6d60f534b89287e5
+seth-send: Waiting for transaction receipt............
+seth-send: Transaction included in block 8928237.
++ log 'auth removed for SAI'
++ printf '%b\n' '\033[0;32m✓ auth removed for SAI\033[0m'
+[0;32m✓ auth removed for SAI[0m
+++ dappCreate scd-mcd-migration MigrationProxyActions
+++ set -e
+++ local lib
+++ lib=scd-mcd-migration
+++ local class
+++ class=MigrationProxyActions
+++ DAPP_OUT=/nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/scd-mcd-migration/out
+++ dapp create MigrationProxyActions
+++ seth send --create /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/scd-mcd-migration/out/MigrationProxyActions.bin 'MigrationProxyActions()'
+seth-send: Published transaction with 12374 bytes of calldata.
+seth-send: 0xfec8d5c1b8b887e4ebb17fe984959d23a17846858f6ab4cc8be1d2fe8865536b
+seth-send: Waiting for transaction receipt......................
+seth-send: Transaction included in block 8928240.
+++ copyAbis scd-mcd-migration
+++ local lib
+++ lib=scd-mcd-migration
+++ mkdir -p /home/nanexcool/makerdao/dss-deploy-scripts/out/abi
+++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/scd-mcd-migration/out -name '*.abi' '!' -name '*Test.abi' '!' -name '*Like.abi' '!' -name '*DSNote.abi' '!' -name '*FakeUser.abi' '!' -name '*Hevm.abi' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/abi ';'
+++ copyBins scd-mcd-migration
+++ local lib
+++ lib=scd-mcd-migration
+++ mkdir -p /home/nanexcool/makerdao/dss-deploy-scripts/out/bin
+++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/scd-mcd-migration/out -name '*.bin' '!' -name '*Test.bin' '!' -name '*Like.bin' '!' -name '*DSNote.bin' '!' -name '*FakeUser.bin' '!' -name '*Hevm.bin' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/bin ';'
+++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/scd-mcd-migration/out -name '*.bin-runtime' '!' -name '*Test.bin-runtime' '!' -name '*Like.bin-runtime' '!' -name '*DSNote.bin-runtime' '!' -name '*FakeUser.bin-runtime' '!' -name '*Hevm.bin-runtime' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/bin ';'
++ MIGRATION_PROXY_ACTIONS=0xe4b22d484958e582098a98229a24e8a43801b674
++ seth send 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'releaseAuth()'
+seth-send: Published transaction with 4 bytes of calldata.
+seth-send: 0xa5876703f51a7a39e023f07a04bd3dc356a208b6563e863dcd008ab0c5c3d2bd
+seth-send: Waiting for transaction receipt............................................
+seth-send: Transaction included in block 8928244.
++ log 'general auth removed'
++ printf '%b\n' '\033[0;32m✓ general auth removed\033[0m'
+[0;32m✓ general auth removed[0m
++ for token in $tokens
+++ jq -r '.tokens.ETH.ilks | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ilks=A
++ for ilk in $ilks
+++ eval echo '$MCD_JOIN_ETH_A'
++++ echo 0x2f0b23f53734252bda2277357e97e1517d6b042a
++ seth send 0x2f0b23f53734252bda2277357e97e1517d6b042a 'rely(address)' 0xbe8e3e3618f7474f8cb1d074a26affef007e98fb
+seth-send: Published transaction with 36 bytes of calldata.
+seth-send: 0x97c328ff4ee866e63989c759f23fbbdb71f37a7bee1c79e629109d9bce021cef
+seth-send: Waiting for transaction receipt.........................
+seth-send: Transaction included in block 8928248.
+++ eval echo '$MCD_JOIN_ETH_A'
++++ echo 0x2f0b23f53734252bda2277357e97e1517d6b042a
++ seth send 0x2f0b23f53734252bda2277357e97e1517d6b042a 'deny(address)' 0xdDb108893104dE4E1C6d0E47c42237dB4E617ACc
+seth-send: Published transaction with 36 bytes of calldata.
+seth-send: 0x32c4062baf32f4eaa25211d3eb2038f08f573588ae11a057f8f9428cae2d5acd
+seth-send: Waiting for transaction receipt.............
+seth-send: Transaction included in block 8928252.
++++ seth --from-ascii ETH-A
+++ seth --to-bytes32 0x4554482d41
++ seth send 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'releaseAuthFlip(bytes32)' 4554482d41000000000000000000000000000000000000000000000000000000
+seth-send: Published transaction with 36 bytes of calldata.
+seth-send: 0x397cf46b61a139e3db8f066bc3cc5ed05985b3928e1fc678020cef839863c915
+seth-send: Waiting for transaction receipt...............................................................
+seth-send: Transaction included in block 8928259.
++ log 'auth removed for ETH-A'
++ printf '%b\n' '\033[0;32m✓ auth removed for ETH-A\033[0m'
+[0;32m✓ auth removed for ETH-A[0m
++ for token in $tokens
+++ jq -r '.tokens.BAT.ilks | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ilks=A
++ for ilk in $ilks
+++ eval echo '$MCD_JOIN_BAT_A'
++++ echo 0x3d0b1912b66114d4096f48a8cee3a56c231772ca
++ seth send 0x3d0b1912b66114d4096f48a8cee3a56c231772ca 'rely(address)' 0xbe8e3e3618f7474f8cb1d074a26affef007e98fb
+seth-send: Published transaction with 36 bytes of calldata.
+seth-send: 0x9fc96f68387ac76b7c717ac78eb706e617bc5b346ad58c1225979c798d908f03
+seth-send: Waiting for transaction receipt..................
+seth-send: Transaction included in block 8928262.
+++ eval echo '$MCD_JOIN_BAT_A'
++++ echo 0x3d0b1912b66114d4096f48a8cee3a56c231772ca
++ seth send 0x3d0b1912b66114d4096f48a8cee3a56c231772ca 'deny(address)' 0xdDb108893104dE4E1C6d0E47c42237dB4E617ACc
+seth-send: Published transaction with 36 bytes of calldata.
+seth-send: 0x1d8e5ddc6d73054ea1321f1d4fc651f0d0b6d99e60186111c1b91a43ab890526
+seth-send: Waiting for transaction receipt..............
+seth-send: Transaction included in block 8928265.
++++ seth --from-ascii BAT-A
+++ seth --to-bytes32 0x4241542d41
++ seth send 0xbaa65281c2fa2baacb2cb550ba051525a480d3f4 'releaseAuthFlip(bytes32)' 4241542d41000000000000000000000000000000000000000000000000000000
+seth-send: Published transaction with 36 bytes of calldata.
+seth-send: 0x9e209b04b3c610a8e6bfaf398bf432efe6ac0bc6179948e97d4f74b8149d9fa8
+seth-send: Waiting for transaction receipt...........
+seth-send: Transaction included in block 8928267.
++ log 'auth removed for BAT-A'
++ printf '%b\n' '\033[0;32m✓ auth removed for BAT-A\033[0m'
+[0;32m✓ auth removed for BAT-A[0m
+++ dappCreate dss-deploy GovActions
+++ set -e
+++ local lib
+++ lib=dss-deploy
+++ local class
+++ class=GovActions
+++ DAPP_OUT=/nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-deploy/out
+++ dapp create GovActions
+++ seth send --create /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-deploy/out/GovActions.bin 'GovActions()'
+seth-send: Published transaction with 3620 bytes of calldata.
+seth-send: 0x69d28add2ce20208ff0106b015edd0f709eea4eef5e6a8c5aaf1eda3005bd7ef
+seth-send: Waiting for transaction receipt......................................
+seth-send: Transaction included in block 8928270.
+++ copyAbis dss-deploy
+++ local lib
+++ lib=dss-deploy
+++ mkdir -p /home/nanexcool/makerdao/dss-deploy-scripts/out/abi
+++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-deploy/out -name '*.abi' '!' -name '*Test.abi' '!' -name '*Like.abi' '!' -name '*DSNote.abi' '!' -name '*FakeUser.abi' '!' -name '*Hevm.abi' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/abi ';'
+++ copyBins dss-deploy
+++ local lib
+++ lib=dss-deploy
+++ mkdir -p /home/nanexcool/makerdao/dss-deploy-scripts/out/bin
+++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-deploy/out -name '*.bin' '!' -name '*Test.bin' '!' -name '*Like.bin' '!' -name '*DSNote.bin' '!' -name '*FakeUser.bin' '!' -name '*Hevm.bin' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/bin ';'
+++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-deploy/out -name '*.bin-runtime' '!' -name '*Test.bin-runtime' '!' -name '*Like.bin-runtime' '!' -name '*DSNote.bin-runtime' '!' -name '*FakeUser.bin-runtime' '!' -name '*Hevm.bin-runtime' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/bin ';'
++ MCD_GOV_ACTIONS=0x4f5f0933158569c026d617337614d00ee6589b6e
++ log 'gov actions deployed'
++ printf '%b\n' '\033[0;32m✓ gov actions deployed\033[0m'
+[0;32m✓ gov actions deployed[0m
++ unset SKIP_BUILD
++ dappBuild dss-deploy-pause-proxy-actions
++ [[ -n yes ]]
++ return
+++ dappCreate dss-deploy-pause-proxy-actions DssDeployPauseProxyActions
+++ set -e
+++ local lib
+++ lib=dss-deploy-pause-proxy-actions
+++ local class
+++ class=DssDeployPauseProxyActions
+++ DAPP_OUT=/nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-deploy-pause-proxy-actions/out
+++ dapp create DssDeployPauseProxyActions
+++ seth send --create /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-deploy-pause-proxy-actions/out/DssDeployPauseProxyActions.bin 'DssDeployPauseProxyActions()'
+seth-send: Published transaction with 7176 bytes of calldata.
+seth-send: 0xaaec21704a1edf68e4d30c493a2b88f8e933016f95b6a77f6da34c8afe703a4a
+seth-send: Waiting for transaction receipt..........................................................
+seth-send: Transaction included in block 8928274.
+++ copyAbis dss-deploy-pause-proxy-actions
+++ local lib
+++ lib=dss-deploy-pause-proxy-actions
+++ mkdir -p /home/nanexcool/makerdao/dss-deploy-scripts/out/abi
+++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-deploy-pause-proxy-actions/out -name '*.abi' '!' -name '*Test.abi' '!' -name '*Like.abi' '!' -name '*DSNote.abi' '!' -name '*FakeUser.abi' '!' -name '*Hevm.abi' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/abi ';'
+++ copyBins dss-deploy-pause-proxy-actions
+++ local lib
+++ lib=dss-deploy-pause-proxy-actions
+++ mkdir -p /home/nanexcool/makerdao/dss-deploy-scripts/out/bin
+++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-deploy-pause-proxy-actions/out -name '*.bin' '!' -name '*Test.bin' '!' -name '*Like.bin' '!' -name '*DSNote.bin' '!' -name '*FakeUser.bin' '!' -name '*Hevm.bin' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/bin ';'
+++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-deploy-pause-proxy-actions/out -name '*.bin-runtime' '!' -name '*Test.bin-runtime' '!' -name '*Like.bin-runtime' '!' -name '*DSNote.bin-runtime' '!' -name '*FakeUser.bin-runtime' '!' -name '*Hevm.bin-runtime' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/bin ';'
++ PROXY_PAUSE_ACTIONS=0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370
++ log 'pause actions deployed'
++ printf '%b\n' '\033[0;32m✓ pause actions deployed\033[0m'
+[0;32m✓ pause actions deployed[0m
+++ seth call 0x4678f0a6958e4d2bc4f1baf7bc52e8f3564f3fe4 'proxies(address)(address)' 0xdDb108893104dE4E1C6d0E47c42237dB4E617ACc
++ PROXY_DEPLOYER=0x1b93556ab8dccef01cd7823c617a6d340f53fb58
++ [[ 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 == \0\x\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0 ]]
++ seth send 0x0560328fdbf78edeba4ea13cfb1467e1fb44d2ed 'setRootUser(address,bool)' 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 true
+seth-send: Published transaction with 68 bytes of calldata.
+seth-send: 0xca0825891a344a6689620cc1ede4e246051492eae482e9532f365faf5bce8cb1
+seth-send: Waiting for transaction receipt....................................................
+seth-send: Transaction included in block 8928278.
++ dappBuild vote-proxy
++ [[ -n yes ]]
++ return
+++ jq -r '.authority | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ MCD_ADM=0x9eF05f7F6deB616fd37aC3c959a2dDD25A54E4F5
++ [[ -z 0x9eF05f7F6deB616fd37aC3c959a2dDD25A54E4F5 ]]
++ copyAbis vote-proxy
++ local lib
++ lib=vote-proxy
++ mkdir -p /home/nanexcool/makerdao/dss-deploy-scripts/out/abi
++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/vote-proxy/out -name '*.abi' '!' -name '*Test.abi' '!' -name '*Like.abi' '!' -name '*DSNote.abi' '!' -name '*FakeUser.abi' '!' -name '*Hevm.abi' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/abi ';'
++ [[ -n '' ]]
++ copyAbis dss-deploy
++ local lib
++ lib=dss-deploy
++ mkdir -p /home/nanexcool/makerdao/dss-deploy-scripts/out/abi
++ find /nix/store/zf993zczsgyak6yfhw1raz3qzn6dsz1r-dss-deploy-scripts-solidity-packages/dapp/dss-deploy/out -name '*.abi' '!' -name '*Test.abi' '!' -name '*Like.abi' '!' -name '*DSNote.abi' '!' -name '*FakeUser.abi' '!' -name '*Hevm.abi' -exec cp -f '{}' /home/nanexcool/makerdao/dss-deploy-scripts/out/abi ';'
++ for token in $tokens
+++ eval echo '$ETH'
++++ echo 0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2
++ ILKS_VARS+=',
+    "ETH": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2"'
+++ eval echo '$VAL_ETH'
++++ echo 0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763
++ [[ 0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763 != '' ]]
+++ eval echo '$VAL_ETH'
++++ echo 0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763
++ ILKS_VARS+=',
+    "VAL_ETH": "0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763"'
+++ eval echo '$PIP_ETH'
++++ echo 0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763
++ ILKS_VARS+=',
+    "PIP_ETH": "0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763"'
+++ jq -r '.tokens.ETH.ilks | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ilks=A
++ for ilk in $ilks
+++ eval echo '$MCD_JOIN_ETH_A'
++++ echo 0x2f0b23f53734252bda2277357e97e1517d6b042a
++ ILKS_VARS+=',
+    "MCD_JOIN_ETH_A": "0x2f0b23f53734252bda2277357e97e1517d6b042a"'
+++ eval echo '$MCD_FLIP_ETH_A'
++++ echo 0xd8a04f5412223f513dc55f839574430f5ec15531
++ ILKS_VARS+=',
+    "MCD_FLIP_ETH_A": "0xd8a04f5412223f513dc55f839574430f5ec15531"'
++ for token in $tokens
+++ eval echo '$BAT'
++++ echo 0x0d8775f648430679a709e98d2b0cb6250d2887ef
++ ILKS_VARS+=',
+    "BAT": "0x0d8775f648430679a709e98d2b0cb6250d2887ef"'
+++ eval echo '$VAL_BAT'
++++ echo 0xb4eb54af9cc7882df0121d26c5b97e802915abe6
++ [[ 0xb4eb54af9cc7882df0121d26c5b97e802915abe6 != '' ]]
+++ eval echo '$VAL_BAT'
++++ echo 0xb4eb54af9cc7882df0121d26c5b97e802915abe6
++ ILKS_VARS+=',
+    "VAL_BAT": "0xb4eb54af9cc7882df0121d26c5b97e802915abe6"'
+++ eval echo '$PIP_BAT'
++++ echo 0xb4eb54af9cc7882df0121d26c5b97e802915abe6
++ ILKS_VARS+=',
+    "PIP_BAT": "0xb4eb54af9cc7882df0121d26c5b97e802915abe6"'
+++ jq -r '.tokens.BAT.ilks | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ilks=A
++ for ilk in $ilks
+++ eval echo '$MCD_JOIN_BAT_A'
++++ echo 0x3d0b1912b66114d4096f48a8cee3a56c231772ca
++ ILKS_VARS+=',
+    "MCD_JOIN_BAT_A": "0x3d0b1912b66114d4096f48a8cee3a56c231772ca"'
+++ eval echo '$MCD_FLIP_BAT_A'
++++ echo 0xaa745404d55f88c108a28c86abe7b5a1e7817c07
++ ILKS_VARS+=',
+    "MCD_FLIP_BAT_A": "0xaa745404d55f88c108a28c86abe7b5a1e7817c07"'
++ [[ -n 0xc73e0383f3aff3215e6f04b0331d58cecf0ab849 ]]
++ ILKS_VARS+=',
+    "SAI": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359"'
++ ILKS_VARS+=',
+    "PIP_SAI": "0x54003dbf6ae6cba6ddae571ccdc34d834b44ab1e"'
++ ILKS_VARS+=',
+    "MCD_JOIN_SAI": "0xad37fd42185ba63009177058208dd1be4b136e6b"'
++ ILKS_VARS+=',
+    "MCD_FLIP_SAI": "0x5432b2f3c0dff95aa191c45e5cbd539e2820ae72"'
++ MIGRATION_VARS=',
+    "SAI_TUB": "0x448a5065aebb8e423f0896e6c5d525c040f59af3"'
++ MIGRATION_VARS+=',
+    "MIGRATION": "0xc73e0383f3aff3215e6f04b0331d58cecf0ab849"'
++ MIGRATION_VARS+=',
+    "MIGRATION_PROXY_ACTIONS": "0xe4b22d484958e582098a98229a24e8a43801b674"'
++ [[ -n '' ]]
++ [[ -n '' ]]
++ [[ -n '' ]]
++ cat
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-vat-line
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ loadAddresses
++ set +x
+++ jq -r '.vat_line | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ Line=0
++ [[ 0 != '' ]]
++ [[ 0 != \0 ]]
++ log 'SET VAT LINE COMPLETED SUCCESSFULLY'
++ printf '%b\n' '\033[0;32m✓ SET VAT LINE COMPLETED SUCCESSFULLY\033[0m'
+[0;32m✓ SET VAT LINE COMPLETED SUCCESSFULLY[0m
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-vow-wait
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ loadAddresses
++ set +x
+++ jq -r '.vow_wait | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ wait=172800
++ [[ 172800 != '' ]]
+++++ seth --from-ascii wait
++++ seth --to-bytes32 0x77616974
+++ seth calldata 'file(address,address,address,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0xa950524441892a31ebddf91d3ceefa04bf454466 7761697400000000000000000000000000000000000000000000000000000000 172800
++ calldata=0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000a950524441892a31ebddf91d3ceefa04bf4544667761697400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002a300
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000a950524441892a31ebddf91d3ceefa04bf4544667761697400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002a300
+seth-send: Published transaction with 292 bytes of calldata.
+seth-send: 0xc11e33622a85dafda327660d19070b60a9f26c0e5222009ecef9f32a7e28a8ed
+seth-send: Waiting for transaction receipt............
+seth-send: Transaction included in block 8928282.
++ log 'SET VOW WAIT COMPLETED SUCCESSFULLY'
++ printf '%b\n' '\033[0;32m✓ SET VOW WAIT COMPLETED SUCCESSFULLY\033[0m'
+[0;32m✓ SET VOW WAIT COMPLETED SUCCESSFULLY[0m
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-vow-bump
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ loadAddresses
++ set +x
+++ jq -r '.vow_bump | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ bump=10000
++ [[ 10000 != '' ]]
+++ bc
+++ echo '10000*10^45'
++ bump=10000000000000000000000000000000000000000000000000
+++ seth --to-uint256 10000000000000000000000000000000000000000000000000
++ bump=000000000000000000000006d79f82328ea3da61e066ebb2f88a000000000000
+++++ seth --from-ascii bump
++++ seth --to-bytes32 0x62756d70
+++ seth calldata 'file(address,address,address,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0xa950524441892a31ebddf91d3ceefa04bf454466 62756d7000000000000000000000000000000000000000000000000000000000 000000000000000000000006d79f82328ea3da61e066ebb2f88a000000000000
++ calldata=0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000a950524441892a31ebddf91d3ceefa04bf45446662756d7000000000000000000000000000000000000000000000000000000000000000000000000000000006d79f82328ea3da61e066ebb2f88a000000000000
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000a950524441892a31ebddf91d3ceefa04bf45446662756d7000000000000000000000000000000000000000000000000000000000000000000000000000000006d79f82328ea3da61e066ebb2f88a000000000000
+seth-send: Published transaction with 292 bytes of calldata.
+seth-send: 0x99a58c5346a133e646ef1d58088c0f345117cdc67bfbbec68599b4392922f778
+seth-send: Waiting for transaction receipt........................................
+seth-send: Transaction included in block 8928285.
++ log 'SET VOW BUMP COMPLETED SUCCESSFULLY'
++ printf '%b\n' '\033[0;32m✓ SET VOW BUMP COMPLETED SUCCESSFULLY\033[0m'
+[0;32m✓ SET VOW BUMP COMPLETED SUCCESSFULLY[0m
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-vow-dump
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ loadAddresses
++ set +x
+++ jq -r .vow_dump /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ dump=250
++ [[ 250 != '' ]]
+++ echo '250*10^18'
+++ bc
++ dump=250000000000000000000
+++ seth --to-uint256 250000000000000000000
++ dump=00000000000000000000000000000000000000000000000d8d726b7177a80000
+++++ seth --from-ascii dump
++++ seth --to-bytes32 0x64756d70
+++ seth calldata 'file(address,address,address,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0xa950524441892a31ebddf91d3ceefa04bf454466 64756d7000000000000000000000000000000000000000000000000000000000 00000000000000000000000000000000000000000000000d8d726b7177a80000
++ calldata=0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000a950524441892a31ebddf91d3ceefa04bf45446664756d700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d8d726b7177a80000
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000a950524441892a31ebddf91d3ceefa04bf45446664756d700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000d8d726b7177a80000
+seth-send: Published transaction with 292 bytes of calldata.
+seth-send: 0x1456e9b416fd08856dc226df609b3410618f4bf5809d4bec0791ecde56d8cab0
+seth-send: Waiting for transaction receipt.......
+seth-send: Transaction included in block 8928289.
++ log 'SET VOW DUMP COMPLETED SUCCESSFULLY'
++ printf '%b\n' '\033[0;32m✓ SET VOW DUMP COMPLETED SUCCESSFULLY\033[0m'
+[0;32m✓ SET VOW DUMP COMPLETED SUCCESSFULLY[0m
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-vow-sump
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ loadAddresses
++ set +x
+++ jq -r .vow_sump /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ sump=50000
++ [[ 50000 != '' ]]
+++ echo '50000*10^45'
+++ bc
++ sump=50000000000000000000000000000000000000000000000000
+++ seth --to-uint256 50000000000000000000000000000000000000000000000000
++ sump=000000000000000000000022361d8afcc93343e962029a7edab2000000000000
+++++ seth --from-ascii sump
++++ seth --to-bytes32 0x73756d70
+++ seth calldata 'file(address,address,address,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0xa950524441892a31ebddf91d3ceefa04bf454466 73756d7000000000000000000000000000000000000000000000000000000000 000000000000000000000022361d8afcc93343e962029a7edab2000000000000
++ calldata=0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000a950524441892a31ebddf91d3ceefa04bf45446673756d7000000000000000000000000000000000000000000000000000000000000000000000000000000022361d8afcc93343e962029a7edab2000000000000
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000a950524441892a31ebddf91d3ceefa04bf45446673756d7000000000000000000000000000000000000000000000000000000000000000000000000000000022361d8afcc93343e962029a7edab2000000000000
+seth-send: Published transaction with 292 bytes of calldata.
+seth-send: 0xaccde1e5ffa4e0d7020cf45a6a0b683da179d2b82108a34a02738e9c13445a22
+seth-send: Waiting for transaction receipt...................
+seth-send: Transaction included in block 8928291.
++ log 'SET VOW SUMP COMPLETED SUCCESSFULLY'
++ printf '%b\n' '\033[0;32m✓ SET VOW SUMP COMPLETED SUCCESSFULLY\033[0m'
+[0;32m✓ SET VOW SUMP COMPLETED SUCCESSFULLY[0m
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-vow-hump
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ loadAddresses
++ set +x
+++ jq -r '.vow_hump | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ hump=500000
++ [[ 500000 != '' ]]
+++ echo '500000*10^45'
+++ bc
++ hump=500000000000000000000000000000000000000000000000000
+++ seth --to-uint256 500000000000000000000000000000000000000000000000000
++ hump=0000000000000000000001561d276ddfdc00a71dd41a08f48af4000000000000
+++++ seth --from-ascii hump
++++ seth --to-bytes32 0x68756d70
+++ seth calldata 'file(address,address,address,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0xa950524441892a31ebddf91d3ceefa04bf454466 68756d7000000000000000000000000000000000000000000000000000000000 0000000000000000000001561d276ddfdc00a71dd41a08f48af4000000000000
++ calldata=0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000a950524441892a31ebddf91d3ceefa04bf45446668756d70000000000000000000000000000000000000000000000000000000000000000000000000000001561d276ddfdc00a71dd41a08f48af4000000000000
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000a950524441892a31ebddf91d3ceefa04bf45446668756d70000000000000000000000000000000000000000000000000000000000000000000000000000001561d276ddfdc00a71dd41a08f48af4000000000000
+seth-send: Published transaction with 292 bytes of calldata.
+seth-send: 0x0cbab7306b21d10c7f27a410f7d14aa885a8c56dc39916d3de159a1f6f184497
+seth-send: Waiting for transaction receipt...........
+seth-send: Transaction included in block 8928295.
++ log 'SET VOW HUMP COMPLETED SUCCESSFULLY'
++ printf '%b\n' '\033[0;32m✓ SET VOW HUMP COMPLETED SUCCESSFULLY\033[0m'
+[0;32m✓ SET VOW HUMP COMPLETED SUCCESSFULLY[0m
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-jug-base
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ loadAddresses
++ set +x
+++ jq -r '.jug_base | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ base=0
++ [[ 0 != '' ]]
+++ bc -l
++ base=1000000000000000000000000000.000000000000000000000000000
+++ bc -l
++ base=0
+++ seth --to-uint256 0
++ base=0000000000000000000000000000000000000000000000000000000000000000
+++++ seth --from-ascii base
++++ seth --to-bytes32 0x62617365
+++ seth calldata 'file(address,address,address,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0x19c0976f590d67707e62397c87829d896dc0f1f1 6261736500000000000000000000000000000000000000000000000000000000 0000000000000000000000000000000000000000000000000000000000000000
++ calldata=0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e00000000000000000000000019c0976f590d67707e62397c87829d896dc0f1f162617365000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e00000000000000000000000019c0976f590d67707e62397c87829d896dc0f1f162617365000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+seth-send: Published transaction with 292 bytes of calldata.
+seth-send: 0x5b67608d456d9eef77352139a8726eff41fad69df212d78cc350924c228157ab
+seth-send: Waiting for transaction receipt...........
+seth-send: Transaction included in block 8928298.
++ log 'SET JUG BASE COMPLETED SUCCESSFULLY'
++ printf '%b\n' '\033[0;32m✓ SET JUG BASE COMPLETED SUCCESSFULLY\033[0m'
+[0;32m✓ SET JUG BASE COMPLETED SUCCESSFULLY[0m
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-pot-dsr
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ loadAddresses
++ set +x
+++ jq -r '.pot_dsr | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ dsr=2
++ [[ 2 != '' ]]
+++ bc -l
++ dsr=1000000000627937192491029810.000000000000000000000000000
+++ seth --to-uint256 1000000000627937192491029810
++ dsr=0000000000000000000000000000000000000000033b2e3ca88761c99baf1532
+++++ seth --from-ascii dsr
++++ seth --to-bytes32 0x647372
+++ seth calldata 'dripAndFile(address,address,address,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0x197e90f9fad81970ba7976f33cbd77088e5d7cf7 6473720000000000000000000000000000000000000000000000000000000000 0000000000000000000000000000000000000000033b2e3ca88761c99baf1532
++ calldata=0xc035afa5000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000197e90f9fad81970ba7976f33cbd77088e5d7cf764737200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000033b2e3ca88761c99baf1532
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0xc035afa5000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000197e90f9fad81970ba7976f33cbd77088e5d7cf764737200000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000033b2e3ca88761c99baf1532
+seth-send: Published transaction with 292 bytes of calldata.
+seth-send: 0x1d744cecadf55139792ba315362bb5e3f6969bedd3b180daeb8ce15851c28a0d
+seth-send: Waiting for transaction receipt.............
+seth-send: Transaction included in block 8928300.
++ log 'SET POT DSR COMPLETED SUCCESSFULLY'
++ printf '%b\n' '\033[0;32m✓ SET POT DSR COMPLETED SUCCESSFULLY\033[0m'
+[0;32m✓ SET POT DSR COMPLETED SUCCESSFULLY[0m
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-end-wait
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ loadAddresses
++ set +x
+++ jq -r '.end_wait | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ wait=262800
++ [[ 262800 != '' ]]
+++++ seth --from-ascii wait
++++ seth --to-bytes32 0x77616974
+++ seth calldata 'file(address,address,address,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0xab14d3ce3f733cacb76ec2abe7d2fcb00c99f3d5 7761697400000000000000000000000000000000000000000000000000000000 262800
++ calldata=0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000ab14d3ce3f733cacb76ec2abe7d2fcb00c99f3d577616974000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040290
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000ab14d3ce3f733cacb76ec2abe7d2fcb00c99f3d577616974000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040290
+seth-send: Published transaction with 292 bytes of calldata.
+seth-send: 0x3e7d980c7e6d9da5bfc9433c58d55c794ab9dcc6de8ba84a0c5014bbb151e0e5
+seth-send: Waiting for transaction receipt..............
+seth-send: Transaction included in block 8928302.
++ log 'SET END WAIT COMPLETED SUCCESSFULLY'
++ printf '%b\n' '\033[0;32m✓ SET END WAIT COMPLETED SUCCESSFULLY\033[0m'
+[0;32m✓ SET END WAIT COMPLETED SUCCESSFULLY[0m
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-beg flap
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ loadAddresses
++ set +x
++ test flap '!=' flap
+++ jq -r '.flap_beg | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ beg=3
++ [[ 3 != '' ]]
+++ echo '(3+100)*10^16'
+++ bc -l
++ beg=1030000000000000000
+++ seth --to-uint256 1030000000000000000
++ beg=0000000000000000000000000000000000000000000000000e4b4b8af6a70000
+++++ echo flap
+++++ tr '[:lower:]' '[:upper:]'
++++ eval echo '$MCD_FLAP'
+++++ echo 0xdfe0fb1be2a52cdbf8fb962d5701d7fd0902db9f
+++++ seth --from-ascii beg
++++ seth --to-bytes32 0x626567
+++ seth calldata 'file(address,address,address,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0xdfe0fb1be2a52cdbf8fb962d5701d7fd0902db9f 6265670000000000000000000000000000000000000000000000000000000000 0000000000000000000000000000000000000000000000000e4b4b8af6a70000
++ calldata=0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000dfe0fb1be2a52cdbf8fb962d5701d7fd0902db9f62656700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e4b4b8af6a70000
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000dfe0fb1be2a52cdbf8fb962d5701d7fd0902db9f62656700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e4b4b8af6a70000
+seth-send: Published transaction with 292 bytes of calldata.
+seth-send: 0x9032b4bea81dac6fd894277682dbbcfe4e91a2e35f043dda16058999b3082044
+seth-send: Waiting for transaction receipt......
+seth-send: Transaction included in block 8928304.
+++ echo flap
+++ tr '[:lower:]' '[:upper:]'
++ log 'SET FLAP BEG COMPLETED SUCCESSFULLY'
++ printf '%b\n' '\033[0;32m✓ SET FLAP BEG COMPLETED SUCCESSFULLY\033[0m'
+[0;32m✓ SET FLAP BEG COMPLETED SUCCESSFULLY[0m
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-ttl flap
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ loadAddresses
++ set +x
++ test flap '!=' flap
+++ jq -r '.flap_ttl | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ttl=1800
++ [[ 1800 != '' ]]
+++++ echo flap
+++++ tr '[:lower:]' '[:upper:]'
++++ eval echo '$MCD_FLAP'
+++++ echo 0xdfe0fb1be2a52cdbf8fb962d5701d7fd0902db9f
+++++ seth --from-ascii ttl
++++ seth --to-bytes32 0x74746c
+++ seth calldata 'file(address,address,address,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0xdfe0fb1be2a52cdbf8fb962d5701d7fd0902db9f 74746c0000000000000000000000000000000000000000000000000000000000 1800
++ calldata=0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000dfe0fb1be2a52cdbf8fb962d5701d7fd0902db9f74746c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000708
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000dfe0fb1be2a52cdbf8fb962d5701d7fd0902db9f74746c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000708
+seth-send: Published transaction with 292 bytes of calldata.
+seth-send: 0x60ba2cf6ebc484f2891dc67a80ca3d0e44e123a71cb7c07a94db7bb10ba3d7f1
+seth-send: Waiting for transaction receipt..............
+seth-send: Transaction included in block 8928305.
+++ echo flap
+++ tr '[:lower:]' '[:upper:]'
++ log 'SET FLAP TTL COMPLETED SUCCESSFULLY'
++ printf '%b\n' '\033[0;32m✓ SET FLAP TTL COMPLETED SUCCESSFULLY\033[0m'
+[0;32m✓ SET FLAP TTL COMPLETED SUCCESSFULLY[0m
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-tau flap
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ loadAddresses
++ set +x
++ test flap '!=' flap
+++ jq -r '.flap_tau | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ tau=259200
++ [[ 259200 != '' ]]
+++++ echo flap
+++++ tr '[:lower:]' '[:upper:]'
++++ eval echo '$MCD_FLAP'
+++++ echo 0xdfe0fb1be2a52cdbf8fb962d5701d7fd0902db9f
+++++ seth --from-ascii tau
++++ seth --to-bytes32 0x746175
+++ seth calldata 'file(address,address,address,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0xdfe0fb1be2a52cdbf8fb962d5701d7fd0902db9f 7461750000000000000000000000000000000000000000000000000000000000 259200
++ calldata=0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000dfe0fb1be2a52cdbf8fb962d5701d7fd0902db9f7461750000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003f480
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000dfe0fb1be2a52cdbf8fb962d5701d7fd0902db9f7461750000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003f480
+seth-send: Published transaction with 292 bytes of calldata.
+seth-send: 0xfeb546967753a462a79d9998af6ada81e174ebdc429ee0f4dc9f56b57ab73a05
+seth-send: Waiting for transaction receipt.....
+seth-send: Transaction included in block 8928308.
+++ echo flap
+++ tr '[:lower:]' '[:upper:]'
++ log 'SET FLAP TAU COMPLETED SUCCESSFULLY'
++ printf '%b\n' '\033[0;32m✓ SET FLAP TAU COMPLETED SUCCESSFULLY\033[0m'
+[0;32m✓ SET FLAP TAU COMPLETED SUCCESSFULLY[0m
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-beg flop
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ loadAddresses
++ set +x
++ test flop '!=' flap
++ test flop '!=' flop
+++ jq -r '.flop_beg | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ beg=3
++ [[ 3 != '' ]]
+++ bc -l
+++ echo '(3+100)*10^16'
++ beg=1030000000000000000
+++ seth --to-uint256 1030000000000000000
++ beg=0000000000000000000000000000000000000000000000000e4b4b8af6a70000
+++++ echo flop
+++++ tr '[:lower:]' '[:upper:]'
++++ eval echo '$MCD_FLOP'
+++++ echo 0xbe00fe8dfd9c079f1e5f5ad7ae9a3ad2c571fcac
+++++ seth --from-ascii beg
++++ seth --to-bytes32 0x626567
+++ seth calldata 'file(address,address,address,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0xbe00fe8dfd9c079f1e5f5ad7ae9a3ad2c571fcac 6265670000000000000000000000000000000000000000000000000000000000 0000000000000000000000000000000000000000000000000e4b4b8af6a70000
++ calldata=0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000be00fe8dfd9c079f1e5f5ad7ae9a3ad2c571fcac62656700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e4b4b8af6a70000
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000be00fe8dfd9c079f1e5f5ad7ae9a3ad2c571fcac62656700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e4b4b8af6a70000
+seth-send: Published transaction with 292 bytes of calldata.
+seth-send: 0xbc8fc95496d99a8854aeaec26f9818c81c0a88093be6805fb76bbff4df9f67f3
+seth-send: Waiting for transaction receipt.....................
+seth-send: Transaction included in block 8928310.
+++ echo flop
+++ tr '[:lower:]' '[:upper:]'
++ log 'SET FLOP BEG COMPLETED SUCCESSFULLY'
++ printf '%b\n' '\033[0;32m✓ SET FLOP BEG COMPLETED SUCCESSFULLY\033[0m'
+[0;32m✓ SET FLOP BEG COMPLETED SUCCESSFULLY[0m
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-flop-pad
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ loadAddresses
++ set +x
+++ jq -r '.flop_pad | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ pad=20
++ [[ 20 != '' ]]
+++ echo '(20+100)*10^16'
+++ bc -l
++ pad=1200000000000000000
+++ seth --to-uint256 1200000000000000000
++ pad=00000000000000000000000000000000000000000000000010a741a462780000
+++++ seth --from-ascii pad
++++ seth --to-bytes32 0x706164
+++ seth calldata 'file(address,address,address,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0xbe00fe8dfd9c079f1e5f5ad7ae9a3ad2c571fcac 7061640000000000000000000000000000000000000000000000000000000000 00000000000000000000000000000000000000000000000010a741a462780000
++ calldata=0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000be00fe8dfd9c079f1e5f5ad7ae9a3ad2c571fcac706164000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010a741a462780000
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000be00fe8dfd9c079f1e5f5ad7ae9a3ad2c571fcac706164000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010a741a462780000
+seth-send: Published transaction with 292 bytes of calldata.
+seth-send: 0xe884275a4f03ef55f56e87f3be2115d70444fe57a0f0490c7e79805dc280952e
+seth-send: Waiting for transaction receipt.......................
+seth-send: Transaction included in block 8928312.
++ log 'SET FLOP PAD COMPLETED SUCCESSFULLY'
++ printf '%b\n' '\033[0;32m✓ SET FLOP PAD COMPLETED SUCCESSFULLY\033[0m'
+[0;32m✓ SET FLOP PAD COMPLETED SUCCESSFULLY[0m
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-ttl flop
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ loadAddresses
++ set +x
++ test flop '!=' flap
++ test flop '!=' flop
+++ jq -r '.flop_ttl | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ttl=600
++ [[ 600 != '' ]]
+++++ echo flop
+++++ tr '[:lower:]' '[:upper:]'
++++ eval echo '$MCD_FLOP'
+++++ echo 0xbe00fe8dfd9c079f1e5f5ad7ae9a3ad2c571fcac
+++++ seth --from-ascii ttl
++++ seth --to-bytes32 0x74746c
+++ seth calldata 'file(address,address,address,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0xbe00fe8dfd9c079f1e5f5ad7ae9a3ad2c571fcac 74746c0000000000000000000000000000000000000000000000000000000000 600
++ calldata=0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000be00fe8dfd9c079f1e5f5ad7ae9a3ad2c571fcac74746c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000258
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000be00fe8dfd9c079f1e5f5ad7ae9a3ad2c571fcac74746c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000258
+seth-send: Published transaction with 292 bytes of calldata.
+seth-send: 0x86ff8b4ca704a821510ffe5a5b6355a29880170a4ca5bad4f5f763e6288126b3
+seth-send: Waiting for transaction receipt..........
+seth-send: Transaction included in block 8928314.
+++ echo flop
+++ tr '[:lower:]' '[:upper:]'
++ log 'SET FLOP TTL COMPLETED SUCCESSFULLY'
++ printf '%b\n' '\033[0;32m✓ SET FLOP TTL COMPLETED SUCCESSFULLY\033[0m'
+[0;32m✓ SET FLOP TTL COMPLETED SUCCESSFULLY[0m
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-tau flop
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ loadAddresses
++ set +x
++ test flop '!=' flap
++ test flop '!=' flop
+++ jq -r '.flop_tau | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ tau=259200
++ [[ 259200 != '' ]]
+++++ echo flop
+++++ tr '[:lower:]' '[:upper:]'
++++ eval echo '$MCD_FLOP'
+++++ echo 0xbe00fe8dfd9c079f1e5f5ad7ae9a3ad2c571fcac
+++++ seth --from-ascii tau
++++ seth --to-bytes32 0x746175
+++ seth calldata 'file(address,address,address,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0xbe00fe8dfd9c079f1e5f5ad7ae9a3ad2c571fcac 7461750000000000000000000000000000000000000000000000000000000000 259200
++ calldata=0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000be00fe8dfd9c079f1e5f5ad7ae9a3ad2c571fcac7461750000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003f480
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000be00fe8dfd9c079f1e5f5ad7ae9a3ad2c571fcac7461750000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003f480
+seth-send: Published transaction with 292 bytes of calldata.
+seth-send: 0x4af84d843059a9ae4dab3dc22c6e39a0280696e8ef8ddb8530c8a25e8dabae7c
+seth-send: Waiting for transaction receipt...................................
+seth-send: Transaction included in block 8928318.
+++ echo flop
+++ tr '[:lower:]' '[:upper:]'
++ log 'SET FLOP TAU COMPLETED SUCCESSFULLY'
++ printf '%b\n' '\033[0;32m✓ SET FLOP TAU COMPLETED SUCCESSFULLY\033[0m'
+[0;32m✓ SET FLOP TAU COMPLETED SUCCESSFULLY[0m
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-ilks-price
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ loadAddresses
++ set +x
+++ jq -r '.tokens | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ tokens='ETH
+BAT'
++ for token in $tokens
+++ jq -r '.tokens.ETH | .pip | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ pipAddr=0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763
++ [[ 0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763 == '' ]]
++ for token in $tokens
+++ jq -r '.tokens.BAT | .pip | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ pipAddr=0xb4eb54af9cc7882df0121d26c5b97e802915abe6
++ [[ 0xb4eb54af9cc7882df0121d26c5b97e802915abe6 == '' ]]
++ log 'SET ILKS PRICE COMPLETED SUCCESSFULLY'
++ printf '%b\n' '\033[0;32m✓ SET ILKS PRICE COMPLETED SUCCESSFULLY\033[0m'
+[0;32m✓ SET ILKS PRICE COMPLETED SUCCESSFULLY[0m
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-ilks-pip-whitelist
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ loadAddresses
++ set +x
+++ jq -r '.tokens | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ tokens='ETH
+BAT'
++ for token in $tokens
+++ jq -r '.tokens.ETH | .pip | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ pipAddr=0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763
+++ jq -r '.tokens.ETH | .pipDeploy | .type | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ type=
++ [[ 0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763 != '' ]]
+++ sed 's/^0*//'
++++ eval echo '$PIP_ETH'
+++++ echo 0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763
+++ seth call 0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763 'wards(address)(uint256)' 0xdDb108893104dE4E1C6d0E47c42237dB4E617ACc
++ [[ 1 == 1 ]]
+++ eval echo '$PIP_ETH'
++++ echo 0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763
++ seth send 0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763 'kiss(address)' 0x65c79fcb50ca1594b025960e539ed7a9a6d434a3
+seth-send: Published transaction with 36 bytes of calldata.
+seth-send: 0xf4ff979ce3eb15b7de3055952b4ec00d05a99e5cd8c7ed72ff65b17e9af6566d
+seth-send: Waiting for transaction receipt..............................................
+seth-send: Transaction included in block 8928323.
+++ eval echo '$PIP_ETH'
++++ echo 0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763
++ seth send 0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763 'kiss(address)' 0xab14d3ce3f733cacb76ec2abe7d2fcb00c99f3d5
+seth-send: Published transaction with 36 bytes of calldata.
+seth-send: 0x8100f9e382d3bb603272f92b75a486656db2f51095da22e66c781fc313265ca1
+seth-send: Waiting for transaction receipt.........
+seth-send: Transaction included in block 8928327.
++ for token in $tokens
+++ jq -r '.tokens.BAT | .pip | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ pipAddr=0xb4eb54af9cc7882df0121d26c5b97e802915abe6
+++ jq -r '.tokens.BAT | .pipDeploy | .type | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ type=
++ [[ 0xb4eb54af9cc7882df0121d26c5b97e802915abe6 != '' ]]
+++ sed 's/^0*//'
++++ eval echo '$PIP_BAT'
+++++ echo 0xb4eb54af9cc7882df0121d26c5b97e802915abe6
+++ seth call 0xb4eb54af9cc7882df0121d26c5b97e802915abe6 'wards(address)(uint256)' 0xdDb108893104dE4E1C6d0E47c42237dB4E617ACc
++ [[ 1 == 1 ]]
+++ eval echo '$PIP_BAT'
++++ echo 0xb4eb54af9cc7882df0121d26c5b97e802915abe6
++ seth send 0xb4eb54af9cc7882df0121d26c5b97e802915abe6 'kiss(address)' 0x65c79fcb50ca1594b025960e539ed7a9a6d434a3
+seth-send: Published transaction with 36 bytes of calldata.
+seth-send: 0x5471b73ae1b59404cd0f55ae7cc47818af6b28c110ffa6e467a0f5c03e90658e
+seth-send: Waiting for transaction receipt.........
+seth-send: Transaction included in block 8928329.
+++ eval echo '$PIP_BAT'
++++ echo 0xb4eb54af9cc7882df0121d26c5b97e802915abe6
++ seth send 0xb4eb54af9cc7882df0121d26c5b97e802915abe6 'kiss(address)' 0xab14d3ce3f733cacb76ec2abe7d2fcb00c99f3d5
+seth-send: Published transaction with 36 bytes of calldata.
+seth-send: 0xe826f9624089a0cc2c0baeca4e887c07e336ced4822f253af4c26b32f0cae39a
+seth-send: Waiting for transaction receipt..............
+seth-send: Transaction included in block 8928331.
++ log 'SET ILKS PIP WHITELIST COMPLETED SUCCESSFULLY'
++ printf '%b\n' '\033[0;32m✓ SET ILKS PIP WHITELIST COMPLETED SUCCESSFULLY\033[0m'
+[0;32m✓ SET ILKS PIP WHITELIST COMPLETED SUCCESSFULLY[0m
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-ilks-mat
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ loadAddresses
++ set +x
+++ jq -r '.tokens | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ tokens='ETH
+BAT'
++ for token in $tokens
+++ jq -r '.tokens.ETH.ilks | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ilks=A
++ for ilk in $ilks
+++ jq -r '.tokens.ETH.ilks.A | .mat' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ mat=150
+++ echo '150*10^25'
+++ bc -l
++ mat=1500000000000000000000000000
+++ seth --to-uint256 1500000000000000000000000000
++ mat=000000000000000000000000000000000000000004d8c55aefb8c05b5c000000
+++++ seth --from-ascii ETH-A
++++ seth --to-bytes32 0x4554482d41
+++++ seth --from-ascii mat
++++ seth --to-bytes32 0x6d6174
+++ seth calldata 'file(address,address,address,bytes32,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0x65c79fcb50ca1594b025960e539ed7a9a6d434a3 4554482d41000000000000000000000000000000000000000000000000000000 6d61740000000000000000000000000000000000000000000000000000000000 000000000000000000000000000000000000000004d8c55aefb8c05b5c000000
++ calldata=0x4df1249f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e00000000000000000000000065c79fcb50ca1594b025960e539ed7a9a6d434a34554482d410000000000000000000000000000000000000000000000000000006d61740000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d8c55aefb8c05b5c000000
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x4df1249f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e00000000000000000000000065c79fcb50ca1594b025960e539ed7a9a6d434a34554482d410000000000000000000000000000000000000000000000000000006d61740000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d8c55aefb8c05b5c000000
+seth-send: Published transaction with 324 bytes of calldata.
+seth-send: 0x37561012ede4de9f53c08f5298cc75dc2a27d43c46ae523f739da5e165ba8c7c
+seth-send: Waiting for transaction receipt..........................
+seth-send: Transaction included in block 8928336.
++ [[ -n 0xc73e0383f3aff3215e6f04b0331d58cecf0ab849 ]]
+++++ seth --from-ascii SAI
++++ seth --to-bytes32 0x534149
+++++ seth --from-ascii mat
++++ seth --to-bytes32 0x6d6174
+++ seth calldata 'file(address,address,address,bytes32,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0x65c79fcb50ca1594b025960e539ed7a9a6d434a3 5341490000000000000000000000000000000000000000000000000000000000 6d61740000000000000000000000000000000000000000000000000000000000 10000
++ calldata=0x4df1249f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e00000000000000000000000065c79fcb50ca1594b025960e539ed7a9a6d434a353414900000000000000000000000000000000000000000000000000000000006d617400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002710
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x4df1249f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e00000000000000000000000065c79fcb50ca1594b025960e539ed7a9a6d434a353414900000000000000000000000000000000000000000000000000000000006d617400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002710
+seth-send: Published transaction with 324 bytes of calldata.
+seth-send: 0xee90c1ccfd37cc50324b18e4a56c1642618dec15f12e31a838c394cc9cba0b43
+seth-send: Waiting for transaction receipt..........
+seth-send: Transaction included in block 8928339.
++ for token in $tokens
+++ jq -r '.tokens.BAT.ilks | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ilks=A
++ for ilk in $ilks
+++ jq -r '.tokens.BAT.ilks.A | .mat' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ mat=150
+++ echo '150*10^25'
+++ bc -l
++ mat=1500000000000000000000000000
+++ seth --to-uint256 1500000000000000000000000000
++ mat=000000000000000000000000000000000000000004d8c55aefb8c05b5c000000
+++++ seth --from-ascii BAT-A
++++ seth --to-bytes32 0x4241542d41
+++++ seth --from-ascii mat
++++ seth --to-bytes32 0x6d6174
+++ seth calldata 'file(address,address,address,bytes32,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0x65c79fcb50ca1594b025960e539ed7a9a6d434a3 4241542d41000000000000000000000000000000000000000000000000000000 6d61740000000000000000000000000000000000000000000000000000000000 000000000000000000000000000000000000000004d8c55aefb8c05b5c000000
++ calldata=0x4df1249f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e00000000000000000000000065c79fcb50ca1594b025960e539ed7a9a6d434a34241542d410000000000000000000000000000000000000000000000000000006d61740000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d8c55aefb8c05b5c000000
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x4df1249f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e00000000000000000000000065c79fcb50ca1594b025960e539ed7a9a6d434a34241542d410000000000000000000000000000000000000000000000000000006d61740000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004d8c55aefb8c05b5c000000
+seth-send: Published transaction with 324 bytes of calldata.
+seth-send: 0xeda9d03d9eac99dc51500eefd7857f880307b874c357e971b613bda35fe033b5
+seth-send: Waiting for transaction receipt............
+seth-send: Transaction included in block 8928341.
++ [[ -n 0xc73e0383f3aff3215e6f04b0331d58cecf0ab849 ]]
+++++ seth --from-ascii SAI
++++ seth --to-bytes32 0x534149
+++++ seth --from-ascii mat
++++ seth --to-bytes32 0x6d6174
+++ seth calldata 'file(address,address,address,bytes32,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0x65c79fcb50ca1594b025960e539ed7a9a6d434a3 5341490000000000000000000000000000000000000000000000000000000000 6d61740000000000000000000000000000000000000000000000000000000000 10000
++ calldata=0x4df1249f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e00000000000000000000000065c79fcb50ca1594b025960e539ed7a9a6d434a353414900000000000000000000000000000000000000000000000000000000006d617400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002710
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x4df1249f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e00000000000000000000000065c79fcb50ca1594b025960e539ed7a9a6d434a353414900000000000000000000000000000000000000000000000000000000006d617400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002710
+seth-send: Published transaction with 324 bytes of calldata.
+seth-send: 0x9c5de78529264e127ff6c1f77dce9471bf9d4788cd72cf5140d0d6580f8bb877
+seth-send: Waiting for transaction receipt.................
+seth-send: Transaction included in block 8928343.
++ log 'SET ILKS MAT COMPLETED SUCCESSFULLY'
++ printf '%b\n' '\033[0;32m✓ SET ILKS MAT COMPLETED SUCCESSFULLY\033[0m'
+[0;32m✓ SET ILKS MAT COMPLETED SUCCESSFULLY[0m
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-ilks-line
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ loadAddresses
++ set +x
+++ jq -r '.tokens | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ tokens='ETH
+BAT'
++ for token in $tokens
+++ jq -r '.tokens.ETH.ilks | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ilks=A
++ for ilk in $ilks
+++ jq -r '.tokens.ETH.ilks.A | .line' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ setLine ETH-A 0
++ [[ 0 != '' ]]
++ [[ 0 != \0 ]]
++ for token in $tokens
+++ jq -r '.tokens.BAT.ilks | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ilks=A
++ for ilk in $ilks
+++ jq -r '.tokens.BAT.ilks.A | .line' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ setLine BAT-A 0
++ [[ 0 != '' ]]
++ [[ 0 != \0 ]]
++ [[ -n 0xc73e0383f3aff3215e6f04b0331d58cecf0ab849 ]]
+++ jq -r '.migration | .line' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ setLine SAI 0
++ [[ 0 != '' ]]
++ [[ 0 != \0 ]]
++ log 'SET ILKS LINE COMPLETED SUCCESSFULLY'
++ printf '%b\n' '\033[0;32m✓ SET ILKS LINE COMPLETED SUCCESSFULLY\033[0m'
+[0;32m✓ SET ILKS LINE COMPLETED SUCCESSFULLY[0m
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-ilks-dust
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ loadAddresses
++ set +x
+++ jq -r '.tokens | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ tokens='ETH
+BAT'
++ for token in $tokens
+++ jq -r '.tokens.ETH.ilks | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ilks=A
++ for ilk in $ilks
+++ jq -r '.tokens.ETH.ilks.A | .dust' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ dust=20
+++ echo '20*10^45'
+++ bc
++ dust=20000000000000000000000000000000000000000000000
+++ seth --to-uint256 20000000000000000000000000000000000000000000000
++ dust=0000000000000000000000000380d4bd8a8678c1bb542c80deb4800000000000
+++++ seth --from-ascii ETH-A
++++ seth --to-bytes32 0x4554482d41
+++++ seth --from-ascii dust
++++ seth --to-bytes32 0x64757374
+++ seth calldata 'file(address,address,address,bytes32,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b 4554482d41000000000000000000000000000000000000000000000000000000 6475737400000000000000000000000000000000000000000000000000000000 0000000000000000000000000380d4bd8a8678c1bb542c80deb4800000000000
++ calldata=0x4df1249f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e00000000000000000000000035d1b3f3d7966a1dfe207aa4514c12a259a0492b4554482d4100000000000000000000000000000000000000000000000000000064757374000000000000000000000000000000000000000000000000000000000000000000000000000000000380d4bd8a8678c1bb542c80deb4800000000000
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x4df1249f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e00000000000000000000000035d1b3f3d7966a1dfe207aa4514c12a259a0492b4554482d4100000000000000000000000000000000000000000000000000000064757374000000000000000000000000000000000000000000000000000000000000000000000000000000000380d4bd8a8678c1bb542c80deb4800000000000
+seth-send: Published transaction with 324 bytes of calldata.
+seth-send: 0xabaec65b46a15f5da0d918eb31f6bdd73ac7a955b53f078409fcec035f4d42f4
+seth-send: Waiting for transaction receipt..............................
+seth-send: Transaction included in block 8928348.
++ for token in $tokens
+++ jq -r '.tokens.BAT.ilks | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ilks=A
++ for ilk in $ilks
+++ jq -r '.tokens.BAT.ilks.A | .dust' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ dust=20
+++ echo '20*10^45'
+++ bc
++ dust=20000000000000000000000000000000000000000000000
+++ seth --to-uint256 20000000000000000000000000000000000000000000000
++ dust=0000000000000000000000000380d4bd8a8678c1bb542c80deb4800000000000
+++++ seth --from-ascii BAT-A
++++ seth --to-bytes32 0x4241542d41
+++++ seth --from-ascii dust
++++ seth --to-bytes32 0x64757374
+++ seth calldata 'file(address,address,address,bytes32,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b 4241542d41000000000000000000000000000000000000000000000000000000 6475737400000000000000000000000000000000000000000000000000000000 0000000000000000000000000380d4bd8a8678c1bb542c80deb4800000000000
++ calldata=0x4df1249f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e00000000000000000000000035d1b3f3d7966a1dfe207aa4514c12a259a0492b4241542d4100000000000000000000000000000000000000000000000000000064757374000000000000000000000000000000000000000000000000000000000000000000000000000000000380d4bd8a8678c1bb542c80deb4800000000000
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x4df1249f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e00000000000000000000000035d1b3f3d7966a1dfe207aa4514c12a259a0492b4241542d4100000000000000000000000000000000000000000000000000000064757374000000000000000000000000000000000000000000000000000000000000000000000000000000000380d4bd8a8678c1bb542c80deb4800000000000
+seth-send: Published transaction with 324 bytes of calldata.
+seth-send: 0x1546875bca83727d36869bc5eac3914c2685b2dd9f7bcd67360ec40622e65db2
+seth-send: Waiting for transaction receipt....................
+seth-send: Transaction included in block 8928354.
++ log 'SET ILKS DUST COMPLETED SUCCESSFULLY'
++ printf '%b\n' '\033[0;32m✓ SET ILKS DUST COMPLETED SUCCESSFULLY\033[0m'
+[0;32m✓ SET ILKS DUST COMPLETED SUCCESSFULLY[0m
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-ilks-duty
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ loadAddresses
++ set +x
+++ jq -r '.tokens | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ tokens='ETH
+BAT'
++ for token in $tokens
+++ jq -r '.tokens.ETH.ilks | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ilks=A
++ for ilk in $ilks
+++ jq -r '.tokens.ETH.ilks.A | .duty' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ duty=4
+++ bc -l
++ duty=1000000001243680656318820312.000000000000000000000000000
+++ seth --to-uint256 1000000001243680656318820312
++ duty=0000000000000000000000000000000000000000033b2e3cb112f1349de86fd8
++ setDuty ETH-A 0000000000000000000000000000000000000000033b2e3cb112f1349de86fd8
+++++ seth --from-ascii ETH-A
++++ seth --to-bytes32 0x4554482d41
+++++ seth --from-ascii duty
++++ seth --to-bytes32 0x64757479
+++ seth calldata 'dripAndFile(address,address,address,bytes32,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0x19c0976f590d67707e62397c87829d896dc0f1f1 4554482d41000000000000000000000000000000000000000000000000000000 6475747900000000000000000000000000000000000000000000000000000000 0000000000000000000000000000000000000000033b2e3cb112f1349de86fd8
++ calldata=0x67fe0502000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e00000000000000000000000019c0976f590d67707e62397c87829d896dc0f1f14554482d4100000000000000000000000000000000000000000000000000000064757479000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000033b2e3cb112f1349de86fd8
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x67fe0502000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e00000000000000000000000019c0976f590d67707e62397c87829d896dc0f1f14554482d4100000000000000000000000000000000000000000000000000000064757479000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000033b2e3cb112f1349de86fd8
+seth-send: Published transaction with 324 bytes of calldata.
+seth-send: 0xc121074d8764d1ab54187b120db3a218651da54ca0d1b658823f82f2bb4b5f5e
+seth-send: Waiting for transaction receipt..........................
+seth-send: Transaction included in block 8928358.
++ for token in $tokens
+++ jq -r '.tokens.BAT.ilks | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ilks=A
++ for ilk in $ilks
+++ jq -r '.tokens.BAT.ilks.A | .duty' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ duty=4
+++ bc -l
++ duty=1000000001243680656318820312.000000000000000000000000000
+++ seth --to-uint256 1000000001243680656318820312
++ duty=0000000000000000000000000000000000000000033b2e3cb112f1349de86fd8
++ setDuty BAT-A 0000000000000000000000000000000000000000033b2e3cb112f1349de86fd8
+++++ seth --from-ascii BAT-A
++++ seth --to-bytes32 0x4241542d41
+++++ seth --from-ascii duty
++++ seth --to-bytes32 0x64757479
+++ seth calldata 'dripAndFile(address,address,address,bytes32,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0x19c0976f590d67707e62397c87829d896dc0f1f1 4241542d41000000000000000000000000000000000000000000000000000000 6475747900000000000000000000000000000000000000000000000000000000 0000000000000000000000000000000000000000033b2e3cb112f1349de86fd8
++ calldata=0x67fe0502000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e00000000000000000000000019c0976f590d67707e62397c87829d896dc0f1f14241542d4100000000000000000000000000000000000000000000000000000064757479000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000033b2e3cb112f1349de86fd8
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x67fe0502000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e00000000000000000000000019c0976f590d67707e62397c87829d896dc0f1f14241542d4100000000000000000000000000000000000000000000000000000064757479000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000033b2e3cb112f1349de86fd8
+seth-send: Published transaction with 324 bytes of calldata.
+seth-send: 0x579fc9066f8dfbcc7979184349aea7f69fb6ed51c04e82734e2e092d77489b3b
+seth-send: Waiting for transaction receipt.........
+seth-send: Transaction included in block 8928360.
++ [[ -n 0xc73e0383f3aff3215e6f04b0331d58cecf0ab849 ]]
+++ seth --to-uint256 1000000000000000000000000000
++ setDuty SAI 0000000000000000000000000000000000000000033b2e3c9fd0803ce8000000
+++++ seth --from-ascii SAI
++++ seth --to-bytes32 0x534149
+++++ seth --from-ascii duty
++++ seth --to-bytes32 0x64757479
+++ seth calldata 'dripAndFile(address,address,address,bytes32,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0x19c0976f590d67707e62397c87829d896dc0f1f1 5341490000000000000000000000000000000000000000000000000000000000 6475747900000000000000000000000000000000000000000000000000000000 0000000000000000000000000000000000000000033b2e3c9fd0803ce8000000
++ calldata=0x67fe0502000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e00000000000000000000000019c0976f590d67707e62397c87829d896dc0f1f1534149000000000000000000000000000000000000000000000000000000000064757479000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000033b2e3c9fd0803ce8000000
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x67fe0502000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e00000000000000000000000019c0976f590d67707e62397c87829d896dc0f1f1534149000000000000000000000000000000000000000000000000000000000064757479000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000033b2e3c9fd0803ce8000000
+seth-send: Published transaction with 324 bytes of calldata.
+seth-send: 0x0b7a1d4914e4c002216ac977112b45590996a53b471876393da7b82d23b40b1d
+seth-send: Waiting for transaction receipt.....................
+seth-send: Transaction included in block 8928362.
++ log 'SET ILKS DUTY COMPLETED SUCCESSFULLY'
++ printf '%b\n' '\033[0;32m✓ SET ILKS DUTY COMPLETED SUCCESSFULLY\033[0m'
+[0;32m✓ SET ILKS DUTY COMPLETED SUCCESSFULLY[0m
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-ilks-spotter-poke
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ loadAddresses
++ set +x
+++ jq -r '.tokens | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ tokens='ETH
+BAT'
++ for token in $tokens
+++ jq -r '.tokens.ETH | .pip | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ pipAddr=0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763
+++ jq -r '.tokens.ETH | .pipDeploy | .type | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ type=
++ SET=1
++ [[ 0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763 != '' ]]
+++ sed 's/^0*//'
++++ eval echo '$PIP_ETH'
+++++ echo 0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763
+++ seth call 0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763 'bud(address)(uint256)' 0x65c79fcb50ca1594b025960e539ed7a9a6d434a3
++ SET=1
++ [[ 1 == 1 ]]
+++ jq -r '.tokens.ETH.ilks | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ilks=A
++ for ilk in $ilks
++++ seth --from-ascii ETH-A
+++ seth --to-bytes32 0x4554482d41
++ seth send 0x65c79fcb50ca1594b025960e539ed7a9a6d434a3 'poke(bytes32)' 4554482d41000000000000000000000000000000000000000000000000000000
+seth-send: Published transaction with 36 bytes of calldata.
+seth-send: 0xb75d67629c3dd5c4e052a900863fe112ac54375f2a1a1d54a1afb31cd91298dd
+seth-send: Waiting for transaction receipt..............................................................................................................
+seth-send: Transaction included in block 8928370.
++ [[ -n 0xc73e0383f3aff3215e6f04b0331d58cecf0ab849 ]]
++++ seth --from-ascii SAI
+++ seth --to-bytes32 0x534149
++ seth send 0x65c79fcb50ca1594b025960e539ed7a9a6d434a3 'poke(bytes32)' 5341490000000000000000000000000000000000000000000000000000000000
+seth-send: Published transaction with 36 bytes of calldata.
+seth-send: 0x535847fef318f3c95af9ba3e48e06b195643cc6c6d8a3e29cc4152c0048c1519
+seth-send: Waiting for transaction receipt....................................................
+seth-send: Transaction included in block 8928374.
++ for token in $tokens
+++ jq -r '.tokens.BAT | .pip | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ pipAddr=0xb4eb54af9cc7882df0121d26c5b97e802915abe6
+++ jq -r '.tokens.BAT | .pipDeploy | .type | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ type=
++ SET=1
++ [[ 0xb4eb54af9cc7882df0121d26c5b97e802915abe6 != '' ]]
+++ sed 's/^0*//'
++++ eval echo '$PIP_BAT'
+++++ echo 0xb4eb54af9cc7882df0121d26c5b97e802915abe6
+++ seth call 0xb4eb54af9cc7882df0121d26c5b97e802915abe6 'bud(address)(uint256)' 0x65c79fcb50ca1594b025960e539ed7a9a6d434a3
++ SET=1
++ [[ 1 == 1 ]]
+++ jq -r '.tokens.BAT.ilks | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ilks=A
++ for ilk in $ilks
++++ seth --from-ascii BAT-A
+++ seth --to-bytes32 0x4241542d41
++ seth send 0x65c79fcb50ca1594b025960e539ed7a9a6d434a3 'poke(bytes32)' 4241542d41000000000000000000000000000000000000000000000000000000
+seth-send: Published transaction with 36 bytes of calldata.
+seth-send: 0xb33119484454ab1b71176c9634a8eeda826854fcb990e4f1a0fd12ae80ca2de5
+seth-send: Waiting for transaction receipt.......
+seth-send: Transaction included in block 8928377.
++ [[ -n 0xc73e0383f3aff3215e6f04b0331d58cecf0ab849 ]]
++++ seth --from-ascii SAI
+++ seth --to-bytes32 0x534149
++ seth send 0x65c79fcb50ca1594b025960e539ed7a9a6d434a3 'poke(bytes32)' 5341490000000000000000000000000000000000000000000000000000000000
+seth-send: Published transaction with 36 bytes of calldata.
+seth-send: 0x9c8a33c1b67839c7bed2a5e44a5a16170a5bb90728483ea0b6abbb978711d479
+seth-send: Waiting for transaction receipt................
+seth-send: Transaction included in block 8928379.
++ log 'SET SPOTTER POKE COMPLETED SUCCESSFULLY'
++ printf '%b\n' '\033[0;32m✓ SET SPOTTER POKE COMPLETED SUCCESSFULLY\033[0m'
+[0;32m✓ SET SPOTTER POKE COMPLETED SUCCESSFULLY[0m
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-ilks-chop
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ loadAddresses
++ set +x
+++ jq -r '.tokens | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ tokens='ETH
+BAT'
++ for token in $tokens
+++ jq -r '.tokens.ETH.ilks | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ilks=A
++ for ilk in $ilks
+++ jq -r '.tokens.ETH.ilks.A | .chop' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ chop=13
+++ bc -l
+++ echo '(13+100)*10^25'
++ chop=1130000000000000000000000000
+++ seth --to-uint256 1130000000000000000000000000
++ chop=000000000000000000000000000000000000000003a6b6cebed490e8aa000000
+++++ seth --from-ascii ETH-A
++++ seth --to-bytes32 0x4554482d41
+++++ seth --from-ascii chop
++++ seth --to-bytes32 0x63686f70
+++ seth calldata 'file(address,address,address,bytes32,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0x78f2c2af65126834c51822f56be0d7469d7a523e 4554482d41000000000000000000000000000000000000000000000000000000 63686f7000000000000000000000000000000000000000000000000000000000 000000000000000000000000000000000000000003a6b6cebed490e8aa000000
++ calldata=0x4df1249f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e00000000000000000000000078f2c2af65126834c51822f56be0d7469d7a523e4554482d4100000000000000000000000000000000000000000000000000000063686f7000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003a6b6cebed490e8aa000000
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x4df1249f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e00000000000000000000000078f2c2af65126834c51822f56be0d7469d7a523e4554482d4100000000000000000000000000000000000000000000000000000063686f7000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003a6b6cebed490e8aa000000
+seth-send: Published transaction with 324 bytes of calldata.
+seth-send: 0x317478081ce4008f35c04ad1376bbd2251fb07ebd3d2f6cc534f160516e27ca9
+seth-send: Waiting for transaction receipt...................................................
+seth-send: Transaction included in block 8928383.
++ for token in $tokens
+++ jq -r '.tokens.BAT.ilks | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ilks=A
++ for ilk in $ilks
+++ jq -r '.tokens.BAT.ilks.A | .chop' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ chop=13
+++ echo '(13+100)*10^25'
+++ bc -l
++ chop=1130000000000000000000000000
+++ seth --to-uint256 1130000000000000000000000000
++ chop=000000000000000000000000000000000000000003a6b6cebed490e8aa000000
+++++ seth --from-ascii BAT-A
++++ seth --to-bytes32 0x4241542d41
+++++ seth --from-ascii chop
++++ seth --to-bytes32 0x63686f70
+++ seth calldata 'file(address,address,address,bytes32,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0x78f2c2af65126834c51822f56be0d7469d7a523e 4241542d41000000000000000000000000000000000000000000000000000000 63686f7000000000000000000000000000000000000000000000000000000000 000000000000000000000000000000000000000003a6b6cebed490e8aa000000
++ calldata=0x4df1249f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e00000000000000000000000078f2c2af65126834c51822f56be0d7469d7a523e4241542d4100000000000000000000000000000000000000000000000000000063686f7000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003a6b6cebed490e8aa000000
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x4df1249f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e00000000000000000000000078f2c2af65126834c51822f56be0d7469d7a523e4241542d4100000000000000000000000000000000000000000000000000000063686f7000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003a6b6cebed490e8aa000000
+seth-send: Published transaction with 324 bytes of calldata.
+seth-send: 0xe26687b9806b8b43cb5ba478c7fdd20e0af71b3fd299523fc299b53b3364fed9
+seth-send: Waiting for transaction receipt.................
+seth-send: Transaction included in block 8928389.
++ log 'SET ILKS CHOP COMPLETED SUCCESSFULLY'
++ printf '%b\n' '\033[0;32m✓ SET ILKS CHOP COMPLETED SUCCESSFULLY\033[0m'
+[0;32m✓ SET ILKS CHOP COMPLETED SUCCESSFULLY[0m
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-ilks-lump
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ loadAddresses
++ set +x
+++ jq -r '.tokens | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ tokens='ETH
+BAT'
++ for token in $tokens
+++ jq -r '.tokens.ETH.ilks | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ilks=A
++ for ilk in $ilks
+++ jq -r '.tokens.ETH.ilks.A | .lump' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ lump=50
+++ bc
+++ echo '50*10^18'
++ lump=50000000000000000000
+++ seth --to-uint256 50000000000000000000
++ lump=000000000000000000000000000000000000000000000002b5e3af16b1880000
+++++ seth --from-ascii ETH-A
++++ seth --to-bytes32 0x4554482d41
+++++ seth --from-ascii lump
++++ seth --to-bytes32 0x6c756d70
+++ seth calldata 'file(address,address,address,bytes32,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0x78f2c2af65126834c51822f56be0d7469d7a523e 4554482d41000000000000000000000000000000000000000000000000000000 6c756d7000000000000000000000000000000000000000000000000000000000 000000000000000000000000000000000000000000000002b5e3af16b1880000
++ calldata=0x4df1249f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e00000000000000000000000078f2c2af65126834c51822f56be0d7469d7a523e4554482d410000000000000000000000000000000000000000000000000000006c756d7000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002b5e3af16b1880000
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x4df1249f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e00000000000000000000000078f2c2af65126834c51822f56be0d7469d7a523e4554482d410000000000000000000000000000000000000000000000000000006c756d7000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000002b5e3af16b1880000
+seth-send: Published transaction with 324 bytes of calldata.
+seth-send: 0x508deac067f4486dceb8f540736e9117e865a65e6925e8d646f624003065eb9c
+seth-send: Waiting for transaction receipt..............................
+seth-send: Transaction included in block 8928392.
++ for token in $tokens
+++ jq -r '.tokens.BAT.ilks | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ilks=A
++ for ilk in $ilks
+++ jq -r '.tokens.BAT.ilks.A | .lump' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ lump=50000
+++ echo '50000*10^18'
+++ bc
++ lump=50000000000000000000000
+++ seth --to-uint256 50000000000000000000000
++ lump=000000000000000000000000000000000000000000000a968163f0a57b400000
+++++ seth --from-ascii BAT-A
++++ seth --to-bytes32 0x4241542d41
+++++ seth --from-ascii lump
++++ seth --to-bytes32 0x6c756d70
+++ seth calldata 'file(address,address,address,bytes32,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0x78f2c2af65126834c51822f56be0d7469d7a523e 4241542d41000000000000000000000000000000000000000000000000000000 6c756d7000000000000000000000000000000000000000000000000000000000 000000000000000000000000000000000000000000000a968163f0a57b400000
++ calldata=0x4df1249f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e00000000000000000000000078f2c2af65126834c51822f56be0d7469d7a523e4241542d410000000000000000000000000000000000000000000000000000006c756d7000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a968163f0a57b400000
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x4df1249f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e00000000000000000000000078f2c2af65126834c51822f56be0d7469d7a523e4241542d410000000000000000000000000000000000000000000000000000006c756d7000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a968163f0a57b400000
+seth-send: Published transaction with 324 bytes of calldata.
+seth-send: 0xb570403db717f57ec4170f839f9a02f985dbd97388ffa7a851871836c26d2826
+seth-send: Waiting for transaction receipt....................
+seth-send: Transaction included in block 8928395.
++ log 'SET ILKS LUMP COMPLETED SUCCESSFULLY'
++ printf '%b\n' '\033[0;32m✓ SET ILKS LUMP COMPLETED SUCCESSFULLY\033[0m'
+[0;32m✓ SET ILKS LUMP COMPLETED SUCCESSFULLY[0m
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-ilks-beg
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ loadAddresses
++ set +x
+++ jq -r '.tokens | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ tokens='ETH
+BAT'
++ for token in $tokens
+++ jq -r '.tokens.ETH.ilks | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ilks=A
++ for ilk in $ilks
+++ jq -r '.tokens.ETH.ilks.A | .beg' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ beg=3
+++ echo '(3+100)*10^16'
+++ bc -l
++ beg=1030000000000000000
+++ seth --to-uint256 1030000000000000000
++ beg=0000000000000000000000000000000000000000000000000e4b4b8af6a70000
++++ eval echo '$MCD_FLIP_ETH_A'
+++++ echo 0xd8a04f5412223f513dc55f839574430f5ec15531
+++++ seth --from-ascii beg
++++ seth --to-bytes32 0x626567
+++ seth calldata 'file(address,address,address,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0xd8a04f5412223f513dc55f839574430f5ec15531 6265670000000000000000000000000000000000000000000000000000000000 0000000000000000000000000000000000000000000000000e4b4b8af6a70000
++ calldata=0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000d8a04f5412223f513dc55f839574430f5ec1553162656700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e4b4b8af6a70000
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000d8a04f5412223f513dc55f839574430f5ec1553162656700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e4b4b8af6a70000
+seth-send: Published transaction with 292 bytes of calldata.
+seth-send: 0x0d43327470adee876ad1e96574555535644e09fffc19d900dc0f2e28f1a020e5
+seth-send: Waiting for transaction receipt............
+seth-send: Transaction included in block 8928396.
++ for token in $tokens
+++ jq -r '.tokens.BAT.ilks | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ilks=A
++ for ilk in $ilks
+++ jq -r '.tokens.BAT.ilks.A | .beg' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ beg=3
+++ echo '(3+100)*10^16'
+++ bc -l
++ beg=1030000000000000000
+++ seth --to-uint256 1030000000000000000
++ beg=0000000000000000000000000000000000000000000000000e4b4b8af6a70000
++++ eval echo '$MCD_FLIP_BAT_A'
+++++ echo 0xaa745404d55f88c108a28c86abe7b5a1e7817c07
+++++ seth --from-ascii beg
++++ seth --to-bytes32 0x626567
+++ seth calldata 'file(address,address,address,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0xaa745404d55f88c108a28c86abe7b5a1e7817c07 6265670000000000000000000000000000000000000000000000000000000000 0000000000000000000000000000000000000000000000000e4b4b8af6a70000
++ calldata=0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000aa745404d55f88c108a28c86abe7b5a1e7817c0762656700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e4b4b8af6a70000
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000aa745404d55f88c108a28c86abe7b5a1e7817c0762656700000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e4b4b8af6a70000
+seth-send: Published transaction with 292 bytes of calldata.
+seth-send: 0xa5f68299ebb712f4e27848699564b396a78ec04ddc5480d901eac59b64eb051d
+seth-send: Waiting for transaction receipt............
+seth-send: Transaction included in block 8928399.
++ log 'SET ILKS BEG COMPLETED SUCCESSFULLY'
++ printf '%b\n' '\033[0;32m✓ SET ILKS BEG COMPLETED SUCCESSFULLY\033[0m'
+[0;32m✓ SET ILKS BEG COMPLETED SUCCESSFULLY[0m
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-ilks-ttl
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ loadAddresses
++ set +x
+++ jq -r '.tokens | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ tokens='ETH
+BAT'
++ for token in $tokens
+++ jq -r '.tokens.ETH.ilks | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ilks=A
++ for ilk in $ilks
+++ jq -r '.tokens.ETH.ilks.A | .ttl' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ttl=600
++++ eval echo '$MCD_FLIP_ETH_A'
+++++ echo 0xd8a04f5412223f513dc55f839574430f5ec15531
+++++ seth --from-ascii ttl
++++ seth --to-bytes32 0x74746c
+++ seth calldata 'file(address,address,address,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0xd8a04f5412223f513dc55f839574430f5ec15531 74746c0000000000000000000000000000000000000000000000000000000000 600
++ calldata=0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000d8a04f5412223f513dc55f839574430f5ec1553174746c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000258
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000d8a04f5412223f513dc55f839574430f5ec1553174746c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000258
+seth-send: Published transaction with 292 bytes of calldata.
+seth-send: 0xd78a47b6de200c3a0169c96876d20125484e017c0ff5817be62aa7f181fb0121
+seth-send: Waiting for transaction receipt........
+seth-send: Transaction included in block 8928402.
++ for token in $tokens
+++ jq -r '.tokens.BAT.ilks | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ilks=A
++ for ilk in $ilks
+++ jq -r '.tokens.BAT.ilks.A | .ttl' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ttl=600
++++ eval echo '$MCD_FLIP_BAT_A'
+++++ echo 0xaa745404d55f88c108a28c86abe7b5a1e7817c07
+++++ seth --from-ascii ttl
++++ seth --to-bytes32 0x74746c
+++ seth calldata 'file(address,address,address,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0xaa745404d55f88c108a28c86abe7b5a1e7817c07 74746c0000000000000000000000000000000000000000000000000000000000 600
++ calldata=0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000aa745404d55f88c108a28c86abe7b5a1e7817c0774746c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000258
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000aa745404d55f88c108a28c86abe7b5a1e7817c0774746c00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000258
+seth-send: Published transaction with 292 bytes of calldata.
+seth-send: 0xb9d7555cbafa79c53ccca8d9e2503e824a545ccd13c0a155a85a417ebe1fed59
+seth-send: Waiting for transaction receipt............
+seth-send: Transaction included in block 8928405.
++ log 'SET ILKS TTL COMPLETED SUCCESSFULLY'
++ printf '%b\n' '\033[0;32m✓ SET ILKS TTL COMPLETED SUCCESSFULLY\033[0m'
+[0;32m✓ SET ILKS TTL COMPLETED SUCCESSFULLY[0m
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-ilks-tau
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ loadAddresses
++ set +x
+++ jq -r '.tokens | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ tokens='ETH
+BAT'
++ for token in $tokens
+++ jq -r '.tokens.ETH.ilks | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ilks=A
++ for ilk in $ilks
+++ jq -r '.tokens.ETH.ilks.A | .tau' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ tau=259200
++++ eval echo '$MCD_FLIP_ETH_A'
+++++ echo 0xd8a04f5412223f513dc55f839574430f5ec15531
+++++ seth --from-ascii tau
++++ seth --to-bytes32 0x746175
+++ seth calldata 'file(address,address,address,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0xd8a04f5412223f513dc55f839574430f5ec15531 7461750000000000000000000000000000000000000000000000000000000000 259200
++ calldata=0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000d8a04f5412223f513dc55f839574430f5ec155317461750000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003f480
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000d8a04f5412223f513dc55f839574430f5ec155317461750000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003f480
+seth-send: Published transaction with 292 bytes of calldata.
+seth-send: 0x22df812068af1e92e32623c7893dc0885ce125ea1810dc598c32904303c12921
+seth-send: Waiting for transaction receipt........................................
+seth-send: Transaction included in block 8928408.
++ for token in $tokens
+++ jq -r '.tokens.BAT.ilks | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ ilks=A
++ for ilk in $ilks
+++ jq -r '.tokens.BAT.ilks.A | .tau' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ tau=259200
++++ eval echo '$MCD_FLIP_BAT_A'
+++++ echo 0xaa745404d55f88c108a28c86abe7b5a1e7817c07
+++++ seth --from-ascii tau
++++ seth --to-bytes32 0x746175
+++ seth calldata 'file(address,address,address,bytes32,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0xaa745404d55f88c108a28c86abe7b5a1e7817c07 7461750000000000000000000000000000000000000000000000000000000000 259200
++ calldata=0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000aa745404d55f88c108a28c86abe7b5a1e7817c077461750000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003f480
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x61be647f000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e000000000000000000000000aa745404d55f88c108a28c86abe7b5a1e7817c077461750000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003f480
+seth-send: Published transaction with 292 bytes of calldata.
+seth-send: 0xf6bb4325af6be388dcd9f6f9ad2964e71b887871e406b5eb2449c41010b50d3c
+seth-send: Waiting for transaction receipt..............................
+seth-send: Transaction included in block 8928412.
++ log 'SET ILKS TAU COMPLETED SUCCESSFULLY'
++ printf '%b\n' '\033[0;32m✓ SET ILKS TAU COMPLETED SUCCESSFULLY\033[0m'
+[0;32m✓ SET ILKS TAU COMPLETED SUCCESSFULLY[0m
++ [[ -f '' ]]
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-ilks-osm
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ loadAddresses
++ set +x
+++ jq -r '.tokens | keys_unsorted[]' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ tokens='ETH
+BAT'
++ for token in $tokens
+++ jq -r '.tokens.ETH | .pip | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ pipAddr=0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763
++ [[ 0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763 == '' ]]
++ for token in $tokens
+++ jq -r '.tokens.BAT | .pip | values' /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ pipAddr=0xb4eb54af9cc7882df0121d26c5b97e802915abe6
++ [[ 0xb4eb54af9cc7882df0121d26c5b97e802915abe6 == '' ]]
++ for token in $tokens
++ addAddresses
+++ eval echo '$PIP_ETH'
++++ echo 0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763
+++ jq -s add /home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json /dev/stdin
++ result='{
+  "DEPLOYER": "0xdDb108893104dE4E1C6d0E47c42237dB4E617ACc",
+  "MULTICALL": "0x5e227ad1969ea493b43f840cff78d08a6fc17796",
+  "FAUCET": "0x0000000000000000000000000000000000000000",
+  "MCD_DEPLOY": "0xbaa65281c2fa2baacb2cb550ba051525a480d3f4",
+  "MCD_GOV": "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
+  "MCD_ADM": "0x9eF05f7F6deB616fd37aC3c959a2dDD25A54E4F5",
+  "MCD_VAT": "0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b",
+  "MCD_JUG": "0x19c0976f590d67707e62397c87829d896dc0f1f1",
+  "MCD_CAT": "0x78f2c2af65126834c51822f56be0d7469d7a523e",
+  "MCD_VOW": "0xa950524441892a31ebddf91d3ceefa04bf454466",
+  "MCD_JOIN_DAI": "0x9759a6ac90977b93b58547b4a71c78317f391a28",
+  "MCD_FLAP": "0xdfe0fb1be2a52cdbf8fb962d5701d7fd0902db9f",
+  "MCD_FLOP": "0xbe00fe8dfd9c079f1e5f5ad7ae9a3ad2c571fcac",
+  "MCD_PAUSE": "0xbe286431454714f511008713973d3b053a2d38f3",
+  "MCD_PAUSE_PROXY": "0xbe8e3e3618f7474f8cb1d074a26affef007e98fb",
+  "MCD_GOV_ACTIONS": "0x4f5f0933158569c026d617337614d00ee6589b6e",
+  "MCD_DAI": "0x6b175474e89094c44da98b954eedeac495271d0f",
+  "MCD_SPOT": "0x65c79fcb50ca1594b025960e539ed7a9a6d434a3",
+  "MCD_POT": "0x197e90f9fad81970ba7976f33cbd77088e5d7cf7",
+  "MCD_END": "0xab14d3ce3f733cacb76ec2abe7d2fcb00c99f3d5",
+  "MCD_ESM": "0x0581a0abe32aae9b5f0f68defab77c6759100085",
+  "PROXY_ACTIONS": "0x82ecd135dce65fbc6dbdd0e4237e0af93ffd5038",
+  "PROXY_ACTIONS_END": "0x069b2fb501b6f16d1f5fe245b16f6993808f1008",
+  "PROXY_ACTIONS_DSR": "0x07ee93aeea0a36fff2a9b95dd22bd6049ee54f26",
+  "CDP_MANAGER": "0x5ef30b9986345249bc32d8928b7ee64de9435e39",
+  "GET_CDPS": "0x36a724bd100c39f0ea4d3a20f7097ee01a8ff573",
+  "PROXY_FACTORY": "0xa26e15c895efc0616177b7c1e7270a4c7d51c997",
+  "PROXY_REGISTRY": "0x4678f0a6958e4d2bc4f1baf7bc52e8f3564f3fe4",
+  "ETH": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+  "VAL_ETH": "0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763",
+  "PIP_ETH": "0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763",
+  "MCD_JOIN_ETH_A": "0x2f0b23f53734252bda2277357e97e1517d6b042a",
+  "MCD_FLIP_ETH_A": "0xd8a04f5412223f513dc55f839574430f5ec15531",
+  "BAT": "0x0d8775f648430679a709e98d2b0cb6250d2887ef",
+  "VAL_BAT": "0xb4eb54af9cc7882df0121d26c5b97e802915abe6",
+  "PIP_BAT": "0xb4eb54af9cc7882df0121d26c5b97e802915abe6",
+  "MCD_JOIN_BAT_A": "0x3d0b1912b66114d4096f48a8cee3a56c231772ca",
+  "MCD_FLIP_BAT_A": "0xaa745404d55f88c108a28c86abe7b5a1e7817c07",
+  "SAI": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
+  "PIP_SAI": "0x54003dbf6ae6cba6ddae571ccdc34d834b44ab1e",
+  "MCD_JOIN_SAI": "0xad37fd42185ba63009177058208dd1be4b136e6b",
+  "MCD_FLIP_SAI": "0x5432b2f3c0dff95aa191c45e5cbd539e2820ae72",
+  "PROXY_PAUSE_ACTIONS": "0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370",
+  "PROXY_DEPLOYER": "0x1b93556ab8dccef01cd7823c617a6d340f53fb58",
+  "SAI_TUB": "0x448a5065aebb8e423f0896e6c5d525c040f59af3",
+  "MIGRATION": "0xc73e0383f3aff3215e6f04b0331d58cecf0ab849",
+  "MIGRATION_PROXY_ACTIONS": "0xe4b22d484958e582098a98229a24e8a43801b674"
+}'
++ printf %s '{
+  "DEPLOYER": "0xdDb108893104dE4E1C6d0E47c42237dB4E617ACc",
+  "MULTICALL": "0x5e227ad1969ea493b43f840cff78d08a6fc17796",
+  "FAUCET": "0x0000000000000000000000000000000000000000",
+  "MCD_DEPLOY": "0xbaa65281c2fa2baacb2cb550ba051525a480d3f4",
+  "MCD_GOV": "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
+  "MCD_ADM": "0x9eF05f7F6deB616fd37aC3c959a2dDD25A54E4F5",
+  "MCD_VAT": "0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b",
+  "MCD_JUG": "0x19c0976f590d67707e62397c87829d896dc0f1f1",
+  "MCD_CAT": "0x78f2c2af65126834c51822f56be0d7469d7a523e",
+  "MCD_VOW": "0xa950524441892a31ebddf91d3ceefa04bf454466",
+  "MCD_JOIN_DAI": "0x9759a6ac90977b93b58547b4a71c78317f391a28",
+  "MCD_FLAP": "0xdfe0fb1be2a52cdbf8fb962d5701d7fd0902db9f",
+  "MCD_FLOP": "0xbe00fe8dfd9c079f1e5f5ad7ae9a3ad2c571fcac",
+  "MCD_PAUSE": "0xbe286431454714f511008713973d3b053a2d38f3",
+  "MCD_PAUSE_PROXY": "0xbe8e3e3618f7474f8cb1d074a26affef007e98fb",
+  "MCD_GOV_ACTIONS": "0x4f5f0933158569c026d617337614d00ee6589b6e",
+  "MCD_DAI": "0x6b175474e89094c44da98b954eedeac495271d0f",
+  "MCD_SPOT": "0x65c79fcb50ca1594b025960e539ed7a9a6d434a3",
+  "MCD_POT": "0x197e90f9fad81970ba7976f33cbd77088e5d7cf7",
+  "MCD_END": "0xab14d3ce3f733cacb76ec2abe7d2fcb00c99f3d5",
+  "MCD_ESM": "0x0581a0abe32aae9b5f0f68defab77c6759100085",
+  "PROXY_ACTIONS": "0x82ecd135dce65fbc6dbdd0e4237e0af93ffd5038",
+  "PROXY_ACTIONS_END": "0x069b2fb501b6f16d1f5fe245b16f6993808f1008",
+  "PROXY_ACTIONS_DSR": "0x07ee93aeea0a36fff2a9b95dd22bd6049ee54f26",
+  "CDP_MANAGER": "0x5ef30b9986345249bc32d8928b7ee64de9435e39",
+  "GET_CDPS": "0x36a724bd100c39f0ea4d3a20f7097ee01a8ff573",
+  "PROXY_FACTORY": "0xa26e15c895efc0616177b7c1e7270a4c7d51c997",
+  "PROXY_REGISTRY": "0x4678f0a6958e4d2bc4f1baf7bc52e8f3564f3fe4",
+  "ETH": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+  "VAL_ETH": "0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763",
+  "PIP_ETH": "0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763",
+  "MCD_JOIN_ETH_A": "0x2f0b23f53734252bda2277357e97e1517d6b042a",
+  "MCD_FLIP_ETH_A": "0xd8a04f5412223f513dc55f839574430f5ec15531",
+  "BAT": "0x0d8775f648430679a709e98d2b0cb6250d2887ef",
+  "VAL_BAT": "0xb4eb54af9cc7882df0121d26c5b97e802915abe6",
+  "PIP_BAT": "0xb4eb54af9cc7882df0121d26c5b97e802915abe6",
+  "MCD_JOIN_BAT_A": "0x3d0b1912b66114d4096f48a8cee3a56c231772ca",
+  "MCD_FLIP_BAT_A": "0xaa745404d55f88c108a28c86abe7b5a1e7817c07",
+  "SAI": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
+  "PIP_SAI": "0x54003dbf6ae6cba6ddae571ccdc34d834b44ab1e",
+  "MCD_JOIN_SAI": "0xad37fd42185ba63009177058208dd1be4b136e6b",
+  "MCD_FLIP_SAI": "0x5432b2f3c0dff95aa191c45e5cbd539e2820ae72",
+  "PROXY_PAUSE_ACTIONS": "0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370",
+  "PROXY_DEPLOYER": "0x1b93556ab8dccef01cd7823c617a6d340f53fb58",
+  "SAI_TUB": "0x448a5065aebb8e423f0896e6c5d525c040f59af3",
+  "MIGRATION": "0xc73e0383f3aff3215e6f04b0331d58cecf0ab849",
+  "MIGRATION_PROXY_ACTIONS": "0xe4b22d484958e582098a98229a24e8a43801b674"
+}'
++ for token in $tokens
++ addAddresses
+++ eval echo '$PIP_BAT'
++++ echo 0xb4eb54af9cc7882df0121d26c5b97e802915abe6
+++ jq -s add /home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json /dev/stdin
++ result='{
+  "DEPLOYER": "0xdDb108893104dE4E1C6d0E47c42237dB4E617ACc",
+  "MULTICALL": "0x5e227ad1969ea493b43f840cff78d08a6fc17796",
+  "FAUCET": "0x0000000000000000000000000000000000000000",
+  "MCD_DEPLOY": "0xbaa65281c2fa2baacb2cb550ba051525a480d3f4",
+  "MCD_GOV": "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
+  "MCD_ADM": "0x9eF05f7F6deB616fd37aC3c959a2dDD25A54E4F5",
+  "MCD_VAT": "0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b",
+  "MCD_JUG": "0x19c0976f590d67707e62397c87829d896dc0f1f1",
+  "MCD_CAT": "0x78f2c2af65126834c51822f56be0d7469d7a523e",
+  "MCD_VOW": "0xa950524441892a31ebddf91d3ceefa04bf454466",
+  "MCD_JOIN_DAI": "0x9759a6ac90977b93b58547b4a71c78317f391a28",
+  "MCD_FLAP": "0xdfe0fb1be2a52cdbf8fb962d5701d7fd0902db9f",
+  "MCD_FLOP": "0xbe00fe8dfd9c079f1e5f5ad7ae9a3ad2c571fcac",
+  "MCD_PAUSE": "0xbe286431454714f511008713973d3b053a2d38f3",
+  "MCD_PAUSE_PROXY": "0xbe8e3e3618f7474f8cb1d074a26affef007e98fb",
+  "MCD_GOV_ACTIONS": "0x4f5f0933158569c026d617337614d00ee6589b6e",
+  "MCD_DAI": "0x6b175474e89094c44da98b954eedeac495271d0f",
+  "MCD_SPOT": "0x65c79fcb50ca1594b025960e539ed7a9a6d434a3",
+  "MCD_POT": "0x197e90f9fad81970ba7976f33cbd77088e5d7cf7",
+  "MCD_END": "0xab14d3ce3f733cacb76ec2abe7d2fcb00c99f3d5",
+  "MCD_ESM": "0x0581a0abe32aae9b5f0f68defab77c6759100085",
+  "PROXY_ACTIONS": "0x82ecd135dce65fbc6dbdd0e4237e0af93ffd5038",
+  "PROXY_ACTIONS_END": "0x069b2fb501b6f16d1f5fe245b16f6993808f1008",
+  "PROXY_ACTIONS_DSR": "0x07ee93aeea0a36fff2a9b95dd22bd6049ee54f26",
+  "CDP_MANAGER": "0x5ef30b9986345249bc32d8928b7ee64de9435e39",
+  "GET_CDPS": "0x36a724bd100c39f0ea4d3a20f7097ee01a8ff573",
+  "PROXY_FACTORY": "0xa26e15c895efc0616177b7c1e7270a4c7d51c997",
+  "PROXY_REGISTRY": "0x4678f0a6958e4d2bc4f1baf7bc52e8f3564f3fe4",
+  "ETH": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+  "VAL_ETH": "0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763",
+  "PIP_ETH": "0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763",
+  "MCD_JOIN_ETH_A": "0x2f0b23f53734252bda2277357e97e1517d6b042a",
+  "MCD_FLIP_ETH_A": "0xd8a04f5412223f513dc55f839574430f5ec15531",
+  "BAT": "0x0d8775f648430679a709e98d2b0cb6250d2887ef",
+  "VAL_BAT": "0xb4eb54af9cc7882df0121d26c5b97e802915abe6",
+  "PIP_BAT": "0xb4eb54af9cc7882df0121d26c5b97e802915abe6",
+  "MCD_JOIN_BAT_A": "0x3d0b1912b66114d4096f48a8cee3a56c231772ca",
+  "MCD_FLIP_BAT_A": "0xaa745404d55f88c108a28c86abe7b5a1e7817c07",
+  "SAI": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
+  "PIP_SAI": "0x54003dbf6ae6cba6ddae571ccdc34d834b44ab1e",
+  "MCD_JOIN_SAI": "0xad37fd42185ba63009177058208dd1be4b136e6b",
+  "MCD_FLIP_SAI": "0x5432b2f3c0dff95aa191c45e5cbd539e2820ae72",
+  "PROXY_PAUSE_ACTIONS": "0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370",
+  "PROXY_DEPLOYER": "0x1b93556ab8dccef01cd7823c617a6d340f53fb58",
+  "SAI_TUB": "0x448a5065aebb8e423f0896e6c5d525c040f59af3",
+  "MIGRATION": "0xc73e0383f3aff3215e6f04b0331d58cecf0ab849",
+  "MIGRATION_PROXY_ACTIONS": "0xe4b22d484958e582098a98229a24e8a43801b674"
+}'
++ printf %s '{
+  "DEPLOYER": "0xdDb108893104dE4E1C6d0E47c42237dB4E617ACc",
+  "MULTICALL": "0x5e227ad1969ea493b43f840cff78d08a6fc17796",
+  "FAUCET": "0x0000000000000000000000000000000000000000",
+  "MCD_DEPLOY": "0xbaa65281c2fa2baacb2cb550ba051525a480d3f4",
+  "MCD_GOV": "0x9f8f72aa9304c8b593d555f12ef6589cc3a579a2",
+  "MCD_ADM": "0x9eF05f7F6deB616fd37aC3c959a2dDD25A54E4F5",
+  "MCD_VAT": "0x35d1b3f3d7966a1dfe207aa4514c12a259a0492b",
+  "MCD_JUG": "0x19c0976f590d67707e62397c87829d896dc0f1f1",
+  "MCD_CAT": "0x78f2c2af65126834c51822f56be0d7469d7a523e",
+  "MCD_VOW": "0xa950524441892a31ebddf91d3ceefa04bf454466",
+  "MCD_JOIN_DAI": "0x9759a6ac90977b93b58547b4a71c78317f391a28",
+  "MCD_FLAP": "0xdfe0fb1be2a52cdbf8fb962d5701d7fd0902db9f",
+  "MCD_FLOP": "0xbe00fe8dfd9c079f1e5f5ad7ae9a3ad2c571fcac",
+  "MCD_PAUSE": "0xbe286431454714f511008713973d3b053a2d38f3",
+  "MCD_PAUSE_PROXY": "0xbe8e3e3618f7474f8cb1d074a26affef007e98fb",
+  "MCD_GOV_ACTIONS": "0x4f5f0933158569c026d617337614d00ee6589b6e",
+  "MCD_DAI": "0x6b175474e89094c44da98b954eedeac495271d0f",
+  "MCD_SPOT": "0x65c79fcb50ca1594b025960e539ed7a9a6d434a3",
+  "MCD_POT": "0x197e90f9fad81970ba7976f33cbd77088e5d7cf7",
+  "MCD_END": "0xab14d3ce3f733cacb76ec2abe7d2fcb00c99f3d5",
+  "MCD_ESM": "0x0581a0abe32aae9b5f0f68defab77c6759100085",
+  "PROXY_ACTIONS": "0x82ecd135dce65fbc6dbdd0e4237e0af93ffd5038",
+  "PROXY_ACTIONS_END": "0x069b2fb501b6f16d1f5fe245b16f6993808f1008",
+  "PROXY_ACTIONS_DSR": "0x07ee93aeea0a36fff2a9b95dd22bd6049ee54f26",
+  "CDP_MANAGER": "0x5ef30b9986345249bc32d8928b7ee64de9435e39",
+  "GET_CDPS": "0x36a724bd100c39f0ea4d3a20f7097ee01a8ff573",
+  "PROXY_FACTORY": "0xa26e15c895efc0616177b7c1e7270a4c7d51c997",
+  "PROXY_REGISTRY": "0x4678f0a6958e4d2bc4f1baf7bc52e8f3564f3fe4",
+  "ETH": "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+  "VAL_ETH": "0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763",
+  "PIP_ETH": "0x81fe72b5a8d1a857d176c3e7d5bd2679a9b85763",
+  "MCD_JOIN_ETH_A": "0x2f0b23f53734252bda2277357e97e1517d6b042a",
+  "MCD_FLIP_ETH_A": "0xd8a04f5412223f513dc55f839574430f5ec15531",
+  "BAT": "0x0d8775f648430679a709e98d2b0cb6250d2887ef",
+  "VAL_BAT": "0xb4eb54af9cc7882df0121d26c5b97e802915abe6",
+  "PIP_BAT": "0xb4eb54af9cc7882df0121d26c5b97e802915abe6",
+  "MCD_JOIN_BAT_A": "0x3d0b1912b66114d4096f48a8cee3a56c231772ca",
+  "MCD_FLIP_BAT_A": "0xaa745404d55f88c108a28c86abe7b5a1e7817c07",
+  "SAI": "0x89d24a6b4ccb1b6faa2625fe562bdd9a23260359",
+  "PIP_SAI": "0x54003dbf6ae6cba6ddae571ccdc34d834b44ab1e",
+  "MCD_JOIN_SAI": "0xad37fd42185ba63009177058208dd1be4b136e6b",
+  "MCD_FLIP_SAI": "0x5432b2f3c0dff95aa191c45e5cbd539e2820ae72",
+  "PROXY_PAUSE_ACTIONS": "0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370",
+  "PROXY_DEPLOYER": "0x1b93556ab8dccef01cd7823c617a6d340f53fb58",
+  "SAI_TUB": "0x448a5065aebb8e423f0896e6c5d525c040f59af3",
+  "MIGRATION": "0xc73e0383f3aff3215e6f04b0331d58cecf0ab849",
+  "MIGRATION_PROXY_ACTIONS": "0xe4b22d484958e582098a98229a24e8a43801b674"
+}'
++ echo 'SET ILKS OSM COMPLETED SUCCESSFULLY'
+SET ILKS OSM COMPLETED SUCCESSFULLY
++ /nix/store/24am20klzkbdxj90ayxk48zgw82xxdn1-dss-deploy-scripts/libexec/set-pause-auth-delay
+++ export ETH_GAS=7000000
+++ ETH_GAS=7000000
+++ unset SOLC_FLAGS
+++ export OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ OUT_DIR=/home/nanexcool/makerdao/dss-deploy-scripts/out
+++ ADDRESSES_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/addresses.json
+++ export CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ CONFIG_FILE=/home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
+++ jq -r .pauseDelay /home/nanexcool/makerdao/dss-deploy-scripts/out/config.json
++ delay=0
++ loadAddresses
++ set +x
++++ seth --to-uint256 0
+++ seth calldata 'setAuthorityAndDelay(address,address,address,uint256)' 0xbe286431454714f511008713973d3b053a2d38f3 0x4f5f0933158569c026d617337614d00ee6589b6e 0x9eF05f7F6deB616fd37aC3c959a2dDD25A54E4F5 0000000000000000000000000000000000000000000000000000000000000000
++ calldata=0x46d34994000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e0000000000000000000000009ef05f7f6deb616fd37ac3c959a2ddd25a54e4f50000000000000000000000000000000000000000000000000000000000000000
++ seth send 0x1b93556ab8dccef01cd7823c617a6d340f53fb58 'execute(address,bytes memory)' 0x6bda13d43b7edd6cafe1f70fb98b5d40f61a1370 0x46d34994000000000000000000000000be286431454714f511008713973d3b053a2d38f30000000000000000000000004f5f0933158569c026d617337614d00ee6589b6e0000000000000000000000009ef05f7f6deb616fd37ac3c959a2ddd25a54e4f50000000000000000000000000000000000000000000000000000000000000000
+seth-send: Published transaction with 260 bytes of calldata.
+seth-send: 0x018ec02e7c776d8548da3008b298ffcdadb19cbf2695a9f9497c1aff33d98331
+seth-send: Waiting for transaction receipt.......
+seth-send: Transaction included in block 8928414.
++ log 'SET PAUSE AUTH DELAY COMPLETED SUCCESSFULLY'
++ printf '%b\n' '\033[0;32m✓ SET PAUSE AUTH DELAY COMPLETED SUCCESSFULLY\033[0m'
+[0;32m✓ SET PAUSE AUTH DELAY COMPLETED SUCCESSFULLY[0m

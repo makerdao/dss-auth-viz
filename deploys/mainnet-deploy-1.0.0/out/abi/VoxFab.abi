@@ -1,0 +1,1 @@
+[{"constant":false,"inputs":[],"name":"newVox","outputs":[{"internalType":"contract SaiVox","name":"vox","type":"address"}],"payable":false,"stateMutability":"nonpayable","type":"function"}]
