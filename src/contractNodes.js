@@ -74,6 +74,11 @@ module.exports.mainNodes = [
     abiName: 'DSGuard',
   },
   {
+    node: 'MKR_AUTH',
+    label: 'MKR Authority',
+    abiName: 'MKRAuthority',
+  },
+  {
     node: 'MCD_IOU',
     label: 'IOU',
     abiName: 'DSToken',
@@ -121,6 +126,11 @@ module.exports.mainNodes = [
   {
     node: 'PROXY_DEPLOYER',
     label: 'Proxy Deployer',
+    abiName: 'DSProxy',
+  },
+  {
+    node: 'SAI_PROXY',
+    label: 'Sai Proxy',
     abiName: 'DSProxy',
   },
   {
@@ -213,4 +223,5 @@ module.exports.fabNodes = [
   'spotFab',
   'potFab',
   'pauseFab',
+  'endFab'
 ];
